@@ -1425,11 +1425,11 @@ body {
 
 .modal-content {
     background-color: white;
-    margin: 5% auto;
+    margin: 2% auto;
     border-radius: 1rem;
     width: 90%;
-    max-width: 500px;
-    max-height: 80vh;
+    max-width: 700px;
+    max-height: 90vh;
     overflow-y: auto;
 }
 
@@ -1471,6 +1471,102 @@ body {
 .checkout-summary h3 {
     color: var(--gray-800);
     margin-bottom: 1rem;
+}
+
+/* Customer Form Styles */
+.customer-form {
+    margin-bottom: 2rem;
+}
+
+.form-section {
+    margin-bottom: 2rem;
+}
+
+.form-section h4 {
+    color: var(--gray-800);
+    margin-bottom: 1rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 640px) {
+    .form-row {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.form-row.full-width {
+    grid-template-columns: 1fr;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--gray-700);
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select {
+    padding: 0.75rem;
+    border: 1px solid var(--gray-300);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.2s;
+    background-color: white;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(158, 19, 92, 0.1);
+}
+
+.form-group input.error,
+.form-group select.error {
+    border-color: #dc3545;
+}
+
+.form-group .error-message {
+    color: #dc3545;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+}
+
+.currency-selector-form {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.currency-selector-form label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--gray-700);
+    margin: 0;
+}
+
+.currency-selector-form select {
+    padding: 0.5rem;
+    border: 1px solid var(--gray-300);
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    background-color: white;
 }
 
 #card-element {
@@ -1521,6 +1617,19 @@ body {
 }
 
 .logo-img {
-    width: 100%; /* Define a largura para 200 pixels */
-    height: 50px; /* Define a altura para 100 pixels */
+    width: 100%;
+    height: 50px;
+}
+
+/* Form validation styles */
+.required {
+    color: #dc3545;
+}
+
+.form-group input:invalid {
+    border-color: #dc3545;
+}
+
+.form-group input:valid {
+    border-color: #28a745;
 }
