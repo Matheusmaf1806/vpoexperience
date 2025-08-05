@@ -1,4 +1,5 @@
 /* Base Styles */
+
 :root {
     --primary-color: #9E135C;
     --primary-color-light: #c63b84;
@@ -511,7 +512,7 @@ body {
     }
 }
 
-/* Benefits Section - Nova seção adicionada */
+/* Benefits Section */
 .benefits-section {
     padding: 4rem 0;
     background-color: var(--gray-50);
@@ -724,7 +725,6 @@ body {
     }
 }
 
-/* CORREÇÃO: Garantir que todos os cards tenham exatamente o mesmo tamanho */
 .destination-card {
     background: white;
     border: 1px solid var(--gray-200);
@@ -736,16 +736,16 @@ body {
     max-width: 100%;
     margin: 0 auto;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    min-height: 280px; /* Altura mínima fixa para uniformizar */
+    min-height: 280px; /* Fixed height for all cards */
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Distribui conteúdo igualmente */
+    justify-content: space-between; /* Distribute content evenly */
 }
 
 @media (min-width: 768px) {
     .destination-card {
         padding: 2rem;
-        min-height: 320px; /* Altura maior em desktop */
+        min-height: 320px; /* Slightly taller on desktop */
     }
 }
 
@@ -770,13 +770,18 @@ body {
 .destination-parks {
     font-size: 1rem;
     color: var(--gray-600);
+    flex-grow: 1; /* This will take up available space */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .destination-cta {
     font-size: 0.875rem;
     color: var(--gray-500);
-    margin-top: auto; /* Empurra para o bottom */
-    padding-top: 1rem;
+    margin-top: auto; /* Push to bottom */
+    padding-top: 1rem; /* Add some space */
 }
 
 /* Plans Display */
