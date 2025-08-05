@@ -21,7 +21,6 @@
                 <nav class="nav">
                     <ul class="nav-links">
                         <li><a href="#services" data-i18n="nav.services">Services</a></li>
-                        <li><a href="#benefits" data-i18n="nav.benefits">Benefits</a></li>
                         <li><a href="#plans" data-i18n="nav.plans">Plans</a></li>
                         <li><a href="#testimonials" data-i18n="nav.testimonials">Testimonials</a></li>
                         <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
@@ -59,7 +58,8 @@
             <div class="hero-grid">
                 <div class="hero-content">
                     <h1 class="hero-title">
-                        <span data-i18n="hero.title">Your Personal Concierge,</span> <span class="hero-accent" data-i18n="hero.accent">for the Magic of Parks.</span>
+                        <span data-i18n="hero.title">Your Personal Concierge,</span>
+                        <span class="hero-accent" data-i18n="hero.accent">for the Magic of Parks.</span>
                     </h1>
                     <p class="hero-subtitle" data-i18n="hero.subtitle">
                         Have a Brazilian specialist guiding you in real time through the parks of Orlando, California and Paris, maximizing your experience and creating unforgettable memories.
@@ -111,7 +111,9 @@
                     <span class="subtitle-line"></span>
                 </div>
                 <h2 class="main-section-title">
-                    <span data-i18n="services.title1">How</span> <span class="hero-accent" data-i18n="services.title2">Remote Guidance</span> <span data-i18n="services.title3">Works</span>
+                    <span data-i18n="services.title1">How</span>
+                    <span class="hero-accent" data-i18n="services.title2">Remote Guidance</span>
+                    <span data-i18n="services.title3">Works</span>
                 </h2>
                 <p class="section-description" data-i18n="services.description">
                     Have a Brazilian specialist assisting you in real time during your visit to the parks.
@@ -166,26 +168,29 @@
         </div>
     </section>
 
-    <!-- Benefits Section - NOVA SEÇÃO ADICIONADA -->
+    <!-- Benefits Section -->
     <section id="benefits" class="benefits-section">
         <div class="container">
             <div class="benefits-container">
                 <div class="benefits-image-wrapper">
-                    <img src="https://images.pexels.com/photos/1598073/pexels-photo-1598073.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Family enjoying Disney parks" class="benefits-image">
+                    <img src="https://images.pexels.com/photos/1132558/pexels-photo-1132558.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Family enjoying Disney" class="benefits-image">
                     <div class="stats-badge">
-                        <div class="stats-percentage">40%</div>
-                        <div class="stats-label">Less time<br>in queues</div>
+                        <div class="stats-percentage">99%</div>
+                        <div class="stats-label">
+                            <span data-i18n="benefits.stats_line1">of clients</span><br/>
+                            <span data-i18n="benefits.stats_line2">recommend our service</span>
+                        </div>
                     </div>
                 </div>
                 <div class="benefits-content">
                     <div class="benefits-subtitle">
                         <span class="subtitle-line"></span>
-                        <span class="subtitle-text" data-i18n="benefits.subtitle">Why Choose Us</span>
+                        <span class="subtitle-text" data-i18n="benefits.subtitle">Why choose us</span>
                         <span class="subtitle-line"></span>
                     </div>
                     <h2 class="benefits-title">
-                        <span data-i18n="benefits.title1">Maximize your Disney experience</span><br>
-                        <span data-i18n="benefits.title2">with</span> <span class="hero-accent" data-i18n="benefits.title3">specialized</span> <span data-i18n="benefits.title4">assistance</span>
+                        <span data-i18n="benefits.title_line1">Maximize your Disney experience</span><br/>
+                        <span data-i18n="benefits.title_line2">with</span> <span class="hero-accent" data-i18n="benefits.title_accent">specialized</span> <span data-i18n="benefits.title_line3">assistance</span>
                     </h2>
                     <p class="benefits-description" data-i18n="benefits.description">
                         Our specialists know the smallest details of the parks and will provide you and your family with unforgettable moments without stress or worries.
@@ -205,7 +210,7 @@
                         </li>
                         <li class="benefit-item">
                             <i data-lucide="check" class="benefit-icon" width="16" height="16"></i>
-                            <span data-i18n="benefits.benefit4">Assistance in Portuguese throughout your visit</span>
+                            <span data-i18n="benefits.benefit4">Assistance in Portuguese throughout your entire visit</span>
                         </li>
                         <li class="benefit-item">
                             <i data-lucide="check" class="benefit-icon" width="16" height="16"></i>
@@ -231,13 +236,14 @@
                     <span class="subtitle-line"></span>
                 </div>
                 <h2 class="main-section-title">
-                    <span data-i18n="plans.title1">Choose the</span> <span class="hero-accent" data-i18n="plans.title2">ideal</span> <span data-i18n="plans.title3">plan for your family</span>
+                    <span data-i18n="plans.title1">Choose the</span>
+                    <span class="hero-accent" data-i18n="plans.title2">ideal</span>
+                    <span data-i18n="plans.title3">plan for your family</span>
                 </h2>
                 <p class="section-description" data-i18n="plans.description">
                     Investment worth it to maximize every moment of your dream trip.
                 </p>
             </div>
-
             <div class="destinations-grid">
                 <div class="destination-card" onclick="showPlans('orlando')">
                     <div class="destination-flag">🇺🇸</div>
@@ -258,7 +264,6 @@
                     <div class="destination-cta" data-i18n="destinations.cta">Tap to see plans</div>
                 </div>
             </div>
-
             <div id="plans-display-container" class="plans-display-container" style="display: none;">
                 <div class="plans-display-header">
                     <h2><span data-i18n="plans.header1">Guidance Plans for</span> <span id="destination-name"></span></h2>
@@ -300,12 +305,10 @@
                         <label for="travel-date-input" class="passenger-selector-label" data-i18n="plans.activation_date">Activation Date</label>
                         <input type="date" id="travel-date-input" class="date-input">
                     </div>
-
                     <div class="total-area">
                         <span class="total-area-label" data-i18n="plans.total_label">Total:</span>
                         <strong id="total-price-value" class="total-price-value">$0.00</strong>
                     </div>
-
                     <div class="buttons-container">
                         <button class="btn btn-primary" id="checkout-btn">
                             <i class="fas fa-credit-card"></i>
@@ -327,7 +330,9 @@
                     <span class="subtitle-line"></span>
                 </div>
                 <h2 class="main-section-title">
-                    <span data-i18n="testimonials.title1">What our</span> <span class="hero-accent" data-i18n="testimonials.title2">clients</span> <span data-i18n="testimonials.title3">say</span>
+                    <span data-i18n="testimonials.title1">What our</span>
+                    <span class="hero-accent" data-i18n="testimonials.title2">clients</span>
+                    <span data-i18n="testimonials.title3">say</span>
                 </h2>
                 <p class="section-description" data-i18n="testimonials.description">
                     Brazilian families who transformed their Disney trips with our remote guidance service.
@@ -392,9 +397,9 @@
                             <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
                             <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
                         </div>
-                        <div class="testimonial-text" data-i18n="testimonials.testimonial3">
+                        <p class="testimonial-text" data-i18n="testimonials.testimonial3">
                             Very good service! We bought everything in 2019, and I was only able to travel this year 2022. The help with all the rescheduling was wonderful, clarifying many doubts, even about services that I hadn't closed with them. It was a great partnership. I already recommended it to a friend, who also used it and liked it. I'm already planning a new trip with VPO.
-                        </div>
+                        </p>
                     </div>
                 </div>
                 <div class="testimonial-card">
@@ -422,7 +427,7 @@
         </div>
     </section>
 
-    <!-- FAQ Section - EXPANDIDO COM MAIS PERGUNTAS -->
+    <!-- FAQ Section -->
     <section id="faq" class="faq-section">
         <div class="container">
             <div class="section-header">
@@ -432,7 +437,8 @@
                     <span class="subtitle-line"></span>
                 </div>
                 <h2 class="main-section-title">
-                    <span data-i18n="faq.title1">Clear your</span> <span class="hero-accent" data-i18n="faq.title2">doubts</span>
+                    <span data-i18n="faq.title1">Clear your</span>
+                    <span class="hero-accent" data-i18n="faq.title2">doubts</span>
                 </h2>
                 <p class="section-description" data-i18n="faq.description">
                     Find answers to the most common questions about our remote guidance service.
@@ -473,88 +479,58 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- NOVAS PERGUNTAS ADICIONADAS -->
                     <div class="accordion-item">
                         <button class="accordion-trigger">
-                            <span data-i18n="faq.question4">What parks are covered by the service?</span>
+                            <span data-i18n="faq.question4">Does the service work for all parks?</span>
                             <i data-lucide="chevron-down" class="accordion-icon" width="20" height="20"></i>
                         </button>
                         <div class="accordion-content">
                             <div class="accordion-content-inner" data-i18n="faq.answer4">
-                                We cover all major parks in Orlando (Magic Kingdom, EPCOT, Hollywood Studios, Animal Kingdom, Universal Studios, Islands of Adventure), California (Disneyland Park, Disney California Adventure), and Paris (Disneyland Park, Walt Disney Studios Park).
+                                Yes! Our plans cover the main parks in each destination: in Orlando (Magic Kingdom, EPCOT, Hollywood Studios, Animal Kingdom, Universal Studios, Islands of Adventure), in California (Disneyland Park, Disney California Adventure) and in Paris (Disneyland Park, Walt Disney Studios Park).
                             </div>
                         </div>
                     </div>
-
                     <div class="accordion-item">
                         <button class="accordion-trigger">
-                            <span data-i18n="faq.question5">What are the service hours for guides?</span>
+                            <span data-i18n="faq.question5">What are the operating hours of the guides?</span>
                             <i data-lucide="chevron-down" class="accordion-icon" width="20" height="20"></i>
                         </button>
                         <div class="accordion-content">
                             <div class="accordion-content-inner" data-i18n="faq.answer5">
-                                Service hours vary by plan: Basic plan (8am-6pm), Premium plan (7am-10pm), and VIP plan offers 24/7 support for any emergencies during your stay.
+                                Operating hours vary according to the chosen plan. In the Basic plan, we serve from 8am to 6pm; in the Premium, from 7am to 10pm; and in the VIP, we offer 24-hour support for any emergency during your stay.
                             </div>
                         </div>
                     </div>
-
                     <div class="accordion-item">
                         <button class="accordion-trigger">
-                            <span data-i18n="faq.question6">Can I change the itinerary during the day?</span>
+                            <span data-i18n="faq.question6">Can I change the itinerary during the day at the park?</span>
                             <i data-lucide="chevron-down" class="accordion-icon" width="20" height="20"></i>
                         </button>
                         <div class="accordion-content">
                             <div class="accordion-content-inner" data-i18n="faq.answer6">
-                                Absolutely! Our guides are prepared to adapt the itinerary according to your needs in real time. If an attraction has a long queue, the weather changes, or children get tired, we adjust recommendations for the best possible experience.
+                                Absolutely! Our guides are prepared to adapt the itinerary according to your needs in real time. If an attraction has a very long queue, if the weather changes or if children are tired, we adjust recommendations to ensure the best possible experience.
                             </div>
                         </div>
                     </div>
-
                     <div class="accordion-item">
                         <button class="accordion-trigger">
-                            <span data-i18n="faq.question7">Is the service suitable for families with small children?</span>
+                            <span data-i18n="faq.question7">What languages do the guides speak?</span>
                             <i data-lucide="chevron-down" class="accordion-icon" width="20" height="20"></i>
                         </button>
                         <div class="accordion-content">
                             <div class="accordion-content-inner" data-i18n="faq.answer7">
-                                Yes! We specialize in creating family-friendly itineraries that respect children's pace and needs. We provide tips on attractions suitable for each age, rest areas, baby care centers, and strategies to avoid crowds during peak hours.
+                                All our guides are fluent in Portuguese and English. Many also speak Spanish and French, ensuring clear communication regardless of your preferred language.
                             </div>
                         </div>
                     </div>
-
                     <div class="accordion-item">
                         <button class="accordion-trigger">
-                            <span data-i18n="faq.question8">Do you help with restaurant reservations?</span>
+                            <span data-i18n="faq.question8">What happens if I have problems with my phone or internet?</span>
                             <i data-lucide="chevron-down" class="accordion-icon" width="20" height="20"></i>
                         </button>
                         <div class="accordion-content">
                             <div class="accordion-content-inner" data-i18n="faq.answer8">
-                                Yes, we help you choose and book restaurants that fit your family's preferences and budget. We provide recommendations for character dining, themed restaurants, and quick service options throughout the parks.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <button class="accordion-trigger">
-                            <span data-i18n="faq.question9">What if I have problems with park tickets or reservations?</span>
-                            <i data-lucide="chevron-down" class="accordion-icon" width="20" height="20"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-content-inner" data-i18n="faq.answer9">
-                                Our guides are experienced in resolving common issues and can provide immediate guidance on how to solve problems with tickets, reservations, or other park-related issues. We're here to ensure your trip goes smoothly.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <button class="accordion-trigger">
-                            <span data-i18n="faq.question10">Is there a refund policy?</span>
-                            <i data-lucide="chevron-down" class="accordion-icon" width="20" height="20"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-content-inner" data-i18n="faq.answer10">
-                                We offer a full refund if you cancel at least 48 hours before your activation date. For cancellations within 48 hours, a 50% refund applies. No refunds are available for same-day cancellations, except in cases of documented emergencies.
+                                We provide emergency contact numbers and have backup communication protocols. Additionally, we send you a detailed printed itinerary as a backup so you can continue enjoying the parks even without immediate contact.
                             </div>
                         </div>
                     </div>
@@ -599,7 +575,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 VPO Experience. <span data-i18n="footer.rights">All rights reserved.</span></p>
+                <p>© 2024 VPO Experience. <span data-i18n="footer.rights">All rights reserved.</span></p>
             </div>
         </div>
     </footer>
@@ -609,14 +585,13 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h2 data-i18n="checkout.title">Complete Your Purchase</h2>
-                <span class="close" id="close-modal">&times;</span>
+                <span class="close" id="close-modal">×</span>
             </div>
             <div class="modal-body">
                 <div class="checkout-summary">
                     <h3 data-i18n="checkout.summary">Order Summary</h3>
                     <div id="checkout-details"></div>
                 </div>
-
                 <!-- Customer Information Form -->
                 <div class="customer-form">
                     <div class="form-section">
@@ -632,7 +607,6 @@
                                 <input type="email" id="customer-email" required>
                             </div>
                         </div>
-
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="customer-phone">Phone Number <span class="required">*</span></label>
@@ -661,7 +635,6 @@
                                 </select>
                             </div>
                         </div>
-
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="customer-address">Address <span class="required">*</span></label>
@@ -672,7 +645,6 @@
                                 <input type="text" id="customer-city" required>
                             </div>
                         </div>
-
                         <div class="currency-selector-form">
                             <label for="checkout-currency">Payment Currency:</label>
                             <select id="checkout-currency">
@@ -682,7 +654,6 @@
                             </select>
                         </div>
                     </div>
-
                     <div class="form-section">
                         <h4>Payment Information</h4>
                         <div class="payment-form">
