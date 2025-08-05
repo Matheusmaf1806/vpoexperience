@@ -10,7 +10,7 @@ const translations = {
         hero: {
             title: "Your Personal Concierge,",
             accent: "for the Magic of Parks.",
-            subtitle: "Have a Brazilian specialist guiding you in real time through the parks of Orlando, California and Paris, maximizing your experience and creating unforgettable memories.",
+            subtitle: "Have a specialist guiding you in real time through the parks of Orlando, California and Paris, maximizing your experience and creating unforgettable memories.",
             cta_text: "View Options",
             stat1: "Families",
             stat2: "Universal", 
@@ -21,7 +21,7 @@ const translations = {
             title1: "How",
             title2: "Remote Guidance", 
             title3: "Works",
-            description: "Have a Brazilian specialist assisting you in real time during your visit to the parks.",
+            description: "Have a specialist assisting you in real time during your visit to the parks.",
             service1: {
                 title: "Personalized Planning",
                 description: "Exclusive itineraries for your family, considering age, interests and available time."
@@ -52,7 +52,7 @@ const translations = {
             benefit2: "Avoid common mistakes that can compromise your park experience",
             benefit3: "Access to exclusive tips for photos and unique experiences",
             benefit4: "Assistance in Portuguese throughout your entire visit",
-            benefit5: "Personalized guidance on Fast Passes and must-see attractions",
+            benefit5: "Personalized guidance on quick queue and must-see attractions",
             benefit6: "Dedicated support for emergencies or unexpected situations"
         },
         plans: {
@@ -85,7 +85,7 @@ const translations = {
             title1: "What our",
             title2: "clients",
             title3: "say",
-            description: "Brazilian families who transformed their Disney trips with our remote guidance service.",
+            description: "families who transformed their Disney trips with our remote guidance service.",
             testimonial1: "Our experience with VPO was wonderful! They took care of all the details with care, from hotel reservations to park scheduling. We also have to highlight the experience designer that provided us with greater comfort and dynamics within the parks, so that we could enjoy this incredible trip with comfort and tranquility. I simply won't let them go anymore!! ❤️",
             testimonial2: "The trip was incredible, VPO always helping us have wonderful days in Orlando!! It's the second time we've hired the service (car, hotel, house, park tickets) and I keep recommending it to everyone! Here is my gratitude for all the care and affection with me and my family!!! A big kiss to you guys!",
             testimonial3: "Very good service! We bought everything in 2019, and I was only able to travel this year 2022. The help with all the rescheduling was wonderful, clarifying many doubts, even about services that I hadn't closed with them. It was a great partnership. I already recommended it to a friend, who also used it and liked it. I'm already planning a new trip with VPO.",
@@ -106,8 +106,8 @@ const translations = {
             answer4: "Yes! Our plans cover the main parks in each destination: in Orlando (Magic Kingdom, EPCOT, Hollywood Studios, Animal Kingdom, Universal Studios, Islands of Adventure), in California (Disneyland Park, Disney California Adventure) and in Paris (Disneyland Park, Walt Disney Studios Park).",
             question5: "What are the operating hours of the guides?",
             answer5: "Operating hours vary according to the chosen plan. In the Basic plan, we serve from 8am to 6pm; in the Premium, from 7am to 10pm; and in the VIP, we offer 24-hour support for any emergency during your stay.",
-            question6: "Can I change the itinerary during the day at the park?",
-            answer6: "Absolutely! Our guides are prepared to adapt the itinerary according to your needs in real time. If an attraction has a very long queue, if the weather changes or if children are tired, we adjust recommendations to ensure the best possible experience.",
+            question6: "Can I change my plans during the day at the park?",
+            answer6: "Absolutely! Our guides are ready to adapt their plans to your needs in real time. If an attraction has a long line, the weather changes, or your kids are tired, we adjust our recommendations to ensure the best possible experience.",
             question7: "What languages do the guides speak?",
             answer7: "All our guides are fluent in Portuguese and English. Many also speak Spanish and French, ensuring clear communication regardless of your preferred language.",
             question8: "What happens if I have problems with my phone or internet?",
@@ -181,11 +181,11 @@ const translations = {
             description: "Nossos especialistas conhecem os mínimos detalhes dos parques e proporcionarão a você e sua família momentos inesquecíveis sem estresse ou preocupações.",
             stats_line1: "dos clientes",
             stats_line2: "recomendam nosso serviço",
-            benefit1: "Economize até 40% do tempo em filas com nossas estratégias exclusivas",
+            benefit1: "Economize até 40% do tempo em filas com nossa metodologia exclusiva",
             benefit2: "Evite erros comuns que podem comprometer sua experiência no parque",
             benefit3: "Acesso a dicas exclusivas para fotos e experiências únicas",
             benefit4: "Assistência em português durante toda a sua visita",
-            benefit5: "Orientações personalizadas sobre Fast Passes e atrações imperdíveis",
+            benefit5: "Orientações personalizadas sobre filas rápidas e atrações imperdíveis",
             benefit6: "Suporte dedicado para casos de emergências ou imprevistos"
         },
         plans: {
@@ -239,8 +239,8 @@ const translations = {
             answer4: "Sim! Nossos planos cobrem os principais parques de cada destino: em Orlando (Magic Kingdom, EPCOT, Hollywood Studios, Animal Kingdom, Universal Studios, Islands of Adventure), na Califórnia (Disneyland Park, Disney California Adventure) e em Paris (Disneyland Park, Walt Disney Studios Park).",
             question5: "Qual é o horário de atendimento dos guias?",
             answer5: "O horário de atendimento varia conforme o plano escolhido. No plano Básico, atendemos das 8h às 18h; no Premium, das 7h às 22h; e no VIP, oferecemos suporte 24 horas para qualquer emergência durante sua estadia.",
-            question6: "É possível mudar o roteiro durante o dia no parque?",
-            answer6: "Absolutamente! Nossos guias estão preparados para adaptar o roteiro de acordo com suas necessidades em tempo real. Se uma atração estiver com fila muito longa, se o clima mudar ou se as crianças estiverem cansadas, ajustamos as recomendações para garantir a melhor experiência possível.",
+            question6: "É possível mudar o planejamento durante o dia no parque?",
+            answer6: "Absolutamente! Nossos guias estão preparados para adaptar o planejamento de acordo com suas necessidades em tempo real. Se uma atração estiver com fila muito longa, se o clima mudar ou se as crianças estiverem cansadas, ajustamos as recomendações para garantir a melhor experiência possível.",
             question7: "Quais idiomas os guias falam?",
             answer7: "Todos os nossos guias são fluentes em português e inglês. Muitos também falam espanhol e francês, garantindo comunicação clara independente do seu idioma preferido.",
             question8: "O que acontece se eu tiver problemas com meu telefone ou internet?",
@@ -318,7 +318,7 @@ const translations = {
             benefit2: "Evite errores comunes que pueden comprometer su experiencia en el parque",
             benefit3: "Acceso a consejos exclusivos para fotos y experiencias únicas",
             benefit4: "Asistencia en portugués durante toda su visita",
-            benefit5: "Orientación personalizada sobre Fast Passes y atracciones imperdibles",
+            benefit5: "Orientación personalizada sobre cola rápida y atracciones imperdibles",
             benefit6: "Soporte dedicado para casos de emergencias o imprevistos"
         },
         plans: {
@@ -372,8 +372,8 @@ const translations = {
             answer4: "¡Sí! Nuestros planes cubren los principales parques en cada destino: en Orlando (Magic Kingdom, EPCOT, Hollywood Studios, Animal Kingdom, Universal Studios, Islands of Adventure), en California (Disneyland Park, Disney California Adventure) y en París (Disneyland Park, Walt Disney Studios Park).",
             question5: "¿Cuáles son los horarios de atención de los guías?",
             answer5: "Los horarios de atención varían según el plan elegido. En el plan Básico, atendemos de 8h a 18h; en el Premium, de 7h a 22h; y en el VIP, ofrecemos soporte 24 horas para cualquier emergencia durante su estadía.",
-            question6: "¿Es posible cambiar el itinerario durante el día en el parque?",
-            answer6: "¡Absolutamente! Nuestros guías están preparados para adaptar el itinerario según sus necesidades en tiempo real. Si una atracción tiene una cola muy larga, si cambia el clima o si los niños están cansados, ajustamos las recomendaciones para garantizar la mejor experiencia posible.",
+            question6: "¿Es posible cambiar el horario durante el día en el parque?",
+            answer6: "¡Absolutamente! Nuestros guías están preparados para adaptar el horario según sus necesidades en tiempo real. Si una atracción tiene una cola muy larga, si cambia el clima o si los niños están cansados, ajustamos las recomendaciones para garantizar la mejor experiencia posible.",
             question7: "¿Qué idiomas hablan los guías?",
             answer7: "Todos nuestros guías son fluentes en portugués e inglés. Muchos también hablan español y francés, asegurando comunicación clara independientemente de su idioma preferido.",
             question8: "¿Qué pasa si tengo problemas con mi teléfono o internet?",
@@ -451,7 +451,7 @@ const translations = {
             benefit2: "Évitez les erreurs courantes qui peuvent compromettre votre expérience dans le parc",
             benefit3: "Accès à des conseils exclusifs pour les photos et expériences uniques",
             benefit4: "Assistance en portugais pendant toute votre visite",
-            benefit5: "Orientation personnalisée sur les Fast Passes et attractions incontournables",
+            benefit5: "Orientation personnalisée sur les file d'attente rapide et attractions incontournables",
             benefit6: "Support dédié pour les cas d'urgence ou situations imprévues"
         },
         plans: {
@@ -505,8 +505,8 @@ const translations = {
             answer4: "Oui ! Nos plans couvrent les principaux parcs de chaque destination : à Orlando (Magic Kingdom, EPCOT, Hollywood Studios, Animal Kingdom, Universal Studios, Islands of Adventure), en Californie (Disneyland Park, Disney California Adventure) et à Paris (Disneyland Park, Walt Disney Studios Park).",
             question5: "Quels sont les horaires d'assistance des guides ?",
             answer5: "Les horaires d'assistance varient selon le plan choisi. Dans le plan Basique, nous assistons de 8h à 18h ; dans le Premium, de 7h à 22h ; et dans le VIP, nous offrons un support 24 heures pour toute urgence pendant votre séjour.",
-            question6: "Est-il possible de changer l'itinéraire pendant la journée au parc ?",
-            answer6: "Absolument ! Nos guides sont préparés à adapter l'itinéraire selon vos besoins en temps réel. Si une attraction a une très longue file d'attente, si le temps change ou si les enfants sont fatigués, nous ajustons les recommandations pour garantir la meilleure expérience possible.",
+            question6: "Est-il possible de modifier l'horaire en cours de journée au parc ?",
+            answer6: "Absolument ! Nos guides sont préparés à adapter l'horaire selon vos besoins en temps réel. Si une attraction a une très longue file d'attente, si le temps change ou si les enfants sont fatigués, nous ajustons les recommandations pour garantir la meilleure expérience possible.",
             question7: "Quelles langues parlent les guides ?",
             answer7: "Tous nos guides parlent couramment le portugais et l'anglais. Beaucoup parlent aussi espagnol et français, assurant une communication claire quel que soit votre langue préférée.",
             question8: "Que se passe-t-il si j'ai des problèmes avec mon téléphone ou internet ?",
@@ -584,7 +584,7 @@ const translations = {
             benefit2: "Vermijd veelvoorkomende fouten die uw parkervaring kunnen beïnvloeden",
             benefit3: "Toegang tot exclusieve tips voor foto's en unieke ervaringen",
             benefit4: "Assistentie in het Portugees tijdens uw hele bezoek",
-            benefit5: "Gepersonaliseerde begeleiding over Fast Passes en must-see attracties",
+            benefit5: "Gepersonaliseerde begeleiding over snelle wachtrij en must-see attracties",
             benefit6: "Toegewijde ondersteuning voor noodgevallen of onverwachte situaties"
         },
         plans: {
@@ -638,8 +638,8 @@ const translations = {
             answer4: "Ja! Onze plannen dekken de hoofdparken in elke bestemming: in Orlando (Magic Kingdom, EPCOT, Hollywood Studios, Animal Kingdom, Universal Studios, Islands of Adventure), in Californië (Disneyland Park, Disney California Adventure) en in Parijs (Disneyland Park, Walt Disney Studios Park).",
             question5: "Wat zijn de werkuren van de gidsen?",
             answer5: "De werkuren variëren volgens het gekozen plan. In het Basis plan assisteren we van 8u tot 18u; in het Premium, van 7u tot 22u; en in het VIP bieden we 24-uurs ondersteuning voor elke noodsituatie tijdens uw verblijf.",
-            question6: "Is het mogelijk om de route tijdens de dag in het park te wijzigen?",
-            answer6: "Absoluut! Onze gidsen zijn voorbereid om de route aan te passen volgens uw behoeften in realtime. Als een attractie een zeer lange wachtrij heeft, als het weer verandert of als kinderen moe zijn, passen we aanbevelingen aan om de best mogelijke ervaring te garanderen.",
+            question6: "Is het mogelijk om de openingstijden van het park gedurende de dag te wijzigen?",
+            answer6: "Absoluut! Onze gidsen staan klaar om hun plannen in realtime aan te passen aan jouw wensen. Als er bij een attractie een lange wachtrij is, het weer omslaat of je kinderen moe zijn, passen we onze aanbevelingen aan om de best mogelijke ervaring te garanderen.",
             question7: "Welke talen spreken de gidsen?",
             answer7: "Al onze gidsen zijn vloeiend in het Portugees en Engels. Velen spreken ook Spaans en Frans, wat duidelijke communicatie garandeert ongeacht uw voorkeurstaal.",
             question8: "Wat gebeurt er als ik problemen heb met mijn telefoon of internet?",
