@@ -29,6 +29,28 @@ const CURRENCY_SYMBOLS = {
     EUR: '€'
 };
 
+// Stripe Product IDs mapping
+const STRIPE_PRODUCTS = {
+    orlando: {
+        1: 'prod_SoBce813cZyr8J',
+        2: 'prod_SoDEy82gkNoFb7',
+        3: 'prod_SoDEIy1ZmYtTCf',
+        4: 'prod_SoDE5A0xGZhcd7'
+    },
+    california: {
+        1: 'prod_SoDSgwQhfSnvBa',
+        2: 'prod_SoDStcR0TDUt3w',
+        3: 'prod_SoDSozYy2aaqCv',
+        4: 'prod_SoDSYxpr3jgqF1'
+    },
+    paris: {
+        1: 'prod_SoDVduJiat8nq9',
+        2: 'prod_SoDVXdKjBGwEqT',
+        3: 'prod_SoDV0iH1oHQ1ZU',
+        4: 'prod_SoDVfd14jLT7P2'
+    }
+};
+
 // Initialize Stripe
 async function initializeStripe() {
     try {
@@ -47,7 +69,6 @@ async function initializeStripe() {
 
 // Error handling function
 function showError(message) {
-    // You can customize this to show errors in your UI
     const errorDiv = document.getElementById('payment-errors') || document.getElementById('card-errors');
     if (errorDiv) {
         errorDiv.textContent = message;
@@ -59,7 +80,7 @@ function showError(message) {
 
 // Success handling function
 function showSuccess(message) {
-    alert(message); // Replace with better UI feedback
+    alert(message);
 }
 
 // Format price based on currency
@@ -254,6 +275,70 @@ function validateCheckoutData() {
     return { travelDate, totalPax };
 }
 
+// Validate customer form
+function validateCustomerForm() {
+    const errors = {};
+    
+    // Get form values
+    const fullName = document.getElementById('customer-name').value.trim();
+    const email = document.getElementById('customer-email').value.trim();
+    const phone = document.getElementById('customer-phone').value.trim();
+    const address = document.getElementById('customer-address').value.trim();
+    const city = document.getElementById('customer-city').value.trim();
+    const country = document.getElementById('customer-country').value;
+    const currency = document.getElementById('checkout-currency').value;
+    
+    // Validate required fields
+    if (!fullName) errors.name = 'Full name is required';
+    if (!email) errors.email = 'Email is required';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.email = 'Please enter a valid email';
+    if (!phone) errors.phone = 'Phone number is required';
+    if (!address) errors.address = 'Address is required';
+    if (!city) errors.city = 'City is required';
+    if (!country) errors.country = 'Country is required';
+    
+    // Display errors
+    Object.keys(errors).forEach(field => {
+        const fieldElement = document.getElementById(`customer-${field === 'name' ? 'name' : field}`);
+        const errorElement = fieldElement.parentNode.querySelector('.error-message');
+        
+        if (errorElement) {
+            errorElement.textContent = errors[field];
+        } else {
+            const newError = document.createElement('div');
+            newError.className = 'error-message';
+            newError.textContent = errors[field];
+            fieldElement.parentNode.appendChild(newError);
+        }
+        fieldElement.classList.add('error');
+    });
+    
+    // Clear previous errors for valid fields
+    const allFields = ['customer-name', 'customer-email', 'customer-phone', 'customer-address', 'customer-city', 'customer-country'];
+    allFields.forEach(fieldId => {
+        if (!Object.keys(errors).some(key => fieldId.includes(key))) {
+            const fieldElement = document.getElementById(fieldId);
+            const errorElement = fieldElement.parentNode.querySelector('.error-message');
+            if (errorElement) errorElement.remove();
+            fieldElement.classList.remove('error');
+        }
+    });
+    
+    if (Object.keys(errors).length > 0) {
+        throw new Error('Please fill in all required fields correctly.');
+    }
+    
+    return {
+        fullName,
+        email,
+        phone,
+        address,
+        city,
+        country,
+        currency
+    };
+}
+
 // Show checkout modal
 function showCheckoutModal() {
     try {
@@ -276,9 +361,12 @@ function showCheckoutModal() {
             </div>
             <div style="display: flex; justify-content: space-between; align-items: center; font-size: 1.25rem; font-weight: bold;">
                 <span>Total:</span>
-                <span>${formatPrice(totalPriceUSD)}</span>
+                <span id="modal-total-price">${formatPrice(totalPriceUSD)}</span>
             </div>
         `;
+        
+        // Set default currency in form
+        document.getElementById('checkout-currency').value = currentCurrency;
         
         modal.style.display = 'block';
         
@@ -340,6 +428,13 @@ async function initializePayment(totalPriceUSD, travelDate) {
             }
         });
         
+        // Handle currency change
+        document.getElementById('checkout-currency').addEventListener('change', (e) => {
+            const newCurrency = e.target.value;
+            const newTotal = formatPrice(totalPriceUSD, newCurrency);
+            document.getElementById('modal-total-price').textContent = newTotal;
+        });
+        
         // Handle form submission
         const form = document.getElementById('payment-form');
         form.onsubmit = async (event) => {
@@ -359,6 +454,9 @@ async function processPayment(cardElement, totalPriceUSD, travelDate) {
     const originalButtonText = submitButton.innerHTML;
     
     try {
+        // Validate customer form first
+        const customerData = validateCustomerForm();
+        
         // Disable submit button and show loading
         submitButton.disabled = true;
         submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
@@ -367,8 +465,12 @@ async function processPayment(cardElement, totalPriceUSD, travelDate) {
         const errorDiv = document.getElementById('card-errors');
         errorDiv.textContent = '';
         
-        // Convert price to selected currency
-        const totalAmount = totalPriceUSD * EXCHANGE_RATES[currentCurrency];
+        // Get selected currency from form
+        const selectedCurrency = document.getElementById('checkout-currency').value;
+        const totalAmount = totalPriceUSD * EXCHANGE_RATES[selectedCurrency];
+        
+        // Get Stripe product ID
+        const productId = STRIPE_PRODUCTS[currentDestination][selectedPlan.days];
         
         // Create payment intent
         const response = await fetch('/api/create-payment-intent', {
@@ -378,13 +480,15 @@ async function processPayment(cardElement, totalPriceUSD, travelDate) {
             },
             body: JSON.stringify({
                 amount: totalAmount,
-                currency: currentCurrency,
+                currency: selectedCurrency,
                 plan: {
-                    name: `${currentDestination.charAt(0).toUpperCase() + currentDestination.slice(1)} - ${selectedPlan.days} Day${selectedPlan.days > 1 ? 's' : ''}`,
-                    days: selectedPlan.days
+                    name: `Remote Guide ${currentDestination.charAt(0).toUpperCase() + currentDestination.slice(1)} - ${selectedPlan.days} Day${selectedPlan.days > 1 ? 's' : ''}`,
+                    days: selectedPlan.days,
+                    productId: productId
                 },
                 passengers: adults + children,
-                date: travelDate
+                date: travelDate,
+                customer: customerData
             }),
         });
         
@@ -401,7 +505,14 @@ async function processPayment(cardElement, totalPriceUSD, travelDate) {
             payment_method: {
                 card: cardElement,
                 billing_details: {
-                    name: 'Customer', // In a real app, you'd collect this
+                    name: customerData.fullName,
+                    email: customerData.email,
+                    phone: customerData.phone,
+                    address: {
+                        line1: customerData.address,
+                        city: customerData.city,
+                        country: customerData.country,
+                    },
                 },
             }
         });
