@@ -475,16 +475,87 @@
                     <h3 data-i18n="checkout.summary">Order Summary</h3>
                     <div id="checkout-details"></div>
                 </div>
-                <div class="payment-form">
-                    <form id="payment-form">
-                        <div id="card-element">
-                            <!-- Stripe Elements will create form elements here -->
+
+                <!-- Customer Information Form -->
+                <div class="customer-form">
+                    <div class="form-section">
+                        <h4>Customer Information</h4>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="customer-name">Full Name <span class="required">*</span></label>
+                                <input type="text" id="customer-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="customer-email">Email <span class="required">*</span></label>
+                                <input type="email" id="customer-email" required>
+                            </div>
                         </div>
-                        <div id="card-errors" role="alert"></div>
-                        <button id="submit-payment" class="btn btn-primary payment-btn">
-                            <span data-i18n="checkout.pay">Pay Now</span>
-                        </button>
-                    </form>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="customer-phone">Phone Number <span class="required">*</span></label>
+                                <input type="tel" id="customer-phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="customer-country">Country <span class="required">*</span></label>
+                                <select id="customer-country" required>
+                                    <option value="">Select Country</option>
+                                    <option value="US">United States</option>
+                                    <option value="BR">Brazil</option>
+                                    <option value="GB">United Kingdom</option>
+                                    <option value="CA">Canada</option>
+                                    <option value="FR">France</option>
+                                    <option value="DE">Germany</option>
+                                    <option value="IT">Italy</option>
+                                    <option value="ES">Spain</option>
+                                    <option value="AR">Argentina</option>
+                                    <option value="MX">Mexico</option>
+                                    <option value="CO">Colombia</option>
+                                    <option value="CL">Chile</option>
+                                    <option value="PE">Peru</option>
+                                    <option value="AU">Australia</option>
+                                    <option value="JP">Japan</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="customer-address">Address <span class="required">*</span></label>
+                                <input type="text" id="customer-address" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="customer-city">City <span class="required">*</span></label>
+                                <input type="text" id="customer-city" required>
+                            </div>
+                        </div>
+
+                        <div class="currency-selector-form">
+                            <label for="checkout-currency">Payment Currency:</label>
+                            <select id="checkout-currency">
+                                <option value="USD">USD ($)</option>
+                                <option value="BRL">BRL (R$)</option>
+                                <option value="EUR">EUR (€)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h4>Payment Information</h4>
+                        <div class="payment-form">
+                            <form id="payment-form">
+                                <div id="card-element">
+                                    <!-- Stripe Elements will create form elements here -->
+                                </div>
+                                <div id="card-errors" role="alert"></div>
+                                <button id="submit-payment" class="btn btn-primary payment-btn">
+                                    <span data-i18n="checkout.pay">Pay Now</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
