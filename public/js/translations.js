@@ -39,6 +39,22 @@ const translations = {
                 description: "Secrets and privileged information that only those who know the parks inside out know."
             }
         },
+        benefits: {
+            subtitle: "Why choose us",
+            title_line1: "Maximize your Disney experience",
+            title_line2: "with",
+            title_accent: "specialized",
+            title_line3: "assistance",
+            description: "Our specialists know the smallest details of the parks and will provide you and your family with unforgettable moments without stress or worries.",
+            stats_line1: "of clients",
+            stats_line2: "recommend our service",
+            benefit1: "Save up to 40% of time in queues with our exclusive strategies",
+            benefit2: "Avoid common mistakes that can compromise your park experience",
+            benefit3: "Access to exclusive tips for photos and unique experiences",
+            benefit4: "Assistance in Portuguese throughout your entire visit",
+            benefit5: "Personalized guidance on Fast Passes and must-see attractions",
+            benefit6: "Dedicated support for emergencies or unexpected situations"
+        },
         plans: {
             subtitle: "Our Plans",
             title1: "Choose the",
@@ -85,7 +101,17 @@ const translations = {
             question2: "Do I need internet in the parks to use the service?",
             answer2: "Yes, internet access is required during your visit to maintain contact with your guide. Disney and Universal parks offer free Wi-Fi, which facilitates communication. We also recommend an international data plan as backup.",
             question3: "How far in advance should I hire the service?",
-            answer3: "We recommend hiring at least 30 days in advance to have enough time to do personalized planning. During high season periods, we suggest contacting 60 days before to guarantee availability of our guides."
+            answer3: "We recommend hiring at least 30 days in advance to have enough time to do personalized planning. During high season periods, we suggest contacting 60 days before to guarantee availability of our guides.",
+            question4: "Does the service work for all parks?",
+            answer4: "Yes! Our plans cover the main parks in each destination: in Orlando (Magic Kingdom, EPCOT, Hollywood Studios, Animal Kingdom, Universal Studios, Islands of Adventure), in California (Disneyland Park, Disney California Adventure) and in Paris (Disneyland Park, Walt Disney Studios Park).",
+            question5: "What are the operating hours of the guides?",
+            answer5: "Operating hours vary according to the chosen plan. In the Basic plan, we serve from 8am to 6pm; in the Premium, from 7am to 10pm; and in the VIP, we offer 24-hour support for any emergency during your stay.",
+            question6: "Can I change the itinerary during the day at the park?",
+            answer6: "Absolutely! Our guides are prepared to adapt the itinerary according to your needs in real time. If an attraction has a very long queue, if the weather changes or if children are tired, we adjust recommendations to ensure the best possible experience.",
+            question7: "What languages do the guides speak?",
+            answer7: "All our guides are fluent in Portuguese and English. Many also speak Spanish and French, ensuring clear communication regardless of your preferred language.",
+            question8: "What happens if I have problems with my phone or internet?",
+            answer8: "We provide emergency contact numbers and have backup communication protocols. Additionally, we send you a detailed printed itinerary as a backup so you can continue enjoying the parks even without immediate contact."
         },
         footer: {
             description: "Your personal concierge for the magic of parks.",
@@ -146,6 +172,22 @@ const translations = {
                 description: "Segredos e informações privilegiadas que só quem conhece os parques a fundo sabe."
             }
         },
+        benefits: {
+            subtitle: "Por que nos escolher",
+            title_line1: "Maximize sua experiência Disney",
+            title_line2: "com assistência",
+            title_accent: "especializada",
+            title_line3: "",
+            description: "Nossos especialistas conhecem os mínimos detalhes dos parques e proporcionarão a você e sua família momentos inesquecíveis sem estresse ou preocupações.",
+            stats_line1: "dos clientes",
+            stats_line2: "recomendam nosso serviço",
+            benefit1: "Economize até 40% do tempo em filas com nossas estratégias exclusivas",
+            benefit2: "Evite erros comuns que podem comprometer sua experiência no parque",
+            benefit3: "Acesso a dicas exclusivas para fotos e experiências únicas",
+            benefit4: "Assistência em português durante toda a sua visita",
+            benefit5: "Orientações personalizadas sobre Fast Passes e atrações imperdíveis",
+            benefit6: "Suporte dedicado para casos de emergências ou imprevistos"
+        },
         plans: {
             subtitle: "Nossos Planos",
             title1: "Escolha o plano",
@@ -192,7 +234,17 @@ const translations = {
             question2: "Preciso de internet nos parques para utilizar o serviço?", 
             answer2: "Sim, é necessário ter acesso à internet durante sua visita para manter contato com seu guia. Os parques da Disney e Universal oferecem Wi-Fi gratuito, o que facilita a comunicação. Recomendamos também um plano de dados internacional como backup.",
             question3: "Quanto tempo antes devo contratar o serviço?",
-            answer3: "Recomendamos a contratação com pelo menos 30 dias de antecedência para termos tempo hábil de fazer o planejamento personalizado. Em períodos de alta temporada, sugerimos contatar com 60 dias antes para garantir disponibilidade dos nossos guias."
+            answer3: "Recomendamos a contratação com pelo menos 30 dias de antecedência para termos tempo hábil de fazer o planejamento personalizado. Em períodos de alta temporada, sugerimos contatar com 60 dias antes para garantir disponibilidade dos nossos guias.",
+            question4: "O serviço funciona para todos os parques?",
+            answer4: "Sim! Nossos planos cobrem os principais parques de cada destino: em Orlando (Magic Kingdom, EPCOT, Hollywood Studios, Animal Kingdom, Universal Studios, Islands of Adventure), na Califórnia (Disneyland Park, Disney California Adventure) e em Paris (Disneyland Park, Walt Disney Studios Park).",
+            question5: "Qual é o horário de atendimento dos guias?",
+            answer5: "O horário de atendimento varia conforme o plano escolhido. No plano Básico, atendemos das 8h às 18h; no Premium, das 7h às 22h; e no VIP, oferecemos suporte 24 horas para qualquer emergência durante sua estadia.",
+            question6: "É possível mudar o roteiro durante o dia no parque?",
+            answer6: "Absolutamente! Nossos guias estão preparados para adaptar o roteiro de acordo com suas necessidades em tempo real. Se uma atração estiver com fila muito longa, se o clima mudar ou se as crianças estiverem cansadas, ajustamos as recomendações para garantir a melhor experiência possível.",
+            question7: "Quais idiomas os guias falam?",
+            answer7: "Todos os nossos guias são fluentes em português e inglês. Muitos também falam espanhol e francês, garantindo comunicação clara independente do seu idioma preferido.",
+            question8: "O que acontece se eu tiver problemas com meu telefone ou internet?",
+            answer8: "Fornecemos números de contato de emergência e temos protocolos de comunicação de backup. Além disso, enviamos um roteiro detalhado impresso como backup para que você possa continuar aproveitando os parques mesmo sem contato imediato."
         },
         footer: {
             description: "Seu concierge particular para a magia dos parques.",
@@ -253,6 +305,22 @@ const translations = {
                 description: "Secretos e información privilegiada que solo conocen quienes conocen los parques a fondo."
             }
         },
+        benefits: {
+            subtitle: "Por qué elegirnos",
+            title_line1: "Maximice su experiencia Disney",
+            title_line2: "con asistencia",
+            title_accent: "especializada",
+            title_line3: "",
+            description: "Nuestros especialistas conocen los mínimos detalles de los parques y le proporcionarán a usted y su familia momentos inolvidables sin estrés ni preocupaciones.",
+            stats_line1: "de los clientes",
+            stats_line2: "recomiendan nuestro servicio",
+            benefit1: "Ahorre hasta el 40% del tiempo en colas con nuestras estrategias exclusivas",
+            benefit2: "Evite errores comunes que pueden comprometer su experiencia en el parque",
+            benefit3: "Acceso a consejos exclusivos para fotos y experiencias únicas",
+            benefit4: "Asistencia en portugués durante toda su visita",
+            benefit5: "Orientación personalizada sobre Fast Passes y atracciones imperdibles",
+            benefit6: "Soporte dedicado para casos de emergencias o imprevistos"
+        },
         plans: {
             subtitle: "Nuestros Planes",
             title1: "Elija el plan",
@@ -299,7 +367,17 @@ const translations = {
             question2: "¿Necesito internet en los parques para usar el servicio?",
             answer2: "Sí, se requiere acceso a internet durante su visita para mantener contacto con su guía. Los parques de Disney y Universal ofrecen Wi-Fi gratuito, lo que facilita la comunicación. También recomendamos un plan de datos internacional como respaldo.",
             question3: "¿Con cuánta anticipación debo contratar el servicio?",
-            answer3: "Recomendamos la contratación con al menos 30 días de anticipación para tener tiempo suficiente para hacer la planificación personalizada. En períodos de alta temporada, sugerimos contactar con 60 días antes para garantizar la disponibilidad de nuestros guías."
+            answer3: "Recomendamos la contratación con al menos 30 días de anticipación para tener tiempo suficiente para hacer la planificación personalizada. En períodos de alta temporada, sugerimos contactar con 60 días antes para garantizar la disponibilidad de nuestros guías.",
+            question4: "¿El servicio funciona para todos los parques?",
+            answer4: "¡Sí! Nuestros planes cubren los principales parques en cada destino: en Orlando (Magic Kingdom, EPCOT, Hollywood Studios, Animal Kingdom, Universal Studios, Islands of Adventure), en California (Disneyland Park, Disney California Adventure) y en París (Disneyland Park, Walt Disney Studios Park).",
+            question5: "¿Cuáles son los horarios de atención de los guías?",
+            answer5: "Los horarios de atención varían según el plan elegido. En el plan Básico, atendemos de 8h a 18h; en el Premium, de 7h a 22h; y en el VIP, ofrecemos soporte 24 horas para cualquier emergencia durante su estadía.",
+            question6: "¿Es posible cambiar el itinerario durante el día en el parque?",
+            answer6: "¡Absolutamente! Nuestros guías están preparados para adaptar el itinerario según sus necesidades en tiempo real. Si una atracción tiene una cola muy larga, si cambia el clima o si los niños están cansados, ajustamos las recomendaciones para garantizar la mejor experiencia posible.",
+            question7: "¿Qué idiomas hablan los guías?",
+            answer7: "Todos nuestros guías son fluentes en portugués e inglés. Muchos también hablan español y francés, asegurando comunicación clara independientemente de su idioma preferido.",
+            question8: "¿Qué pasa si tengo problemas con mi teléfono o internet?",
+            answer8: "Proporcionamos números de contacto de emergencia y tenemos protocolos de comunicación de respaldo. Además, enviamos un itinerario detallado impreso como respaldo para que pueda continuar disfrutando de los parques incluso sin contacto inmediato."
         },
         footer: {
             description: "Su conserje personal para la magia de los parques.",
@@ -360,6 +438,22 @@ const translations = {
                 description: "Secrets et informations privilégiées que seuls ceux qui connaissent les parcs à fond savent."
             }
         },
+        benefits: {
+            subtitle: "Pourquoi nous choisir",
+            title_line1: "Maximisez votre expérience Disney",
+            title_line2: "avec une assistance",
+            title_accent: "spécialisée",
+            title_line3: "",
+            description: "Nos spécialistes connaissent les moindres détails des parcs et vous fourniront, à vous et votre famille, des moments inoubliables sans stress ni soucis.",
+            stats_line1: "des clients",
+            stats_line2: "recommandent notre service",
+            benefit1: "Économisez jusqu'à 40% du temps dans les files d'attente avec nos stratégies exclusives",
+            benefit2: "Évitez les erreurs courantes qui peuvent compromettre votre expérience dans le parc",
+            benefit3: "Accès à des conseils exclusifs pour les photos et expériences uniques",
+            benefit4: "Assistance en portugais pendant toute votre visite",
+            benefit5: "Orientation personnalisée sur les Fast Passes et attractions incontournables",
+            benefit6: "Support dédié pour les cas d'urgence ou situations imprévues"
+        },
         plans: {
             subtitle: "Nos Plans",
             title1: "Choisissez le plan",
@@ -406,7 +500,17 @@ const translations = {
             question2: "Ai-je besoin d'internet dans les parcs pour utiliser le service ?",
             answer2: "Oui, l'accès à internet est requis pendant votre visite pour maintenir le contact avec votre guide. Les parcs Disney et Universal offrent le Wi-Fi gratuit, ce qui facilite la communication. Nous recommandons également un plan de données international comme sauvegarde.",
             question3: "Combien de temps à l'avance dois-je engager le service ?",
-            answer3: "Nous recommandons l'engagement au moins 30 jours à l'avance pour avoir suffisamment de temps pour faire la planification personnalisée. Pendant les périodes de haute saison, nous suggérons de contacter 60 jours avant pour garantir la disponibilité de nos guides."
+            answer3: "Nous recommandons l'engagement au moins 30 jours à l'avance pour avoir suffisamment de temps pour faire la planification personnalisée. Pendant les périodes de haute saison, nous suggérons de contacter 60 jours avant pour garantir la disponibilité de nos guides.",
+            question4: "Le service fonctionne-t-il pour tous les parcs ?",
+            answer4: "Oui ! Nos plans couvrent les principaux parcs de chaque destination : à Orlando (Magic Kingdom, EPCOT, Hollywood Studios, Animal Kingdom, Universal Studios, Islands of Adventure), en Californie (Disneyland Park, Disney California Adventure) et à Paris (Disneyland Park, Walt Disney Studios Park).",
+            question5: "Quels sont les horaires d'assistance des guides ?",
+            answer5: "Les horaires d'assistance varient selon le plan choisi. Dans le plan Basique, nous assistons de 8h à 18h ; dans le Premium, de 7h à 22h ; et dans le VIP, nous offrons un support 24 heures pour toute urgence pendant votre séjour.",
+            question6: "Est-il possible de changer l'itinéraire pendant la journée au parc ?",
+            answer6: "Absolument ! Nos guides sont préparés à adapter l'itinéraire selon vos besoins en temps réel. Si une attraction a une très longue file d'attente, si le temps change ou si les enfants sont fatigués, nous ajustons les recommandations pour garantir la meilleure expérience possible.",
+            question7: "Quelles langues parlent les guides ?",
+            answer7: "Tous nos guides parlent couramment le portugais et l'anglais. Beaucoup parlent aussi espagnol et français, assurant une communication claire quel que soit votre langue préférée.",
+            question8: "Que se passe-t-il si j'ai des problèmes avec mon téléphone ou internet ?",
+            answer8: "Nous fournissons des numéros de contact d'urgence et avons des protocoles de communication de sauvegarde. De plus, nous envoyons un itinéraire détaillé imprimé comme sauvegarde pour que vous puissiez continuer à profiter des parcs même sans contact immédiat."
         },
         footer: {
             description: "Votre concierge personnel pour la magie des parcs.",
@@ -467,6 +571,22 @@ const translations = {
                 description: "Geheimen en bevoorrechte informatie die alleen degenen die de parken van binnen en buiten kennen weten."
             }
         },
+        benefits: {
+            subtitle: "Waarom ons kiezen",
+            title_line1: "Maximaliseer uw Disney-ervaring",
+            title_line2: "met",
+            title_accent: "gespecialiseerde",
+            title_line3: "assistentie",
+            description: "Onze specialisten kennen de kleinste details van de parken en zullen u en uw familie onvergetelijke momenten bezorgen zonder stress of zorgen.",
+            stats_line1: "van de klanten",
+            stats_line2: "beveelt onze service aan",
+            benefit1: "Bespaar tot 40% van de tijd in wachtrijen met onze exclusieve strategieën",
+            benefit2: "Vermijd veelvoorkomende fouten die uw parkervaring kunnen beïnvloeden",
+            benefit3: "Toegang tot exclusieve tips voor foto's en unieke ervaringen",
+            benefit4: "Assistentie in het Portugees tijdens uw hele bezoek",
+            benefit5: "Gepersonaliseerde begeleiding over Fast Passes en must-see attracties",
+            benefit6: "Toegewijde ondersteuning voor noodgevallen of onverwachte situaties"
+        },
         plans: {
             subtitle: "Onze Plannen",
             title1: "Kies het",
@@ -513,7 +633,17 @@ const translations = {
             question2: "Heb ik internet nodig in de parken om de service te gebruiken?",
             answer2: "Ja, internettoegang is vereist tijdens uw bezoek om contact te houden met uw gids. Disney en Universal parken bieden gratis Wi-Fi, wat de communicatie vergemakkelijkt. We raden ook een internationaal dataplan aan als back-up.",
             question3: "Hoe ver van tevoren moet ik de service inhuren?",
-            answer3: "We raden aan om minstens 30 dagen van tevoren in te huren om voldoende tijd te hebben voor gepersonaliseerde planning. Tijdens drukke seizoenen stellen we voor om 60 dagen van tevoren contact op te nemen om de beschikbaarheid van onze gidsen te garanderen."
+            answer3: "We raden aan om minstens 30 dagen van tevoren in te huren om voldoende tijd te hebben voor gepersonaliseerde planning. Tijdens drukke seizoenen stellen we voor om 60 dagen van tevoren contact op te nemen om de beschikbaarheid van onze gidsen te garanderen.",
+            question4: "Werkt de service voor alle parken?",
+            answer4: "Ja! Onze plannen dekken de hoofdparken in elke bestemming: in Orlando (Magic Kingdom, EPCOT, Hollywood Studios, Animal Kingdom, Universal Studios, Islands of Adventure), in Californië (Disneyland Park, Disney California Adventure) en in Parijs (Disneyland Park, Walt Disney Studios Park).",
+            question5: "Wat zijn de werkuren van de gidsen?",
+            answer5: "De werkuren variëren volgens het gekozen plan. In het Basis plan assisteren we van 8u tot 18u; in het Premium, van 7u tot 22u; en in het VIP bieden we 24-uurs ondersteuning voor elke noodsituatie tijdens uw verblijf.",
+            question6: "Is het mogelijk om de route tijdens de dag in het park te wijzigen?",
+            answer6: "Absoluut! Onze gidsen zijn voorbereid om de route aan te passen volgens uw behoeften in realtime. Als een attractie een zeer lange wachtrij heeft, als het weer verandert of als kinderen moe zijn, passen we aanbevelingen aan om de best mogelijke ervaring te garanderen.",
+            question7: "Welke talen spreken de gidsen?",
+            answer7: "Al onze gidsen zijn vloeiend in het Portugees en Engels. Velen spreken ook Spaans en Frans, wat duidelijke communicatie garandeert ongeacht uw voorkeurstaal.",
+            question8: "Wat gebeurt er als ik problemen heb met mijn telefoon of internet?",
+            answer8: "We bieden noodcontactnummers en hebben back-up communicatieprotocollen. Bovendien sturen we u een gedetailleerde gedrukte route als back-up zodat u kunt blijven genieten van de parken zelfs zonder onmiddellijk contact."
         },
         footer: {
             description: "Uw persoonlijke conciërge voor de magie van parken.",
