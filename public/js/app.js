@@ -5,6 +5,7 @@ let children = 0;
 let currentDestination = null;
 let currentCurrency = 'USD';
 let stripe = null;
+let currentPaymentIntentId = null;
 
 // Fixed pricing (in USD)
 const FIXED_PRICES = {
@@ -32,11 +33,33 @@ const CURRENCY_SYMBOLS = {
 async function initializeStripe() {
     try {
         const response = await fetch('/api/stripe-key');
+        if (!response.ok) {
+            throw new Error('Failed to get Stripe key');
+        }
         const { publishableKey } = await response.json();
         stripe = Stripe(publishableKey);
+        console.log('Stripe initialized successfully');
     } catch (error) {
         console.error('Error initializing Stripe:', error);
+        showError('Failed to initialize payment system. Please refresh the page.');
     }
+}
+
+// Error handling function
+function showError(message) {
+    // You can customize this to show errors in your UI
+    const errorDiv = document.getElementById('payment-errors') || document.getElementById('card-errors');
+    if (errorDiv) {
+        errorDiv.textContent = message;
+        errorDiv.style.color = '#dc3545';
+    } else {
+        alert(message);
+    }
+}
+
+// Success handling function
+function showSuccess(message) {
+    alert(message); // Replace with better UI feedback
 }
 
 // Format price based on currency
@@ -204,222 +227,322 @@ function toggleAccordion(item) {
     }
 }
 
-// Show checkout modal
-function showCheckoutModal() {
-    const modal = document.getElementById('checkout-modal');
-    const checkoutDetails = document.getElementById('checkout-details');
-    
+// Validation functions
+function validateCheckoutData() {
     if (!selectedPlan) {
-        alert('Please select a plan first.');
-        return;
+        throw new Error('Please select a plan first.');
     }
     
     const travelDate = document.getElementById('travel-date-input').value;
     if (!travelDate) {
-        alert('Please select an activation date.');
-        return;
+        throw new Error('Please select an activation date.');
     }
     
     const totalPax = adults + children;
     if (totalPax === 0) {
-        alert('Please select at least one passenger.');
-        return;
+        throw new Error('Please select at least one passenger.');
     }
     
-    const groupCount = Math.ceil(totalPax / 10) || 1;
-    const basePriceUSD = FIXED_PRICES[selectedPlan.days];
-    const totalPriceUSD = basePriceUSD * groupCount;
+    const selectedDate = new Date(travelDate);
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
     
-    // Update checkout details
-    checkoutDetails.innerHTML = `
-        <div style="border-bottom: 1px solid var(--gray-200); padding-bottom: 1rem; margin-bottom: 1rem;">
-            <h4>${currentDestination.charAt(0).toUpperCase() + currentDestination.slice(1)} - ${selectedPlan.days} Day${selectedPlan.days > 1 ? 's' : ''}</h4>
-            <p>${adults} Adult${adults > 1 ? 's' : ''}${children > 0 ? `, ${children} Child${children > 1 ? 'ren' : ''}` : ''}</p>
-            <p>Date: ${new Date(travelDate).toLocaleDateString()}</p>
-            <p>Groups: ${groupCount}</p>
-        </div>
-        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 1.25rem; font-weight: bold;">
-            <span>Total:</span>
-            <span>${formatPrice(totalPriceUSD)}</span>
-        </div>
-    `;
+    if (selectedDate < tomorrow) {
+        throw new Error('Please select a date at least one day in the future.');
+    }
     
-    modal.style.display = 'block';
-    
-    // Initialize Stripe Elements
-    initializePayment(totalPriceUSD);
+    return { travelDate, totalPax };
+}
+
+// Show checkout modal
+function showCheckoutModal() {
+    try {
+        const { travelDate, totalPax } = validateCheckoutData();
+        
+        const modal = document.getElementById('checkout-modal');
+        const checkoutDetails = document.getElementById('checkout-details');
+        
+        const groupCount = Math.ceil(totalPax / 10) || 1;
+        const basePriceUSD = FIXED_PRICES[selectedPlan.days];
+        const totalPriceUSD = basePriceUSD * groupCount;
+        
+        // Update checkout details
+        checkoutDetails.innerHTML = `
+            <div style="border-bottom: 1px solid var(--gray-200); padding-bottom: 1rem; margin-bottom: 1rem;">
+                <h4>${currentDestination.charAt(0).toUpperCase() + currentDestination.slice(1)} - ${selectedPlan.days} Day${selectedPlan.days > 1 ? 's' : ''}</h4>
+                <p>${adults} Adult${adults > 1 ? 's' : ''}${children > 0 ? `, ${children} Child${children > 1 ? 'ren' : ''}` : ''}</p>
+                <p>Date: ${new Date(travelDate).toLocaleDateString()}</p>
+                <p>Groups: ${groupCount}</p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 1.25rem; font-weight: bold;">
+                <span>Total:</span>
+                <span>${formatPrice(totalPriceUSD)}</span>
+            </div>
+        `;
+        
+        modal.style.display = 'block';
+        
+        // Clear any previous errors
+        const errorDiv = document.getElementById('card-errors');
+        if (errorDiv) errorDiv.textContent = '';
+        
+        // Initialize Stripe Elements
+        initializePayment(totalPriceUSD, travelDate);
+        
+    } catch (error) {
+        showError(error.message);
+    }
 }
 
 // Initialize payment
-async function initializePayment(totalPriceUSD) {
-    if (!stripe) {
-        await initializeStripe();
-    }
-    
-    const elements = stripe.elements();
-    const cardElement = elements.create('card', {
-        style: {
-            base: {
-                fontSize: '16px',
-                color: '#424770',
-                '::placeholder': {
-                    color: '#aab7c4',
+async function initializePayment(totalPriceUSD, travelDate) {
+    try {
+        if (!stripe) {
+            await initializeStripe();
+        }
+        
+        if (!stripe) {
+            throw new Error('Payment system not available');
+        }
+        
+        const elements = stripe.elements({
+            appearance: {
+                theme: 'stripe',
+            },
+        });
+        
+        const cardElement = elements.create('card', {
+            style: {
+                base: {
+                    fontSize: '16px',
+                    color: '#424770',
+                    '::placeholder': {
+                        color: '#aab7c4',
+                    },
+                },
+                invalid: {
+                    color: '#9e2146',
                 },
             },
-        },
-    });
-    
-    const cardElementContainer = document.getElementById('card-element');
-    cardElementContainer.innerHTML = '';
-    cardElement.mount('#card-element');
-    
-    // Handle form submission
-    const form = document.getElementById('payment-form');
-    form.onsubmit = async (event) => {
-        event.preventDefault();
+        });
         
-        const submitButton = document.getElementById('submit-payment');
+        const cardElementContainer = document.getElementById('card-element');
+        cardElementContainer.innerHTML = '';
+        cardElement.mount('#card-element');
+        
+        // Handle real-time validation errors from the card Element
+        cardElement.on('change', (event) => {
+            const displayError = document.getElementById('card-errors');
+            if (event.error) {
+                displayError.textContent = event.error.message;
+            } else {
+                displayError.textContent = '';
+            }
+        });
+        
+        // Handle form submission
+        const form = document.getElementById('payment-form');
+        form.onsubmit = async (event) => {
+            event.preventDefault();
+            await processPayment(cardElement, totalPriceUSD, travelDate);
+        };
+        
+    } catch (error) {
+        console.error('Error initializing payment:', error);
+        showError('Failed to initialize payment form. Please try again.');
+    }
+}
+
+// Process payment
+async function processPayment(cardElement, totalPriceUSD, travelDate) {
+    const submitButton = document.getElementById('submit-payment');
+    const originalButtonText = submitButton.innerHTML;
+    
+    try {
+        // Disable submit button and show loading
         submitButton.disabled = true;
         submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
         
-        try {
-            // Convert price to selected currency
-            const totalAmount = totalPriceUSD * EXCHANGE_RATES[currentCurrency];
-            
-            // Create payment intent
-            const response = await fetch('/api/create-payment-intent', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
+        // Clear any previous errors
+        const errorDiv = document.getElementById('card-errors');
+        errorDiv.textContent = '';
+        
+        // Convert price to selected currency
+        const totalAmount = totalPriceUSD * EXCHANGE_RATES[currentCurrency];
+        
+        // Create payment intent
+        const response = await fetch('/api/create-payment-intent', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                amount: totalAmount,
+                currency: currentCurrency,
+                plan: {
+                    name: `${currentDestination.charAt(0).toUpperCase() + currentDestination.slice(1)} - ${selectedPlan.days} Day${selectedPlan.days > 1 ? 's' : ''}`,
+                    days: selectedPlan.days
                 },
-                body: JSON.stringify({
-                    amount: totalAmount,
-                    currency: currentCurrency,
-                    plan: {
-                        name: `${currentDestination.charAt(0).toUpperCase() + currentDestination.slice(1)} - ${selectedPlan.days} Day${selectedPlan.days > 1 ? 's' : ''}`,
-                        days: selectedPlan.days
-                    },
-                    passengers: adults + children,
-                    date: document.getElementById('travel-date-input').value
-                }),
+                passengers: adults + children,
+                date: travelDate
+            }),
+        });
+        
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || 'Payment setup failed');
+        }
+        
+        const { clientSecret, paymentIntentId } = await response.json();
+        currentPaymentIntentId = paymentIntentId;
+        
+        // Confirm payment
+        const result = await stripe.confirmCardPayment(clientSecret, {
+            payment_method: {
+                card: cardElement,
+                billing_details: {
+                    name: 'Customer', // In a real app, you'd collect this
+                },
+            }
+        });
+        
+        if (result.error) {
+            throw new Error(result.error.message);
+        } else {
+            // Payment succeeded
+            handlePaymentSuccess(result.paymentIntent);
+        }
+        
+    } catch (error) {
+        console.error('Payment error:', error);
+        showError(error.message || 'Payment failed. Please try again.');
+    } finally {
+        // Re-enable submit button
+        submitButton.disabled = false;
+        submitButton.innerHTML = originalButtonText;
+    }
+}
+
+// Handle successful payment
+function handlePaymentSuccess(paymentIntent) {
+    console.log('Payment succeeded:', paymentIntent);
+    
+    showSuccess('Payment successful! Thank you for your purchase. You will receive a confirmation email shortly.');
+    
+    // Close modal
+    document.getElementById('checkout-modal').style.display = 'none';
+    
+    // Reset form (optional)
+    // resetBookingForm();
+    
+    // You could redirect to a success page or show additional success UI
+    // window.location.href = '/success?payment_intent=' + paymentIntent.id;
+}
+
+// Initialize on DOM load
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        // Initialize Lucide icons
+        if (window.lucide) lucide.createIcons();
+        
+        // Set minimum date to tomorrow
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const minDate = tomorrow.toISOString().split('T')[0];
+        const dateInput = document.getElementById('travel-date-input');
+        if (dateInput) {
+            dateInput.min = minDate;
+        }
+        
+        // Currency selector
+        const currencySelect = document.getElementById('currency-select');
+        if (currencySelect) {
+            currencySelect.addEventListener('change', (e) => {
+                currentCurrency = e.target.value;
+                if (selectedPlan) {
+                    renderPlans();
+                }
+                updateTotalPrice();
+            });
+        }
+        
+        // Passenger selector logic
+        const passengerSelector = document.querySelector('.passenger-selector');
+        const passengerDisplay = document.querySelector('.passenger-display');
+        const passengerDropdown = document.querySelector('.passenger-dropdown');
+        
+        if (passengerDisplay && passengerDropdown) {
+            passengerDisplay.addEventListener('click', (event) => {
+                event.stopPropagation();
+                passengerDropdown.classList.toggle('show');
             });
             
-            const { clientSecret } = await response.json();
-            
-            // Confirm payment
-            const result = await stripe.confirmCardPayment(clientSecret, {
-                payment_method: {
-                    card: cardElement,
-                    billing_details: {
-                        name: 'Customer', // In a real app, you'd collect this
-                    },
+            document.addEventListener('click', (event) => {
+                if (passengerSelector && !passengerSelector.contains(event.target)) {
+                    passengerDropdown.classList.remove('show');
                 }
             });
             
-            if (result.error) {
-                document.getElementById('card-errors').textContent = result.error.message;
-                submitButton.disabled = false;
-                submitButton.innerHTML = '<span data-i18n="checkout.pay">Pay Now</span>';
-            } else {
-                // Payment succeeded
-                alert('Payment successful! Thank you for your purchase.');
-                document.getElementById('checkout-modal').style.display = 'none';
-            }
-        } catch (error) {
-            console.error('Payment error:', error);
-            document.getElementById('card-errors').textContent = 'An error occurred. Please try again.';
-            submitButton.disabled = false;
-            submitButton.innerHTML = '<span data-i18n="checkout.pay">Pay Now</span>';
-        }
-    };
-}
-
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize Lucide icons
-    if (window.lucide) lucide.createIcons();
-    
-    // Set minimum date to tomorrow
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    const minDate = tomorrow.toISOString().split('T')[0];
-    document.getElementById('travel-date-input').min = minDate;
-    
-    // Currency selector
-    const currencySelect = document.getElementById('currency-select');
-    currencySelect.addEventListener('change', (e) => {
-        currentCurrency = e.target.value;
-        if (selectedPlan) {
-            renderPlans();
-        }
-        updateTotalPrice();
-    });
-    
-    // Passenger selector logic
-    const passengerSelector = document.querySelector('.passenger-selector');
-    const passengerDisplay = document.querySelector('.passenger-display');
-    const passengerDropdown = document.querySelector('.passenger-dropdown');
-    
-    passengerDisplay.addEventListener('click', (event) => {
-        event.stopPropagation();
-        passengerDropdown.classList.toggle('show');
-    });
-    
-    document.addEventListener('click', (event) => {
-        if (!passengerSelector.contains(event.target)) {
-            passengerDropdown.classList.remove('show');
-        }
-    });
-    
-    passengerDropdown.addEventListener('click', (event) => {
-        const button = event.target.closest('.passenger-btn');
-        if (!button) return;
-        
-        const type = button.dataset.type;
-        const action = button.dataset.action;
-        
-        if (action === 'increase') {
-            if (type === 'adults') adults++;
-            else if (type === 'children') children++;
-        } else if (action === 'decrease') {
-            if (type === 'adults' && (adults > 1 || (adults === 1 && children > 0))) {
-                adults--;
-            } else if (type === 'children' && children > 0) {
-                children--;
-            }
+            passengerDropdown.addEventListener('click', (event) => {
+                const button = event.target.closest('.passenger-btn');
+                if (!button) return;
+                
+                const type = button.dataset.type;
+                const action = button.dataset.action;
+                
+                if (action === 'increase') {
+                    if (type === 'adults') adults++;
+                    else if (type === 'children') children++;
+                } else if (action === 'decrease') {
+                    if (type === 'adults' && (adults > 1 || (adults === 1 && children > 0))) {
+                        adults--;
+                    } else if (type === 'children' && children > 0) {
+                        children--;
+                    }
+                }
+                
+                if (adults + children === 0) adults = 1;
+                updatePassengerUI();
+            });
         }
         
-        if (adults + children === 0) adults = 1;
-        updatePassengerUI();
-    });
-    
-    // Accordion functionality
-    document.querySelectorAll('.accordion-trigger').forEach(trigger => {
-        trigger.addEventListener('click', () => {
-            toggleAccordion(trigger.parentElement);
+        // Accordion functionality
+        document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                toggleAccordion(trigger.parentElement);
+            });
         });
-    });
-    
-    // Checkout button
-    document.getElementById('checkout-btn').addEventListener('click', showCheckoutModal);
-    
-    // Modal close functionality
-    document.getElementById('close-modal').addEventListener('click', () => {
-        document.getElementById('checkout-modal').style.display = 'none';
-    });
-    
-    window.addEventListener('click', (event) => {
-        const modal = document.getElementById('checkout-modal');
-        if (event.target === modal) {
-            modal.style.display = 'none';
+        
+        // Checkout button
+        const checkoutBtn = document.getElementById('checkout-btn');
+        if (checkoutBtn) {
+            checkoutBtn.addEventListener('click', showCheckoutModal);
         }
-    });
-    
-    // Initial UI setup
-    updatePassengerUI();
-    
-    // Initialize Stripe
-    initializeStripe();
+        
+        // Modal close functionality
+        const closeModal = document.getElementById('close-modal');
+        if (closeModal) {
+            closeModal.addEventListener('click', () => {
+                document.getElementById('checkout-modal').style.display = 'none';
+            });
+        }
+        
+        window.addEventListener('click', (event) => {
+            const modal = document.getElementById('checkout-modal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+        
+        // Initial UI setup
+        updatePassengerUI();
+        
+        // Initialize Stripe
+        await initializeStripe();
+        
+    } catch (error) {
+        console.error('Error initializing app:', error);
+    }
 });
 
 // Global functions for onclick handlers
