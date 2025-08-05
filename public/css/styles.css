@@ -1510,3 +1510,8 @@ body {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+.logo-img {
+    width: 200px; /* Define a largura para 200 pixels */
+    height: 100px; /* Define a altura para 100 pixels */
+}
