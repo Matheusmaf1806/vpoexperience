@@ -1,639 +1,567 @@
 <!DOCTYPE html>
 <html lang="en" id="html-root">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="title">Remote Guidance Service at Orlando Parks</title>
-    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/sf-pro-display">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://js.stripe.com/v3/"></script>
-    <link rel="stylesheet" href="/css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="title">Remote Guidance Service at Orlando Parks</title>
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/sf-pro-display">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-        <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <img class="logo-img" src="https://qiblwjpijwhtlmylrlxl.supabase.co/storage/v1/object/public/logos/VPO%20Experience_1751920922845_giv-vpo-mail.gif" alt="Logo Airland">
-                </div>
-                <nav class="nav">
-                    <ul class="nav-links">
-                        <li><a href="#services" data-i18n="nav.services">Services</a></li>
-                        <li><a href="#plans" data-i18n="nav.plans">Plans</a></li>
-                        <li><a href="#testimonials" data-i18n="nav.testimonials">Testimonials</a></li>
-                        <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
-                    </ul>
-                </nav>
-                <div class="header-actions">
-                    <div class="currency-selector">
-                        <select id="currency-select">
-                            <option value="USD">USD ($)</option>
-                            <option value="BRL">BRL (R$)</option>
-                            <option value="EUR">EUR (€)</option>
-                        </select>
-                    </div>
-                    <div class="language-selector">
-                        <select id="language-select">
-                            <option value="en">🇺🇸 English</option>
-                            <option value="pt">🇧🇷 Português</option>
-                            <option value="es">🇪🇸 Español</option>
-                            <option value="fr">🇫🇷 Français</option>
-                            <option value="nl">🇳🇱 Nederlands</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="mobile-menu-toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </div>
-        </div>
-    </header>
-
-        <section class="hero-section">
-        <div class="hero-background-pattern"></div>
-        <div class="container">
-            <div class="hero-grid">
-                <div class="hero-content">
-                    <h1 class="hero-title">
-                        <span data-i18n="hero.title">Your Personal Concierge,</span> <span class="hero-accent" data-i18n="hero.accent">for the Magic of Parks.</span>
-                    </h1>
-                    <p class="hero-subtitle" data-i18n="hero.subtitle">
-                        Have a Brazilian specialist guiding you in real time through the parks of Orlando, California and Paris, maximizing your experience and creating unforgettable memories.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="#plans" class="btn btn-primary" data-i18n="hero.cta">
-                            <span data-i18n="hero.cta_text">View Options</span>
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                    </div>
-                    <div class="hero-stats-grid">
-                        <div class="stat-item">
-                            <i class="fa-solid fa-users"></i>
-                            <div>
-                                <div class="stat-number">+500</div>
-                                <div class="stat-label" data-i18n="hero.stat1">Families</div>
-                            </div>
-                        </div>
-                        <div class="stat-item">
-                            <i class="fa-solid fa-globe-americas"></i>
-                            <div>
-                                <div class="stat-number">Disney</div>
-                                <div class="stat-label" data-i18n="hero.stat2">Universal</div>
-                            </div>
-                        </div>
-                        <div class="stat-item">
-                            <i class="fa-solid fa-star"></i>
-                            <div>
-                                <div class="stat-number">4.9/5</div>
-                                <div class="stat-label" data-i18n="hero.stat3">Reviews</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero-image-container">
-                    <img src="https://image-xi-inky.vercel.app/public/remoteguide.png" alt="Remote guidance service" class="hero-image">
-                </div>
-            </div>
-        </div>
-    </section>
-
-        <section id="services" class="services-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">
-                    <span class="subtitle-line"></span>
-                    <span class="subtitle-text" data-i18n="services.subtitle">Our Services</span>
-                    <span class="subtitle-line"></span>
-                </div>
-                <h2 class="main-section-title">
-                    <span data-i18n="services.title1">How</span> <span class="hero-accent" data-i18n="services.title2">Remote Guidance</span> <span data-i18n="services.title3">Works</span>
-                </h2>
-                <p class="section-description" data-i18n="services.description">
-                    Have a Brazilian specialist assisting you in real time during your visit to the parks.
-                </p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-content">
-                        <div class="service-icon">
-                            <i data-lucide="map" width="28" height="28"></i>
-                        </div>
-                        <h3 class="service-title" data-i18n="services.service1.title">Personalized Planning</h3>
-                        <p class="service-description" data-i18n="services.service1.description">
-                            Exclusive itineraries for your family, considering age, interests and available time.
-                        </p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-content">
-                        <div class="service-icon">
-                            <i data-lucide="headphones" width="28" height="28"></i>
-                        </div>
-                        <h3 class="service-title" data-i18n="services.service2.title">Real-Time Support</h3>
-                        <p class="service-description" data-i18n="services.service2.description">
-                            WhatsApp assistance throughout your visit, with real-time guidance.
-                        </p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-content">
-                        <div class="service-icon">
-                            <i data-lucide="calendar" width="28" height="28"></i>
-                        </div>
-                        <h3 class="service-title" data-i18n="services.service3.title">Reservation Organization</h3>
-                        <p class="service-description" data-i18n="services.service3.description">
-                            Help choosing and scheduling restaurants, attractions and special experiences.
-                        </p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-content">
-                        <div class="service-icon">
-                            <i data-lucide="globe" width="28" height="28"></i>
-                        </div>
-                        <h3 class="service-title" data-i18n="services.service4.title">Expert Tips</h3>
-                        <p class="service-description" data-i18n="services.service4.description">
-                            Secrets and privileged information that only those who know the parks inside out know.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="benefits" class="benefits-section">
-      <div class="container">
-        <div class="benefits-container">
-          <div class="benefits-image-wrapper">
-            <img
-              src="https://images.pexels.com/photos/1674447/pexels-photo-1674447.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              alt="Família feliz em um parque temático"
-              class="benefits-image"
-            />
-          </div>
-          <div class="benefits-content">
-            <div class="benefits-subtitle">
-              <span class="subtitle-line"></span>
-              <span class="subtitle-text" data-i18n="benefits.subtitle">Por que nos escolher</span>
-              <span class="subtitle-line"></span>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img class="logo-img" src="https://qiblwjpijwhtlmylrlxl.supabase.co/storage/v1/object/public/logos/VPO%20Experience_1751920922845_giv-vpo-mail.gif" alt="Logo Airland">
+                </div>
+                <nav class="nav">
+                    <ul class="nav-links">
+                        <li><a href="#services" data-i18n="nav.services">Services</a></li>
+                        <li><a href="#plans" data-i18n="nav.plans">Plans</a></li>
+                        <li><a href="#testimonials" data-i18n="nav.testimonials">Testimonials</a></li>
+                        <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <div class="currency-selector">
+                        <select id="currency-select">
+                            <option value="USD">USD ($)</option>
+                            <option value="BRL">BRL (R$)</option>
+                            <option value="EUR">EUR (€)</option>
+                        </select>
+                    </div>
+                    <div class="language-selector">
+                        <select id="language-select">
+                            <option value="en">🇺🇸 English</option>
+                            <option value="pt">🇧🇷 Português</option>
+                            <option value="es">🇪🇸 Español</option>
+                            <option value="fr">🇫🇷 Français</option>
+                            <option value="nl">🇳🇱 Nederlands</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
             </div>
-            <h2 class="benefits-title" data-i18n="benefits.title">
-              Maximize sua experiência com assistência <span class="hero-accent">especializada</span>
-            </h2>
-            <p class="benefits-description" data-i18n="benefits.description">
-              Nossos especialistas conhecem os mínimos detalhes dos parques e proporcionarão a você e sua família momentos inesquecíveis sem estresse ou preocupações.
-            </p>
-            <ul class="benefits-list">
-              <li class="benefit-item">
-                <i data-lucide="check" class="benefit-icon" width="20" height="20"></i>
-                <span data-i18n="benefits.item1">Economize tempo valioso em filas com nossas estratégias.</span>
-              </li>
-              <li class="benefit-item">
-                <i data-lucide="check" class="benefit-icon" width="20" height="20"></i>
-                <span data-i18n="benefits.item2">Evite erros comuns que podem comprometer sua experiência no parque.</span>
-              </li>
-              <li class="benefit-item">
-                <i data-lucide="check" class="benefit-icon" width="20" height="20"></i>
-                <span data-i18n="benefits.item3">Acesso a dicas exclusivas para fotos e momentos únicos.</span>
-              </li>
-              <li class="benefit-item">
-                <i data-lucide="check" class="benefit-icon" width="20" height="20"></i>
-                <span data-i18n="benefits.item4">Assistência em português durante toda a sua visita.</span>
-              </li>
-              <li class="benefit-item">
-                <i data-lucide="check" class="benefit-icon" width="20" height="20"></i>
-                <span data-i18n="benefits.item5">Suporte dedicado para casos de emergências ou imprevistos.</span>
-              </li>
-            </ul>
-          </div>
         </div>
-      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-background-pattern"></div>
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span data-i18n="hero.title">Your Personal Concierge,</span> <span class="hero-accent" data-i18n="hero.accent">for the Magic of Parks.</span>
+                    </h1>
+                    <p class="hero-subtitle" data-i18n="hero.subtitle">
+                        Have a Brazilian specialist guiding you in real time through the parks of Orlando, California and Paris, maximizing your experience and creating unforgettable memories.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#plans" class="btn btn-primary" data-i18n="hero.cta">
+                            <span data-i18n="hero.cta_text">View Options</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="hero-stats-grid">
+                        <div class="stat-item">
+                            <i class="fa-solid fa-users"></i>
+                            <div>
+                                <div class="stat-number">+500</div>
+                                <div class="stat-label" data-i18n="hero.stat1">Families</div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fa-solid fa-globe-americas"></i>
+                            <div>
+                                <div class="stat-number">Disney</div>
+                                <div class="stat-label" data-i18n="hero.stat2">Universal</div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fa-solid fa-star"></i>
+                            <div>
+                                <div class="stat-number">4.9/5</div>
+                                <div class="stat-label" data-i18n="hero.stat3">Reviews</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image-container">
+                    <img src="https://image-xi-inky.vercel.app/public/remoteguide.png" alt="Remote guidance service" class="hero-image">
+                </div>
+            </div>
+        </div>
     </section>
 
-        <section id="plans" class="destination-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">
-                    <span class="subtitle-line"></span>
-                    <span class="subtitle-text" data-i18n="plans.subtitle">Our Plans</span>
-                    <span class="subtitle-line"></span>
-                </div>
-                <h2 class="main-section-title">
-                    <span data-i18n="plans.title1">Choose the</span> <span class="hero-accent" data-i18n="plans.title2">ideal</span> <span data-i18n="plans.title3">plan for your family</span>
-                </h2>
-                <p class="section-description" data-i18n="plans.description">
-                    Investment worth it to maximize every moment of your dream trip.
-                </p>
-            </div>
-
-            <div class="destinations-grid">
-                <div class="destination-card" onclick="showPlans('orlando')">
-                    <div class="destination-flag">🇺🇸</div>
-                    <div class="destination-name" data-i18n="destinations.orlando">Orlando</div>
-                    <div class="destination-parks" data-i18n="destinations.orlando_parks">Disney and Universal Parks</div>
-                    <div class="destination-cta" data-i18n="destinations.cta">Tap to see plans</div>
-                </div>
-                <div class="destination-card" onclick="showPlans('california')">
-                    <div class="destination-flag">🇺🇸</div>
-                    <div class="destination-name" data-i18n="destinations.california">California</div>
-                    <div class="destination-parks" data-i18n="destinations.california_parks">Disneyland Parks</div>
-                    <div class="destination-cta" data-i18n="destinations.cta">Tap to see plans</div>
-                </div>
-                <div class="destination-card" onclick="showPlans('paris')">
-                    <div class="destination-flag">🇫🇷</div>
-                    <div class="destination-name" data-i18n="destinations.paris">Paris</div>
-                    <div class="destination-parks" data-i18n="destinations.paris_parks">Disneyland Parks</div>
-                    <div class="destination-cta" data-i18n="destinations.cta">Tap to see plans</div>
-                </div>
-            </div>
-
-            <div id="plans-display-container" class="plans-display-container" style="display: none;">
-                <div class="plans-display-header">
-                    <h2><span data-i18n="plans.header1">Guidance Plans for</span> <span id="destination-name"></span></h2>
-                </div>
-                <div id="plans-grid" class="plans-grid"></div>
-                <div class="plans-footer">
-                    <div class="passenger-selector-wrapper">
-                        <label class="passenger-selector-label" data-i18n="plans.passengers">Passengers</label>
-                        <div class="passenger-selector">
-                            <div class="passenger-display">
-                                <span class="passenger-text">1 Adult</span>
-                                <i data-lucide="users" width="16" height="16"></i>
-                            </div>
-                            <div class="passenger-dropdown">
-                                <div class="passenger-type">
-                                    <label class="passenger-type-label" data-i18n="plans.adults">Adults (10+)</label>
-                                    <div class="passenger-counter">
-                                        <button type="button" class="passenger-btn" data-type="adults" data-action="decrease">-</button>
-                                        <span class="passenger-count" id="adults-count">1</span>
-                                        <button type="button" class="passenger-btn" data-type="adults" data-action="increase">+</button>
-                                    </div>
-                                </div>
-                                <div class="passenger-type">
-                                    <label class="passenger-type-label" data-i18n="plans.children">Children (3-9)</label>
-                                    <div class="passenger-counter">
-                                        <button type="button" class="passenger-btn" data-type="children" data-action="decrease">-</button>
-                                        <span class="passenger-count" id="children-count">0</span>
-                                        <button type="button" class="passenger-btn" data-type="children" data-action="increase">+</button>
-                                    </div>
-                                </div>
-                                <p class="passenger-summary">
-                                    <span data-i18n="plans.total">Total:</span> <span id="total-pax-count">1</span> <span data-i18n="plans.person">person</span> (<span id="group-size">1 group</span>)
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="date-selector">
-                        <label for="travel-date-input" class="passenger-selector-label" data-i18n="plans.activation_date">Activation Date</label>
-                        <input type="date" id="travel-date-input" class="date-input">
-                    </div>
-
-                    <div class="total-area">
-                        <span class="total-area-label" data-i18n="plans.total_label">Total:</span>
-                        <strong id="total-price-value" class="total-price-value">$0.00</strong>
-                    </div>
-
-                    <div class="buttons-container">
-                        <button class="btn btn-primary" id="checkout-btn">
-                            <i class="fas fa-credit-card"></i>
-                            <span data-i18n="plans.checkout">Proceed to Checkout</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-        <section id="testimonials" class="testimonials-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">
-                    <span class="subtitle-line"></span>
-                    <span class="subtitle-text" data-i18n="testimonials.subtitle">Testimonials</span>
-                    <span class="subtitle-line"></span>
-                </div>
-                <h2 class="main-section-title">
-                    <span data-i18n="testimonials.title1">What our</span> <span class="hero-accent" data-i18n="testimonials.title2">clients</span> <span data-i18n="testimonials.title3">say</span>
-                </h2>
-                <p class="section-description" data-i18n="testimonials.description">
-                    Brazilian families who transformed their Disney trips with our remote guidance service.
-                </p>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <div class="testimonial-header">
-                            <img class="testimonial-avatar" src="https://image-xi-inky.vercel.app/public/depoimento1.jpeg" alt="Dani Souza">
-                            <div class="testimonial-author">
-                                <h4>Dani Souza</h4>
-                                <p>Greenwich - US</p>
-                            </div>
-                        </div>
-                        <div class="testimonial-stars">
-                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
-                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
-                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
-                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
-                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
-                        </div>
-                        <p class="testimonial-text" data-i18n="testimonials.testimonial1">
-                            Our experience with VPO was wonderful! They took care of all the details with care, from hotel reservations to park scheduling. We also have to highlight the experience designer that provided us with greater comfort and dynamics within the parks, so that we could enjoy this incredible trip with comfort and tranquility. I simply won't let them go anymore!! ❤️
-                        </p>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <div class="testimonial-header">
-                            <img class="testimonial-avatar" src="https://image-xi-inky.vercel.app/public/depoimento2.jpg" alt="Lenita Rocha">
-                            <div class="testimonial-author">
-                                <h4>Lenita Rocha</h4>
-                                <p>São Paulo - BR</p>
-                            </div>
-                        </div>
-                        <div class="testimonial-stars">
-                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
-                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
-                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
-                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
-                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
-                        </div>
-                        <p class="testimonial-text" data-i18n="testimonials.testimonial2">
-                            The trip was incredible, VPO always helping us have wonderful days in Orlando!! It's the second time we've hired the service (car, hotel, house, park tickets) and I keep recommending it to everyone! Here is my gratitude for all the care and affection with me and my family!!! A big kiss to you guys!
-                        </p>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <div class="testimonial-header">
-                            <img class="testimonial-avatar" src="https://image-xi-inky.vercel.app/public/depoimento3.jpg" alt="Renata Riberi">
-                            <div class="testimonial-author">
-                                <h4>Renata Riberi</h4>
-                                <p>São Paulo - BR</p>
-                            </div>
-                        </div>
-                        <div class="testimonial-stars">
-                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
-                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
-                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
-                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
-                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
-                        </div>
-                        <p class="testimonial-text" data-i18n="testimonials.testimonial3">
-                            Very good service! We bought everything in 2019, and I was only able to travel this year 2022. The help with all the rescheduling was wonderful, clarifying many doubts, even about services that I hadn't closed with them. It was a great partnership. I already recommended it to a friend, who also used it and liked it. I'm already planning a new trip with VPO.
-                        </p>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <div class="testimonial-header">
-                            <img class="testimonial-avatar" src="https://image-xi-inky.vercel.app/public/depoimento4.jpg" alt="Simone Itala">
-                            <div class="testimonial-author">
-                                <h4>Simone Itala</h4>
-                                <p>Vitória - ES</p>
-                            </div>
-                        </div>
-                        <div class="testimonial-stars">
-                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
-                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
-                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
-                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
-                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
-                        </div>
-                        <p class="testimonial-text" data-i18n="testimonials.testimonial4">
-                            Exceptionally competent, responsible and super attentive team! They created a detailed itinerary, within our interests and gave us all the support, in real time, when we needed it. Thank you very much VPO Experience, we love traveling to Orlando with you guys!!!!
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-        <section id="faq" class="faq-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">
-                    <span class="subtitle-line"></span>
-                    <span class="subtitle-text" data-i18n="faq.subtitle">Frequently Asked Questions</span>
-                    <span class="subtitle-line"></span>
-                </div>
-                <h2 class="main-section-title">
-                    <span data-i18n="faq.title1">Clear your</span> <span class="hero-accent" data-i18n="faq.title2">doubts</span>
-                </h2>
-                <p class="section-description" data-i18n="faq.description">
-                    Find answers to the most common questions about our remote guidance service.
-                </p>
-            </div>
-            <div class="faq-container">
-                <div class="accordion" id="faq-accordion">
-                    <div class="accordion-item">
-                        <button class="accordion-trigger">
-                            <span data-i18n="faq.question1">How does the remote guidance service work?</span>
-                            <i data-lucide="chevron-down" class="accordion-icon" width="20" height="20"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-content-inner" data-i18n="faq.answer1">
-                                Our service consists of a park expert guide who accompanies you remotely (via WhatsApp) throughout your visit. Before the trip, we do personalized planning and, during the day at the park, we offer real-time guidance on queues, attractions, shows and restaurants to maximize your experience.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <button class="accordion-trigger">
-                            <span data-i18n="faq.question2">Do I need internet in the parks to use the service?</span>
-                            <i data-lucide="chevron-down" class="accordion-icon" width="20" height="20"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-content-inner" data-i18n="faq.answer2">
-                                Yes, internet access is required during your visit to maintain contact with your guide. Disney and Universal parks offer free Wi-Fi, which facilitates communication. We also recommend an international data plan as backup.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <button class="accordion-trigger">
-                            <span data-i18n="faq.question3">How far in advance should I hire the service?</span>
-                            <i data-lucide="chevron-down" class="accordion-icon" width="20" height="20"></i>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="accordion-content-inner" data-i18n="faq.answer3">
-                                We recommend hiring at least 30 days in advance to have enough time to do personalized planning. During high season periods, we suggest contacting 60 days before to guarantee availability of our guides.
-                            </div>
-                        </div>
-                    </div>
-                        <div class="accordion-item">
-                            <button class="accordion-trigger">
-                              <span data-i18n="faq.question4">Is the plan value per person or per group?</span>
-                              <i data-lucide="chevron-down" class="accordion-icon" width="20" height="20"></i>
-                            </button>
-                            <div class="accordion-content">
-                              <div class="accordion-content-inner" data-i18n="faq.answer4">
-                                The value is per family group of up to 10 people. This allows your entire family or group of friends to benefit from the guidance of a single specialist, optimizing cost-effectiveness. For larger groups, please contact us for a customized proposal.
-                              </div>
-                            </div>
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">
+                    <span class="subtitle-line"></span>
+                    <span class="subtitle-text" data-i18n="services.subtitle">Our Services</span>
+                    <span class="subtitle-line"></span>
+                </div>
+                <h2 class="main-section-title">
+                    <span data-i18n="services.title1">How</span> <span class="hero-accent" data-i18n="services.title2">Remote Guidance</span> <span data-i18n="services.title3">Works</span>
+                </h2>
+                <p class="section-description" data-i18n="services.description">
+                    Have a Brazilian specialist assisting you in real time during your visit to the parks.
+                </p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i data-lucide="map" width="28" height="28"></i>
                         </div>
-                        <div class="accordion-item">
-                            <button class="accordion-trigger">
-                                <span data-i18n="faq.question5">What if it rains or an attraction closes unexpectedly?</span>
-                                <i data-lucide="chevron-down" class="accordion-icon" width="20" height="20"></i>
-                            </button>
-                            <div class="accordion-content">
-                                <div class="accordion-content-inner" data-i18n="faq.answer5">
-                                No problem! Our guides monitor the park conditions in real-time. In case of rain or an attraction closure, your guide will immediately suggest alternatives, such as covered attractions or adjustments to the itinerary, to ensure your day continues to be amazing.
+                        <h3 class="service-title" data-i18n="services.service1.title">Personalized Planning</h3>
+                        <p class="service-description" data-i18n="services.service1.description">
+                            Exclusive itineraries for your family, considering age, interests and available time.
+                        </p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i data-lucide="headphones" width="28" height="28"></i>
+                        </div>
+                        <h3 class="service-title" data-i18n="services.service2.title">Real-Time Support</h3>
+                        <p class="service-description" data-i18n="services.service2.description">
+                            WhatsApp assistance throughout your visit, with real-time guidance.
+                        </p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i data-lucide="calendar" width="28" height="28"></i>
+                        </div>
+                        <h3 class="service-title" data-i18n="services.service3.title">Reservation Organization</h3>
+                        <p class="service-description" data-i18n="services.service3.description">
+                            Help choosing and scheduling restaurants, attractions and special experiences.
+                        </p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i data-lucide="globe" width="28" height="28"></i>
+                        </div>
+                        <h3 class="service-title" data-i18n="services.service4.title">Expert Tips</h3>
+                        <p class="service-description" data-i18n="services.service4.description">
+                            Secrets and privileged information that only those who know the parks inside out know.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans Section -->
+    <section id="plans" class="destination-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">
+                    <span class="subtitle-line"></span>
+                    <span class="subtitle-text" data-i18n="plans.subtitle">Our Plans</span>
+                    <span class="subtitle-line"></span>
+                </div>
+                <h2 class="main-section-title">
+                    <span data-i18n="plans.title1">Choose the</span> <span class="hero-accent" data-i18n="plans.title2">ideal</span> <span data-i18n="plans.title3">plan for your family</span>
+                </h2>
+                <p class="section-description" data-i18n="plans.description">
+                    Investment worth it to maximize every moment of your dream trip.
+                </p>
+            </div>
+
+            <div class="destinations-grid">
+                <div class="destination-card" onclick="showPlans('orlando')">
+                    <div class="destination-flag">🇺🇸</div>
+                    <div class="destination-name" data-i18n="destinations.orlando">Orlando</div>
+                    <div class="destination-parks" data-i18n="destinations.orlando_parks">Disney and Universal Parks</div>
+                    <div class="destination-cta" data-i18n="destinations.cta">Tap to see plans</div>
+                </div>
+                <div class="destination-card" onclick="showPlans('california')">
+                    <div class="destination-flag">🇺🇸</div>
+                    <div class="destination-name" data-i18n="destinations.california">California</div>
+                    <div class="destination-parks" data-i18n="destinations.california_parks">Disneyland Parks</div>
+                    <div class="destination-cta" data-i18n="destinations.cta">Tap to see plans</div>
+                </div>
+                <div class="destination-card" onclick="showPlans('paris')">
+                    <div class="destination-flag">🇫🇷</div>
+                    <div class="destination-name" data-i18n="destinations.paris">Paris</div>
+                    <div class="destination-parks" data-i18n="destinations.paris_parks">Disneyland Parks</div>
+                    <div class="destination-cta" data-i18n="destinations.cta">Tap to see plans</div>
+                </div>
+            </div>
+
+            <div id="plans-display-container" class="plans-display-container" style="display: none;">
+                <div class="plans-display-header">
+                    <h2><span data-i18n="plans.header1">Guidance Plans for</span> <span id="destination-name"></span></h2>
+                </div>
+                <div id="plans-grid" class="plans-grid"></div>
+                <div class="plans-footer">
+                    <div class="passenger-selector-wrapper">
+                        <label class="passenger-selector-label" data-i18n="plans.passengers">Passengers</label>
+                        <div class="passenger-selector">
+                            <div class="passenger-display">
+                                <span class="passenger-text">1 Adult</span>
+                                <i data-lucide="users" width="16" height="16"></i>
+                            </div>
+                            <div class="passenger-dropdown">
+                                <div class="passenger-type">
+                                    <label class="passenger-type-label" data-i18n="plans.adults">Adults (10+)</label>
+                                    <div class="passenger-counter">
+                                        <button type="button" class="passenger-btn" data-type="adults" data-action="decrease">-</button>
+                                        <span class="passenger-count" id="adults-count">1</span>
+                                        <button type="button" class="passenger-btn" data-type="adults" data-action="increase">+</button>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <button class="accordion-trigger">
-                                <span data-i18n="faq.question6">Is this service official from Disney or Universal?</span>
-                                <i data-lucide="chevron-down" class="accordion-icon" width="20" height="20"></i>
-                            </button>
-                            <div class="accordion-content">
-                                <div class="accordion-content-inner" data-i18n="faq.answer6">
-                                Our service is independent and has no official affiliation with The Walt Disney Company or Universal Studios. This allows us to offer impartial advice focused exclusively on your family's best interest, with tips and strategies that official channels may not provide.
+                                <div class="passenger-type">
+                                    <label class="passenger-type-label" data-i18n="plans.children">Children (3-9)</label>
+                                    <div class="passenger-counter">
+                                        <button type="button" class="passenger-btn" data-type="children" data-action="decrease">-</button>
+                                        <span class="passenger-count" id="children-count">0</span>
+                                        <button type="button" class="passenger-btn" data-type="children" data-action="increase">+</button>
+                                    </div>
                                 </div>
+                                <p class="passenger-summary">
+                                    <span data-i18n="plans.total">Total:</span> <span id="total-pax-count">1</span> <span data-i18n="plans.person">person</span> (<span id="group-size">1 group</span>)
+                                </p>
                             </div>
                         </div>
-                                        </div>
-            </div>
-        </div>
-    </section>
+                    </div>
+                    
+                    <div class="date-selector">
+                        <label for="travel-date-input" class="passenger-selector-label" data-i18n="plans.activation_date">Activation Date</label>
+                        <input type="date" id="travel-date-input" class="date-input">
+                    </div>
 
-        <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>VPO Experience</h3>
-                    <p data-i18n="footer.description">Your personal concierge for the magic of parks.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h4 data-i18n="footer.services">Services</h4>
-                    <ul>
-                        <li><a href="#" data-i18n="footer.orlando">Orlando</a></li>
-                        <li><a href="#" data-i18n="footer.california">California</a></li>
-                        <li><a href="#" data-i18n="footer.paris">Paris</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 data-i18n="footer.company">Company</h4>
-                    <ul>
-                        <li><a href="#" data-i18n="footer.about">About Us</a></li>
-                        <li><a href="#" data-i18n="footer.contact">Contact</a></li>
-                        <li><a href="#" data-i18n="footer.privacy">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 data-i18n="footer.contact_us">Contact Us</h4>
-                    <p><i class="fas fa-envelope"></i> contact@vpoexperience.com</p>
-                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 VPO Experience. <span data-i18n="footer.rights">All rights reserved.</span></p>
-            </div>
-        </div>
-    </footer>
+                    <div class="total-area">
+                        <span class="total-area-label" data-i18n="plans.total_label">Total:</span>
+                        <strong id="total-price-value" class="total-price-value">$0.00</strong>
+                    </div>
 
-        <div id="checkout-modal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 data-i18n="checkout.title">Complete Your Purchase</h2>
-                <span class="close" id="close-modal">&times;</span>
-            </div>
-            <div class="modal-body">
-                <div class="checkout-summary">
-                    <h3 data-i18n="checkout.summary">Order Summary</h3>
-                    <div id="checkout-details"></div>
-                </div>
+                    <div class="buttons-container">
+                        <button class="btn btn-primary" id="checkout-btn">
+                            <i class="fas fa-credit-card"></i>
+                            <span data-i18n="plans.checkout">Proceed to Checkout</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                                <div class="customer-form">
-                    <div class="form-section">
-                        <h4>Customer Information</h4>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="customer-name">Full Name <span class="required">*</span></label>
-                                <input type="text" id="customer-name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="customer-email">Email <span class="required">*</span></label>
-                                <input type="email" id="customer-email" required>
-                            </div>
-                        </div>
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">
+                    <span class="subtitle-line"></span>
+                    <span class="subtitle-text" data-i18n="testimonials.subtitle">Testimonials</span>
+                    <span class="subtitle-line"></span>
+                </div>
+                <h2 class="main-section-title">
+                    <span data-i18n="testimonials.title1">What our</span> <span class="hero-accent" data-i18n="testimonials.title2">clients</span> <span data-i18n="testimonials.title3">say</span>
+                </h2>
+                <p class="section-description" data-i18n="testimonials.description">
+                    Brazilian families who transformed their Disney trips with our remote guidance service.
+                </p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-header">
+                            <img class="testimonial-avatar" src="https://image-xi-inky.vercel.app/public/depoimento1.jpeg" alt="Dani Souza">
+                            <div class="testimonial-author">
+                                <h4>Dani Souza</h4>
+                                <p>Greenwich - US</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-stars">
+                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
+                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
+                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
+                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
+                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
+                        </div>
+                        <p class="testimonial-text" data-i18n="testimonials.testimonial1">
+                            Our experience with VPO was wonderful! They took care of all the details with care, from hotel reservations to park scheduling. We also have to highlight the experience designer that provided us with greater comfort and dynamics within the parks, so that we could enjoy this incredible trip with comfort and tranquility. I simply won't let them go anymore!! ❤️
+                        </p>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-header">
+                            <img class="testimonial-avatar" src="https://image-xi-inky.vercel.app/public/depoimento2.jpg" alt="Lenita Rocha">
+                            <div class="testimonial-author">
+                                <h4>Lenita Rocha</h4>
+                                <p>São Paulo - BR</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-stars">
+                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
+                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
+                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
+                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
+                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
+                        </div>
+                        <p class="testimonial-text" data-i18n="testimonials.testimonial2">
+                            The trip was incredible, VPO always helping us have wonderful days in Orlando!! It's the second time we've hired the service (car, hotel, house, park tickets) and I keep recommending it to everyone! Here is my gratitude for all the care and affection with me and my family!!! A big kiss to you guys!
+                        </p>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-header">
+                            <img class="testimonial-avatar" src="https://image-xi-inky.vercel.app/public/depoimento3.jpg" alt="Renata Riberi">
+                            <div class="testimonial-author">
+                                <h4>Renata Riberi</h4>
+                                <p>São Paulo - BR</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-stars">
+                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
+                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
+                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
+                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
+                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
+                        </div>
+                        <p class="testimonial-text" data-i18n="testimonials.testimonial3">
+                            Very good service! We bought everything in 2019, and I was only able to travel this year 2022. The help with all the rescheduling was wonderful, clarifying many doubts, even about services that I hadn't closed with them. It was a great partnership. I already recommended it to a friend, who also used it and liked it. I'm already planning a new trip with VPO.
+                        </p>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-header">
+                            <img class="testimonial-avatar" src="https://image-xi-inky.vercel.app/public/depoimento4.jpg" alt="Simone Itala">
+                            <div class="testimonial-author">
+                                <h4>Simone Itala</h4>
+                                <p>Vitória - ES</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-stars">
+                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
+                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
+                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
+                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
+                            <i data-lucide="star" fill="currentColor" width="16" height="16"></i>
+                        </div>
+                        <p class="testimonial-text" data-i18n="testimonials.testimonial4">
+                            Exceptionally competent, responsible and super attentive team! They created a detailed itinerary, within our interests and gave us all the support, in real time, when we needed it. Thank you very much VPO Experience, we love traveling to Orlando with you guys!!!!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="customer-phone">Phone Number <span class="required">*</span></label>
-                                <input type="tel" id="customer-phone" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="customer-country">Country <span class="required">*</span></label>
-                                <select id="customer-country" required>
-                                    <option value="">Select Country</option>
-                                    <option value="US">United States</option>
-                                    <option value="BR">Brazil</option>
-                                    <option value="GB">United Kingdom</option>
-                                    <option value="CA">Canada</option>
-                                    <option value="FR">France</option>
-                                    <option value="DE">Germany</option>
-                                    <option value="IT">Italy</option>
-                                    <option value="ES">Spain</option>
-                                    <option value="AR">Argentina</option>
-                                    <option value="MX">Mexico</option>
-                                    <option value="CO">Colombia</option>
-                                    <option value="CL">Chile</option>
-                                    <option value="PE">Peru</option>
-                                    <option value="AU">Australia</option>
-                                    <option value="JP">Japan</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                            </div>
-                        </div>
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">
+                    <span class="subtitle-line"></span>
+                    <span class="subtitle-text" data-i18n="faq.subtitle">Frequently Asked Questions</span>
+                    <span class="subtitle-line"></span>
+                </div>
+                <h2 class="main-section-title">
+                    <span data-i18n="faq.title1">Clear your</span> <span class="hero-accent" data-i18n="faq.title2">doubts</span>
+                </h2>
+                <p class="section-description" data-i18n="faq.description">
+                    Find answers to the most common questions about our remote guidance service.
+                </p>
+            </div>
+            <div class="faq-container">
+                <div class="accordion" id="faq-accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-trigger">
+                            <span data-i18n="faq.question1">How does the remote guidance service work?</span>
+                            <i data-lucide="chevron-down" class="accordion-icon" width="20" height="20"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner" data-i18n="faq.answer1">
+                                Our service consists of a park expert guide who accompanies you remotely (via WhatsApp) throughout your visit. Before the trip, we do personalized planning and, during the day at the park, we offer real-time guidance on queues, attractions, shows and restaurants to maximize your experience.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-trigger">
+                            <span data-i18n="faq.question2">Do I need internet in the parks to use the service?</span>
+                            <i data-lucide="chevron-down" class="accordion-icon" width="20" height="20"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner" data-i18n="faq.answer2">
+                                Yes, internet access is required during your visit to maintain contact with your guide. Disney and Universal parks offer free Wi-Fi, which facilitates communication. We also recommend an international data plan as backup.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-trigger">
+                            <span data-i18n="faq.question3">How far in advance should I hire the service?</span>
+                            <i data-lucide="chevron-down" class="accordion-icon" width="20" height="20"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner" data-i18n="faq.answer3">
+                                We recommend hiring at least 30 days in advance to have enough time to do personalized planning. During high season periods, we suggest contacting 60 days before to guarantee availability of our guides.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="customer-address">Address <span class="required">*</span></label>
-                                <input type="text" id="customer-address" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="customer-city">City <span class="required">*</span></label>
-                                <input type="text" id="customer-city" required>
-                            </div>
-                        </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>VPO Experience</h3>
+                    <p data-i18n="footer.description">Your personal concierge for the magic of parks.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 data-i18n="footer.services">Services</h4>
+                    <ul>
+                        <li><a href="#" data-i18n="footer.orlando">Orlando</a></li>
+                        <li><a href="#" data-i18n="footer.california">California</a></li>
+                        <li><a href="#" data-i18n="footer.paris">Paris</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-i18n="footer.company">Company</h4>
+                    <ul>
+                        <li><a href="#" data-i18n="footer.about">About Us</a></li>
+                        <li><a href="#" data-i18n="footer.contact">Contact</a></li>
+                        <li><a href="#" data-i18n="footer.privacy">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-i18n="footer.contact_us">Contact Us</h4>
+                    <p><i class="fas fa-envelope"></i> contact@vpoexperience.com</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 VPO Experience. <span data-i18n="footer.rights">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
 
-                        <div class="currency-selector-form">
-                            <label for="checkout-currency">Payment Currency:</label>
-                            <select id="checkout-currency">
-                                <option value="USD">USD ($)</option>
-                                <option value="BRL">BRL (R$)</option>
-                                <option value="EUR">EUR (€)</option>
-                            </select>
-                        </div>
-                    </div>
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 data-i18n="checkout.title">Complete Your Purchase</h2>
+                <span class="close" id="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="checkout-summary">
+                    <h3 data-i18n="checkout.summary">Order Summary</h3>
+                    <div id="checkout-details"></div>
+                </div>
 
-                    <div class="form-section">
-                        <h4>Payment Information</h4>
-                        <div class="payment-form">
-                            <form id="payment-form">
-                                <div id="card-element">
-                                                                    </div>
-                                <div id="card-errors" role="alert"></div>
-                                <button id="submit-payment" class="btn btn-primary payment-btn">
-                                    <span data-i18n="checkout.pay">Pay Now</span>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                <!-- Customer Information Form -->
+                <div class="customer-form">
+                    <div class="form-section">
+                        <h4>Customer Information</h4>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="customer-name">Full Name <span class="required">*</span></label>
+                                <input type="text" id="customer-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="customer-email">Email <span class="required">*</span></label>
+                                <input type="email" id="customer-email" required>
+                            </div>
+                        </div>
 
-    <script src="/js/translations.js"></script>
-    <script src="/js/app.js"></script>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="customer-phone">Phone Number <span class="required">*</span></label>
+                                <input type="tel" id="customer-phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="customer-country">Country <span class="required">*</span></label>
+                                <select id="customer-country" required>
+                                    <option value="">Select Country</option>
+                                    <option value="US">United States</option>
+                                    <option value="BR">Brazil</option>
+                                    <option value="GB">United Kingdom</option>
+                                    <option value="CA">Canada</option>
+                                    <option value="FR">France</option>
+                                    <option value="DE">Germany</option>
+                                    <option value="IT">Italy</option>
+                                    <option value="ES">Spain</option>
+                                    <option value="AR">Argentina</option>
+                                    <option value="MX">Mexico</option>
+                                    <option value="CO">Colombia</option>
+                                    <option value="CL">Chile</option>
+                                    <option value="PE">Peru</option>
+                                    <option value="AU">Australia</option>
+                                    <option value="JP">Japan</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="customer-address">Address <span class="required">*</span></label>
+                                <input type="text" id="customer-address" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="customer-city">City <span class="required">*</span></label>
+                                <input type="text" id="customer-city" required>
+                            </div>
+                        </div>
+
+                        <div class="currency-selector-form">
+                            <label for="checkout-currency">Payment Currency:</label>
+                            <select id="checkout-currency">
+                                <option value="USD">USD ($)</option>
+                                <option value="BRL">BRL (R$)</option>
+                                <option value="EUR">EUR (€)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h4>Payment Information</h4>
+                        <div class="payment-form">
+                            <form id="payment-form">
+                                <div id="card-element">
+                                    <!-- Stripe Elements will create form elements here -->
+                                </div>
+                                <div id="card-errors" role="alert"></div>
+                                <button id="submit-payment" class="btn btn-primary payment-btn">
+                                    <span data-i18n="checkout.pay">Pay Now</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/translations.js"></script>
+    <script src="/js/app.js"></script>
 </body>
 </html>
