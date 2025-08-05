@@ -511,6 +511,193 @@ body {
     }
 }
 
+/* Benefits Section - Nova seção adicionada */
+.benefits-section {
+    padding: 4rem 0;
+    background-color: var(--gray-50);
+}
+
+@media (min-width: 768px) {
+    .benefits-section {
+        padding: 7rem 0;
+    }
+}
+
+.benefits-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .benefits-container {
+        flex-direction: row;
+        gap: 4rem;
+        align-items: flex-start;
+    }
+}
+
+.benefits-image-wrapper {
+    flex: 1;
+    position: relative;
+    width: 100%;
+}
+
+.benefits-image {
+    width: 100%;
+    height: auto;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    display: block;
+}
+
+.stats-badge {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background: white;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    text-align: center;
+    min-width: 80px;
+}
+
+@media (min-width: 768px) {
+    .stats-badge {
+        top: 50%;
+        right: -1rem;
+        bottom: auto;
+        transform: translateY(-50%);
+        padding: 1rem;
+        min-width: 100px;
+    }
+}
+
+.stats-percentage {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    line-height: 1;
+}
+
+@media (min-width: 768px) {
+    .stats-percentage {
+        font-size: 2.5rem;
+    }
+}
+
+.stats-label {
+    font-size: 0.75rem;
+    color: var(--gray-600);
+    line-height: 1.25;
+    margin-top: 0.25rem;
+}
+
+@media (min-width: 768px) {
+    .stats-label {
+        font-size: 0.875rem;
+    }
+}
+
+.benefits-content {
+    flex: 1;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .benefits-content {
+        padding: 2rem;
+    }
+}
+
+.benefits-subtitle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    justify-content: center;
+}
+
+@media (min-width: 768px) {
+    .benefits-subtitle {
+        margin-bottom: 1rem;
+        justify-content: flex-start;
+    }
+}
+
+.benefits-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .benefits-title {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        text-align: left;
+    }
+}
+
+.benefits-description {
+    font-size: 0.875rem;
+    color: var(--gray-600);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .benefits-description {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        text-align: left;
+    }
+}
+
+.benefits-list {
+    list-style: none;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+@media (min-width: 768px) {
+    .benefit-item {
+        margin-bottom: 1rem;
+    }
+}
+
+.benefit-icon {
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+    color: var(--primary-color);
+}
+
+.benefit-item span {
+    font-size: 0.875rem;
+    color: var(--gray-600);
+    line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+    .benefit-item span {
+        font-size: 1rem;
+    }
+}
+
 /* Destination Section */
 .destination-section {
     padding: 4rem 0;
@@ -537,6 +724,7 @@ body {
     }
 }
 
+/* CORREÇÃO: Garantir que todos os cards tenham exatamente o mesmo tamanho */
 .destination-card {
     background: white;
     border: 1px solid var(--gray-200);
@@ -548,21 +736,16 @@ body {
     max-width: 100%;
     margin: 0 auto;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    min-height: 48px;
+    min-height: 280px; /* Altura mínima fixa para uniformizar */
     display: flex;
     flex-direction: column;
-}
-
-.destination-cta {
-    font-size: 0.875rem;
-    color: var(--gray-500);
-    margin-top: auto; /* Mágica acontece aqui! */
-    padding-top: 1rem; /* Espaçamento para não colar no texto acima */
+    justify-content: space-between; /* Distribui conteúdo igualmente */
 }
 
 @media (min-width: 768px) {
     .destination-card {
         padding: 2rem;
+        min-height: 320px; /* Altura maior em desktop */
     }
 }
 
@@ -592,7 +775,8 @@ body {
 .destination-cta {
     font-size: 0.875rem;
     color: var(--gray-500);
-    margin-top: 0.5rem;
+    margin-top: auto; /* Empurra para o bottom */
+    padding-top: 1rem;
 }
 
 /* Plans Display */
