@@ -549,6 +549,15 @@ body {
     margin: 0 auto;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     min-height: 48px;
+    display: flex;
+    flex-direction: column;
+}
+
+.destination-cta {
+    font-size: 0.875rem;
+    color: var(--gray-500);
+    margin-top: auto; /* Mágica acontece aqui! */
+    padding-top: 1rem; /* Espaçamento para não colar no texto acima */
 }
 
 @media (min-width: 768px) {
