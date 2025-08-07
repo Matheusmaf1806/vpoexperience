@@ -1520,7 +1520,7 @@ body {
 .footer {
     background-color: var(--gray-900);
     color: white;
-    padding: 3rem 0 1rem;
+    padding: 1rem 0 1rem;
 }
 
 .footer-content {
