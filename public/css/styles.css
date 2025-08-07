@@ -730,6 +730,7 @@ body {
     background: white;
     border: 1px solid var(--gray-200);
     border-radius: 0.75rem;
+    padding: 2rem 1.5rem;
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: center;
@@ -745,6 +746,7 @@ body {
 
 @media (min-width: 768px) {
     .destination-card {
+        padding: 2rem;
         min-height: 320px; /* Slightly taller on desktop */
     }
 }
@@ -770,6 +772,7 @@ body {
 .destination-parks {
     font-size: 1rem;
     color: var(--gray-600);
+    flex-grow: 1; /* This will take up available space */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -779,6 +782,8 @@ body {
 .destination-cta {
     font-size: 0.875rem;
     color: var(--gray-500);
+    margin-top: auto; /* Push to bottom */
+    padding-top: 1rem; /* Add some space */
 }
 
 /* Plans Display */
