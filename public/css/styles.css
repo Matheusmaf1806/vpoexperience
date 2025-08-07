@@ -742,7 +742,7 @@ body {
     flex-direction: column;
     justify-content: flex-start; /* <-- ALTERE ESTA LINHA */
     flex: 1; 
-    gap: 0.5rem; /* <-- ADICIONE ESTA LINHA para um pequeno espaço */
+    gap: 0.25rem; /* <-- ADICIONE ESTA LINHA para um pequeno espaço */
 }
 
 @media (min-width: 768px) {
