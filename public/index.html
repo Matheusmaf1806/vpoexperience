@@ -9,6 +9,147 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://js.stripe.com/v3/"></script>
     <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Hotjar Tracking Code for Site 6487524 (nome ausente) -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:6487524,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3D6H40TF99"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-3D6H40TF99');
+    </script>
+
+    <!-- Google Ads Conversion Tracking -->
+    <script>
+      // Função para disparar conversão de compra
+      function trackPurchaseConversion(value, currency) {
+        gtag('event', 'conversion', {
+          'send_to': '17439659867/KuihCL-roIAbENuu8PtA',
+          'value': value,
+          'currency': currency
+        });
+      }
+
+      // Função para disparar conversão de iniciar checkout
+      function trackBeginCheckoutConversion() {
+        gtag('event', 'conversion', {
+          'send_to': '17439659867/c9A1CMKroIAbENuu8PtA'
+        });
+      }
+
+      // Função para disparar conversão de pageview
+      function trackPageviewConversion() {
+        gtag('event', 'conversion', {
+          'send_to': '17439659867/aghiCMuooIAbENuu8PtA'
+        });
+      }
+
+      // Disparar pageview ao carregar a página
+      window.addEventListener('load', function() {
+        trackPageviewConversion();
+      });
+    </script>
+
+    <!-- Facebook Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+
+      fbq('init', '1735200767111643');
+      fbq('track', 'PageView');
+
+      // Função para disparar eventos do Facebook
+      function trackFacebookPurchase(value, currency) {
+        fbq('track', 'Purchase', {
+          value: value,
+          currency: currency
+        });
+      }
+
+      function trackFacebookBeginCheckout(value, currency) {
+        fbq('track', 'InitiateCheckout', {
+          value: value,
+          currency: currency
+        });
+      }
+
+      function trackFacebookAddToCart(value, currency) {
+        fbq('track', 'AddToCart', {
+          value: value,
+          currency: currency
+        });
+      }
+    </script>
+    <noscript>
+      <img height="1" width="1" style="display:none" 
+           src="https://www.facebook.com/tr?id=1735200767111643&ev=PageView&noscript=1"/>
+    </noscript>
+
+    <!-- Facebook Conversions API Helper -->
+    <script>
+      // Função para enviar eventos via Conversions API
+      function sendConversionAPIEvent(eventName, eventData) {
+        // Esta função pode ser expandida para enviar eventos via servidor
+        // Por agora, utilizamos apenas o pixel do lado cliente
+        console.log('Conversion API Event:', eventName, eventData);
+      }
+
+      // Função integrada de tracking para compras
+      function trackFullPurchase(value, currency, orderId) {
+        // Google Ads
+        trackPurchaseConversion(value, currency);
+        
+        // Facebook Pixel
+        trackFacebookPurchase(value, currency);
+        
+        // Facebook Conversions API
+        sendConversionAPIEvent('Purchase', {
+          value: value,
+          currency: currency,
+          order_id: orderId
+        });
+
+        // Google Analytics Enhanced Ecommerce
+        gtag('event', 'purchase', {
+          transaction_id: orderId,
+          value: value,
+          currency: currency
+        });
+      }
+
+      // Função integrada de tracking para início de checkout
+      function trackFullBeginCheckout(value, currency) {
+        // Google Ads
+        trackBeginCheckoutConversion();
+        
+        // Facebook Pixel
+        trackFacebookBeginCheckout(value, currency);
+        
+        // Google Analytics
+        gtag('event', 'begin_checkout', {
+          value: value,
+          currency: currency
+        });
+      }
+    </script>
 </head>
 <body>
     <!-- Header -->
@@ -309,7 +450,7 @@
                         <strong id="total-price-value" class="total-price-value">$0.00</strong>
                     </div>
                     <div class="buttons-container">
-                        <button class="btn btn-primary" id="checkout-btn">
+                        <button class="btn btn-primary" id="checkout-btn" onclick="handleCheckoutClick()">
                             <i class="fas fa-credit-card"></i>
                             <span data-i18n="plans.checkout">Proceed to Checkout</span>
                         </button>
@@ -596,7 +737,7 @@
                                     <!-- Stripe Elements will create form elements here -->
                                 </div>
                                 <div id="card-errors" role="alert"></div>
-                                <button id="submit-payment" class="btn btn-primary payment-btn">
+                                <button id="submit-payment" class="btn btn-primary payment-btn" onclick="handlePaymentSubmit()" type="submit">
                                     <span data-i18n="checkout.pay">Pay Now</span>
                                 </button>
                             </form>
@@ -606,6 +747,44 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Função para lidar com o clique no checkout
+        function handleCheckoutClick() {
+            // Capturar o valor total do checkout
+            const totalElement = document.getElementById('total-price-value');
+            const totalText = totalElement.textContent;
+            const value = parseFloat(totalText.replace(/[^0-9.,]/g, '').replace(',', '.'));
+            const currency = totalText.includes('$') ? 'USD' : totalText.includes('R$') ? 'BRL' : 'EUR';
+            
+            // Disparar evento de início de checkout
+            trackFullBeginCheckout(value, currency);
+        }
+
+        // Função para lidar com o pagamento finalizado
+        function handlePaymentSubmit() {
+            // Esta função deve ser chamada quando o pagamento for confirmado
+            const totalElement = document.getElementById('total-price-value');
+            const totalText = totalElement.textContent;
+            const value = parseFloat(totalText.replace(/[^0-9.,]/g, '').replace(',', '.'));
+            const currency = totalText.includes('$') ? 'USD' : totalText.includes('R$') ? 'BRL' : 'EUR';
+            const orderId = 'ORDER_' + Date.now(); // Gerar ID único do pedido
+            
+            // Disparar evento de compra finalizada
+            trackFullPurchase(value, currency, orderId);
+        }
+
+        // Adicionar eventos para AddToCart quando um plano é selecionado
+        function trackPlanSelection(planValue, currency) {
+            trackFacebookAddToCart(planValue, currency);
+            
+            // Google Analytics - Add to Cart
+            gtag('event', 'add_to_cart', {
+                value: planValue,
+                currency: currency
+            });
+        }
+    </script>
 
     <script src="/js/translations.js"></script>
     <script src="/js/app.js"></script>
