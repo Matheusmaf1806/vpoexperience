@@ -712,7 +712,7 @@ body {
 }
 
 .destinations-grid {
-    display: grid;
+    display: grid; /* No mobile, pode manter grid ou mudar para flex, mas o foco é o desktop */
     gap: 1.5rem;
     max-width: 1024px;
     margin: 0 auto;
@@ -721,7 +721,8 @@ body {
 
 @media (min-width: 768px) {
     .destinations-grid {
-        grid-template-columns: repeat(3, 1fr);
+        /* Remove a propriedade grid-template-columns */
+        display: flex; /* Altere de 'grid' para 'flex' */
     }
 }
 
@@ -736,10 +737,11 @@ body {
     max-width: 100%;
     margin: 0 auto;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    height: 100%; /* <-- Linha adicionada/alterada */
+    /* min-height: 280px; */ /* <-- REMOVA ou comente esta linha */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    flex: 1; /* <-- ADICIONE esta linha */
 }
 
 @media (min-width: 768px) {
