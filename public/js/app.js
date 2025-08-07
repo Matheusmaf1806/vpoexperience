@@ -10,16 +10,18 @@ let currentPaymentIntentId = null;
 // Fixed pricing (in USD)
 const FIXED_PRICES = {
     1: 199,
-    2: 397, 
+    2: 397,
     3: 589,
     4: 749
 };
 
-// Currency exchange rates (approximate)
+// --- ALTERAÇÃO ---
+// As taxas de câmbio agora são usadas APENAS PARA EXIBIÇÃO no frontend.
+// A cobrança real será sempre processada em USD no backend.
 const EXCHANGE_RATES = {
     USD: 1,
-    BRL: 5.5,
-    EUR: 0.85
+    BRL: 5.5, // Taxa de exemplo para exibição
+    EUR: 0.85  // Taxa de exemplo para exibição
 };
 
 // Currency symbols
@@ -465,22 +467,24 @@ async function processPayment(cardElement, totalPriceUSD, travelDate) {
         const errorDiv = document.getElementById('card-errors');
         errorDiv.textContent = '';
         
-        // Get selected currency from form
+        // Get selected currency from form for metadata purposes
         const selectedCurrency = document.getElementById('checkout-currency').value;
-        const totalAmount = totalPriceUSD * EXCHANGE_RATES[selectedCurrency];
         
         // Get Stripe product ID
         const productId = STRIPE_PRODUCTS[currentDestination][selectedPlan.days];
         
         // Create payment intent
+        // --- ALTERAÇÃO INÍCIO ---
+        // Enviamos o valor em USD (totalPriceUSD) para o backend.
+        // O backend irá ignorar a moeda selecionada e forçar a cobrança em USD.
         const response = await fetch('/api/create-payment-intent', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                amount: totalAmount,
-                currency: selectedCurrency,
+                amount: totalPriceUSD, // Sempre envie o valor base em USD
+                currency: selectedCurrency, // Envie a moeda selecionada para metadados/exibição
                 plan: {
                     name: `Remote Guide ${currentDestination.charAt(0).toUpperCase() + currentDestination.slice(1)} - ${selectedPlan.days} Day${selectedPlan.days > 1 ? 's' : ''}`,
                     days: selectedPlan.days,
@@ -491,6 +495,7 @@ async function processPayment(cardElement, totalPriceUSD, travelDate) {
                 customer: customerData
             }),
         });
+        // --- ALTERAÇÃO FIM ---
         
         if (!response.ok) {
             const errorData = await response.json();
@@ -536,17 +541,16 @@ async function processPayment(cardElement, totalPriceUSD, travelDate) {
 
 // Handle successful payment
 function handlePaymentSuccess(paymentIntent) {
-    console.log('Payment succeeded:', paymentIntent);
+    console.log('Payment succeeded on client:', paymentIntent);
     
+    // A confirmação final (e-mail, etc.) é feita pelo webhook do servidor.
+    // Aqui, apenas notificamos o usuário.
     showSuccess('Payment successful! Thank you for your purchase. You will receive a confirmation email shortly.');
     
     // Close modal
     document.getElementById('checkout-modal').style.display = 'none';
     
-    // Reset form (optional)
-    // resetBookingForm();
-    
-    // You could redirect to a success page or show additional success UI
+    // You could redirect to a success page
     // window.location.href = '/success?payment_intent=' + paymentIntent.id;
 }
 
