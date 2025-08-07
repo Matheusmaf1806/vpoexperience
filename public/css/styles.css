@@ -736,10 +736,10 @@ body {
     max-width: 100%;
     margin: 0 auto;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    min-height: 280px; /* Fixed height for all cards */
+    height: 100%; /* <-- Linha adicionada/alterada */
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Distribute content evenly */
+    justify-content: space-between;
 }
 
 @media (min-width: 768px) {
