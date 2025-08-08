@@ -1035,6 +1035,24 @@ body {
     transform: scale(1);
 }
 
+/* Plan Notes */
+.plan-notes {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding: 0 1rem;
+}
+
+.plan-note-item {
+    font-size: 0.875rem;
+    color: var(--gray-600);
+    line-height: 1.5;
+    max-width: 600px;
+    margin: 0.5rem auto 0;
+    background-color: var(--gray-100);
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+}
+
 /* Plans Footer */
 .plans-footer {
     margin-top: 1.5rem;
