@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" id="html-root">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="obrigado.page_title">Thank You! | VPO Experience</title>
+    <title data-i18n="obrigado.page_title">Obrigado! | VPO Experience</title>
 
     <link rel="icon" type="image/png" href="https://image-xi-inky.vercel.app/public/favicon.png">
     <link rel="shortcut icon" type="image/png" href="https://image-xi-inky.vercel.app/public/favicon.png">
     <link rel="apple-touch-icon" href="https://image-xi-inky.vercel.app/public/favicon.png">
-    
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3D6H40TF99"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -41,400 +41,323 @@
            src="https://www.facebook.com/tr?id=1735200767111643&ev=PageView&noscript=1"/>
     </noscript>
     <script>
-      (function(h,o,t,j,a,r){
-          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-          h._hjSettings={hjid:6487524,hjsv:6};
-          a=o.getElementsByTagName('head')[0];
-          r=o.createElement('script');r.async=1;
-          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-          a.appendChild(r);
-      })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:6487524,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
     </script>
-
-    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/sf-pro-display">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        /* --- Global Reset & Base Styles --- */
         :root {
-            --primary-color: #9E135C; /* VPO Pink from email */
-            --success-color: #25D366; /* WhatsApp Green */
-            --text-dark: #2c3e50;
-            --text-light: #576574;
-            --bg-light: #f4f4f7;
-            --white: #ffffff;
-            --border-color: #e8e8e8;
+            --primary-color: #9E135C;
+            --whatsapp-color: #25D366;
+            --background-color: #f4f4f7;
+            --card-background: #ffffff;
+            --text-color-dark: #333333;
+            --text-color-light: #555555;
+            --border-color: #e5e7eb;
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
-        * {
+        /* --- Global Reset & Base Styles --- */
+        *, *::before, *::after {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-light);
-            color: var(--text-dark);
+            font-family: var(--font-family);
+            background-color: var(--background-color);
+            color: var(--text-color-dark);
             line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-        
+
         .container {
             width: 100%;
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* --- Header & Footer --- */
-        .header, .footer {
-            background-color: var(--white);
+        /* --- Header --- */
+        .header {
+            background-color: var(--card-background);
             padding: 15px 0;
             border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
-        .footer {
-            border-bottom: none;
-            border-top: 1px solid var(--border-color);
-            margin-top: auto;
-            text-align: center;
-            font-size: 0.9em;
-            color: var(--text-light);
-        }
+
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
+
         .logo-img {
-            height: 45px;
+            max-height: 40px;
             width: auto;
         }
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 25px;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-light);
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-        .header-actions { display: flex; align-items: center; gap: 15px; }
-        .currency-selector select, .language-selector select {
-            border: 1px solid var(--border-color);
-            padding: 5px 10px;
-            border-radius: 6px;
-            background-color: transparent;
-            font-family: inherit;
-        }
-        .mobile-menu-toggle { display: none; } /* Hidden on desktop */
         
+        /* Ocultando a navegação e seletores na página de obrigado para simplificar */
+        .header .nav, .header .header-actions, .header .mobile-menu-toggle {
+            display: none;
+        }
 
-        /* --- Main Thank You Section --- */
+        /* --- Thank You Section --- */
         .thank-you-section {
-            flex-grow: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 50px 20px;
+            padding: 60px 0;
+            min-height: calc(100vh - 71px - 75px); /* Full height minus header and footer */
         }
 
-        .thank-you-content {
-            background-color: var(--white);
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        .thank-you-card {
+            background-color: var(--card-background);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
             padding: 40px;
-            width: 100%;
-            max-width: 650px;
             text-align: center;
-            border: 1px solid var(--border-color);
-            animation: fadeIn 0.8s ease-out;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            max-width: 650px;
+            width: 100%;
+            border-top: 5px solid var(--primary-color);
         }
 
         .thank-you-icon {
-            color: var(--success-color);
+            color: var(--primary-color);
             width: 60px;
             height: 60px;
             margin-bottom: 20px;
         }
 
         .thank-you-title {
-            font-size: 2.5em;
+            font-size: 2.25rem; /* 36px */
             font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
+            color: var(--text-color-dark);
         }
 
         .thank-you-subtitle {
-            font-size: 1.1em;
-            color: var(--text-light);
+            font-size: 1.125rem; /* 18px */
+            color: var(--text-color-light);
+            max-width: 550px;
             margin: 0 auto 30px auto;
-            max-width: 500px;
-        }
-        
-        /* --- Order Summary --- */
-        .order-summary {
-            background-color: #f9f9fb;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            margin: 30px 0;
-            text-align: left;
-        }
-        .order-summary h3 {
-            font-size: 1.4em;
-            margin-bottom: 20px;
-            text-align: center;
-            color: var(--text-dark);
-            font-weight: 600;
-        }
-        .summary-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 0;
-            font-size: 1em;
-            border-bottom: 1px solid var(--border-color);
-        }
-        .summary-item:last-child {
-            border-bottom: none;
-        }
-        .summary-label {
-            font-weight: 600;
-            color: var(--text-light);
-        }
-        .summary-value {
-            font-weight: 500;
-            color: var(--text-dark);
         }
 
+        /* --- Action Box (WhatsApp) --- */
+        .action-box {
+            background-color: #f9fafb;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .action-box-title {
+            font-size: 1.25rem; /* 20px */
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background-color: var(--whatsapp-color);
+            color: white;
+            font-size: 1.1rem; /* 17.6px */
+            font-weight: 600;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp .lucide {
+            width: 22px;
+            height: 22px;
+        }
+        
         /* --- Next Steps --- */
         .next-steps {
             text-align: left;
-            margin-top: 30px;
-            margin-bottom: 40px;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
         }
-        .next-steps h3 {
-            font-size: 1.4em;
+
+        .next-steps-title {
+            font-size: 1.5rem; /* 24px */
+            font-weight: 600;
             margin-bottom: 20px;
             text-align: center;
-            font-weight: 600;
-        }
-        .next-steps ul {
-            list-style: none;
-            padding: 0;
-        }
-        .next-steps li {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-size: 1.1em;
-            margin-bottom: 15px;
-        }
-        .benefit-icon {
-            color: var(--primary-color);
-            width: 24px;
-            height: 24px;
-            flex-shrink: 0;
         }
         
-        /* --- Buttons --- */
-        .actions {
+        .steps-list {
+            list-style: none;
+            padding: 0;
             display: flex;
             flex-direction: column;
-            align-items: center;
             gap: 15px;
-            margin-top: 20px;
+        }
+        
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            font-size: 1rem;
+            color: var(--text-color-light);
         }
 
-        .btn {
-            display: inline-block;
-            padding: 15px 30px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1em;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            width: 100%;
-            max-width: 400px;
+        .step-item .lucide {
+            flex-shrink: 0;
+            color: var(--primary-color);
+            width: 22px;
+            height: 22px;
+            margin-top: 2px;
         }
 
-        .btn-primary {
-            background-color: var(--success-color);
-            color: var(--white);
+        /* --- Footer --- */
+        .footer {
+            background-color: #e9ecef;
+            text-align: center;
+            padding: 25px 0;
+            font-size: 0.875rem; /* 14px */
+            color: #6c757d;
         }
-        .btn-primary:hover {
-            background-color: #20b058;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.3);
-        }
-
-        .btn-secondary {
-            color: var(--text-light);
-            background-color: transparent;
-            border-color: var(--border-color);
-        }
-        .btn-secondary:hover {
-            background-color: var(--bg-light);
-            border-color: #ccc;
-            color: var(--text-dark);
-        }
-
-        /* --- Responsive --- */
+        
+        /* --- Responsive Design --- */
         @media (max-width: 768px) {
-            .nav, .header-actions { display: none; } /* Hide for simplicity on mobile, adapt if needed */
-            .mobile-menu-toggle { display: block; font-size: 24px; cursor: pointer; }
-            .thank-you-title { font-size: 2em; }
-            .thank-you-content { padding: 30px 20px; }
-            .btn { font-size: 1em; padding: 12px 25px; }
+            .thank-you-section {
+                padding: 40px 0;
+            }
+            .thank-you-card {
+                padding: 30px 25px;
+            }
+            .thank-you-title {
+                font-size: 1.8rem;
+            }
+            .thank-you-subtitle {
+                font-size: 1rem;
+            }
+            .btn-whatsapp {
+                padding: 12px 20px;
+                font-size: 1rem;
+                width: 100%;
+            }
         }
-
     </style>
 </head>
 <body>
+
     <header class="header">
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <a href="/index.html">
+                    <a href="index.html" aria-label="Voltar para a página inicial">
                         <img class="logo-img" src="https://qiblwjpijwhtlmylrlxl.supabase.co/storage/v1/object/public/logos/VPO%20Experience_1751920922845_giv-vpo-mail.gif" alt="Logo VPO Experience">
                     </a>
                 </div>
-                <nav class="nav">
-                    <ul class="nav-links">
-                        <li><a href="index.html#services" data-i18n="nav.services">Services</a></li>
-                        <li><a href="index.html#plans" data-i18n="nav.plans">Plans</a></li>
-                        <li><a href="index.html#testimonials" data-i18n="nav.testimonials">Testimonials</a></li>
-                        <li><a href="index.html#faq" data-i18n="nav.faq">FAQ</a></li>
-                    </ul>
-                </nav>
-                <div class="header-actions">
-                    <div class="currency-selector">
-                        <select id="currency-select">
-                            <option value="USD">USD ($)</option>
-                            <option value="BRL">BRL (R$)</option>
-                            <option value="EUR">EUR (€)</option>
-                        </select>
-                    </div>
-                    <div class="language-selector">
-                        <select id="language-select">
-                            <option value="en">🇺🇸 English</option>
-                            <option value="pt">🇧🇷 Português</option>
-                            <option value="es">🇪🇸 Español</option>
-                            <option value="fr">🇫🇷 Français</option>
-                            <option value="nl">🇳🇱 Nederlands</option>
-                        </select>
-                    </div>
                 </div>
-                <div class="mobile-menu-toggle">
-                    <i data-lucide="menu"></i> </div>
-            </div>
         </div>
     </header>
 
     <main class="thank-you-section">
-        <div class="thank-you-content">
-            <i data-lucide="check-circle" class="thank-you-icon"></i>
-            <h1 class="thank-you-title" data-i18n="obrigado.title">Thank You!</h1>
-            <p class="thank-you-subtitle" data-i18n="obrigado.subtitle">
-                Your order is confirmed! Our team will contact you within 24 hours via WhatsApp to start planning your magical trip.
-            </p>
+        <div class="container">
+            <div class="thank-you-card">
+                <i data-lucide="party-popper" class="thank-you-icon"></i>
+                <h1 class="thank-you-title" data-i18n="obrigado.title">Sua reserva está confirmada!</h1>
+                <p class="thank-you-subtitle" data-i18n="obrigado.subtitle">
+                    Estamos muito felizes em fazer parte da sua aventura! Para começar a planejar sua experiência mágica, o próximo passo é com você.
+                </p>
 
-            <div class="order-summary">
-                <h3 data-i18n="obrigado.summary.title">Order Summary</h3>
-                <div class="summary-item">
-                    <span class="summary-label" data-i18n="obrigado.summary.order_id">Order ID:</span>
-                    <span class="summary-value">#{{payment_intent_id}}</span>
+                <div class="action-box">
+                    <h2 class="action-box-title" data-i18n="obrigado.action_title">
+                        <i data-lucide="sparkles"></i>
+                        Ação Necessária: Inicie seu Atendimento
+                    </h2>
+                    <p data-i18n="obrigado.action_text" style="margin-bottom: 20px; color: var(--text-color-light);">
+                        Clique no botão abaixo para nos chamar no WhatsApp e dar início à criação do seu roteiro personalizado.
+                    </p>
+                    <a href="https://wa.me/13213189563?text=Ol%C3%A1%2C%20VPO!%20Meu%20pedido%20%C3%A9%20o%20%23{{payment_intent_id}}.%20Vamos%20come%C3%A7ar%3F" target="_blank" class="btn-whatsapp">
+                        <i data-lucide="send-horizontal"></i>
+                        <span data-i18n="obrigado.cta_whatsapp">Começar no WhatsApp</span>
+                    </a>
                 </div>
-                <div class="summary-item">
-                    <span class="summary-label" data-i18n="obrigado.summary.service">Service:</span>
-                    <span class="summary-value">{{plan_name}}</span>
-                </div>
-                 <div class="summary-item">
-                    <span class="summary-label" data-i18n="obrigado.summary.passengers">Passengers:</span>
-                    <span class="summary-value">{{passengers}}</span>
-                </div>
-                <div class="summary-item">
-                    <span class="summary-label" data-i18n="obrigado.summary.total">Total Paid:</span>
-                    <span class="summary-value">{{total_amount}}</span>
-                </div>
-            </div>
 
-            <div class="next-steps">
-                <h3 data-i18n="obrigado.next_steps.title">Your Next Steps for a Magical Trip</h3>
-                <ul>
-                    <li><i data-lucide="check" class="benefit-icon"></i> <span data-i18n="obrigado.next_steps.step1">Save our number: <strong>+1 (321) 318-9563</strong>.</span></li>
-                    <li><i data-lucide="check" class="benefit-icon"></i> <span data-i18n="obrigado.next_steps.step2">Click the button below to start the setup on WhatsApp.</span></li>
-                    <li><i data-lucide="check" class="benefit-icon"></i> <span data-i18n="obrigado.next_steps.step3">Get ready for an unforgettable experience!</span></li>
-                </ul>
-            </div>
-            
-            <div class="actions">
-                <a href="https://wa.me/13213189563?text=Hi%2C%20VPO.%20My%20order%20is%20%23{{payment_intent_id}}.%20Let's%20start%20the%20setup%3F" class="btn btn-primary" data-i18n="obrigado.cta_whatsapp" target="_blank">
-                    <i data-lucide="send" style="width:18px; height:18px; vertical-align: middle; margin-right: 8px;"></i>
-                    Start Setup on WhatsApp
-                </a>
-                <a href="/index.html" class="btn btn-secondary" data-i18n="obrigado.cta_home">Back to Homepage</a>
+                <div class="next-steps">
+                    <h3 class="next-steps-title" data-i18n="obrigado.next_steps.title">O que acontece agora?</h3>
+                    <ul class="steps-list">
+                        <li class="step-item">
+                            <i data-lucide="mouse-pointer-click"></i> 
+                            <span data-i18n="obrigado.next_steps.step1"><strong>Passo 1:</strong> Clique no botão acima e envie a mensagem automática para o nosso time de especialistas.</span>
+                        </li>
+                        <li class="step-item">
+                            <i data-lucide="message-circle-reply"></i>
+                            <span data-i18n="obrigado.next_steps.step2"><strong>Passo 2:</strong> Nossa equipe irá confirmar seus dados e iniciar o planejamento do seu roteiro dos sonhos.</span>
+                        </li>
+                        <li class="step-item">
+                            <i data-lucide="rocket"></i>
+                            <span data-i18n="obrigado.next_steps.step3"><strong>Passo 3:</strong> Prepare-se para uma experiência inesquecível nos parques, com todo o suporte da VPO!</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </main>
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 VPO Experience. Powered by Airland.</p>
+            <p>© 2025 VPO Experience. Powered by Airland.</p>
         </div>
     </footer>
 
     <script>
-        // Renders Lucide Icons
-        lucide.createIcons();
-
-        // Placeholder for dynamic data (replace with actual data from server/storage)
-        const orderDetails = {
-            payment_intent_id: new URLSearchParams(window.location.search).get('payment_intent') || 'VP-123456789',
-            plan_name: 'Orlando Guidance - 5 Days',
-            passengers: 4,
-            total_amount: 'USD 99.00'
-        };
-        
-        // Populate summary (example)
-        document.querySelector('.summary-value:nth-of-type(1)').textContent = orderDetails.payment_intent_id;
-        document.querySelector('.summary-value:nth-of-type(2)').textContent = orderDetails.plan_name;
-        document.querySelector('.summary-value:nth-of-type(3)').textContent = orderDetails.passengers;
-        document.querySelector('.summary-value:nth-of-type(4)').textContent = orderDetails.total_amount;
-        
-        // Update WhatsApp link with real order ID
-        const whatsappLink = document.querySelector('.btn-primary');
-        whatsappLink.href = `https://wa.me/13213189563?text=Hi%2C%20VPO.%20My%20order%20is%20%23${orderDetails.payment_intent_id}.%20Let's%20start%20the%20setup%3F`;
-
-
-        // PURCHASE TRACKING LOGIC
         document.addEventListener('DOMContentLoaded', function() {
+            // Placeholder para os detalhes da compra, que viriam do servidor
             const purchaseDetails = {
-                transaction_id: orderDetails.payment_intent_id,
-                value: 99.00, // Example value, should be dynamic
-                currency: 'USD', // Example currency
+                transaction_id: `VPO-${Date.now()}`,
+                value: 50.00,
+                currency: 'USD',
                 items: [{
-                    item_id: 'VPO-ORL-5DAY', // Example item
-                    item_name: orderDetails.plan_name,
-                    price: 99.00,
+                    item_id: 'VPO-ORL-1DAY',
+                    item_name: '1-Day Orlando Guidance',
+                    price: 50.00,
                     quantity: 1
                 }]
             };
 
-            // Facebook Pixel Purchase Event
+            // Facebook Pixel
             if (typeof fbq === 'function') {
                 fbq('track', 'Purchase', {
                     value: purchaseDetails.value,
@@ -442,9 +365,8 @@
                 });
             }
 
-            // Google Ads & GA4 Purchase Events
+            // Google Ads & Analytics
             if (typeof gtag === 'function') {
-                // Google Ads
                 gtag('event', 'purchase', {
                     'send_to': 'AW-17439659867',
                     'conversion_id': '17439659867',
@@ -453,7 +375,7 @@
                     'currency': purchaseDetails.currency,
                     'transaction_id': purchaseDetails.transaction_id
                 });
-                // Google Analytics 4
+                
                 gtag('event', 'purchase', {
                     'transaction_id': purchaseDetails.transaction_id,
                     'value': purchaseDetails.value,
@@ -464,5 +386,12 @@
         });
     </script>
     
-    </body>
+    <script>
+      lucide.createIcons();
+    </script>
+
+    <script src="/js/translations.js"></script>
+    <script src="/js/app.js"></script>
+
+</body>
 </html>
