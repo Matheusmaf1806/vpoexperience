@@ -201,11 +201,18 @@ app.get('/api/health', (req, res) => {
     });
 });
 
+// Rota para a página inicial
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+// Rota para /thanks (URL limpa)
 app.get('/thanks', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'thanks.html'));
+});
+
+// Rota para /thanks.html (URL direta)
+app.get('/thanks.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'thanks.html'));
 });
 
