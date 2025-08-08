@@ -8,6 +8,13 @@
   ],
   "routes": [
     {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/thanks",
+      "dest": "/public/thanks.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "server.js"
     }
