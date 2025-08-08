@@ -76,7 +76,7 @@ async function sendConfirmationEmail(paymentIntent) {
                 { email: 'matriz@airland.com.br', name: 'Matriz Airland' }
             ],
             from: {
-                email: 'noreply@vpoexperience.com', // IMPORTANTE: Deve ser um e-mail/domínio verificado no SendGrid
+                email: 'noreply@airland.com.br', // IMPORTANTE: Deve ser um e-mail/domínio verificado no SendGrid
                 name: 'VPO Experience'
             },
             templateId: templateId, // ID do seu template no SendGrid
