@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" id="html-root">
+<html lang="pt-BR" id="html-root">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="obrigado.page_title">Thank You! | VPO Experience</title>
+    <title data-i18n="obrigado.page_title">Obrigado! | VPO Experience</title>
 
     <link rel="icon" type="image/png" href="https://image-xi-inky.vercel.app/public/favicon.png">
     <link rel="shortcut icon" type="image/png" href="https://image-xi-inky.vercel.app/public/favicon.png">
     <link rel="apple-touch-icon" href="https://image-xi-inky.vercel.app/public/favicon.png">
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3D6H40TF99"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -54,23 +59,246 @@
         })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
     </script>
 
-    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/sf-pro-display">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        /* --- Variáveis e Estilos Globais --- */
+        :root {
+            --primary-color: #007bff;
+            --success-color: #28a745;
+            --text-color: #333;
+            --text-light: #6c757d;
+            --background-color: #f8f9fa;
+            --card-background: #ffffff;
+            --border-color: #dee2e6;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+
+        ul {
+            list-style: none;
+        }
+        
+        /* --- Header --- */
+        .header {
+            background-color: var(--card-background);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-img {
+            max-height: 40px;
+            width: auto;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .nav-links a {
+            font-weight: 600;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .header-actions select {
+            border: 1px solid var(--border-color);
+            padding: 0.3rem 0.5rem;
+            border-radius: 6px;
+            background-color: #fff;
+            font-family: 'Poppins', sans-serif;
+        }
+        .mobile-menu-toggle {
+            display: none; /* Oculto em desktop */
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* --- Seção de Agradecimento --- */
+        .thank-you-section {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 1rem;
+        }
+
+        .thank-you-content {
+            background: var(--card-background);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .thank-you-icon {
+            color: var(--success-color);
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1.5rem;
+        }
+
+        .thank-you-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .thank-you-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+        }
+        
+        .next-steps {
+            background-color: var(--background-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2.5rem;
+            text-align: left;
+        }
+        .next-steps h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        .next-steps ul {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .next-steps li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-light);
+        }
+        .benefit-icon {
+            color: var(--success-color);
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: #e9ecef;
+            padding: 1.5rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* --- Responsividade --- */
+        @media (max-width: 768px) {
+            .nav, .header-actions {
+                display: none; /* Esconde menu e ações em mobile */
+            }
+            .mobile-menu-toggle {
+                display: block; /* Mostra o ícone do menu hambúrguer */
+            }
+            .thank-you-content {
+                padding: 2rem;
+            }
+            .thank-you-title {
+                font-size: 2rem;
+            }
+            .thank-you-subtitle {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="header">
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <img class="logo-img" src="https://qiblwjpijwhtlmylrlxl.supabase.co/storage/v1/object/public/logos/VPO%20Experience_1751920922845_giv-vpo-mail.gif" alt="Logo Airland">
+                    <a href="/index.html">
+                        <img class="logo-img" src="https://qiblwjpijwhtlmylrlxl.supabase.co/storage/v1/object/public/logos/VPO%20Experience_1751920922845_giv-vpo-mail.gif" alt="Logo VPO Experience">
+                    </a>
                 </div>
                 <nav class="nav">
                     <ul class="nav-links">
-                        <li><a href="index.html#services" data-i18n="nav.services">Services</a></li>
-                        <li><a href="index.html#plans" data-i18n="nav.plans">Plans</a></li>
-                        <li><a href="index.html#testimonials" data-i18n="nav.testimonials">Testimonials</a></li>
+                        <li><a href="index.html#services" data-i18n="nav.services">Serviços</a></li>
+                        <li><a href="index.html#plans" data-i18n="nav.plans">Planos</a></li>
+                        <li><a href="index.html#testimonials" data-i18n="nav.testimonials">Depoimentos</a></li>
                         <li><a href="index.html#faq" data-i18n="nav.faq">FAQ</a></li>
                     </ul>
                 </nav>
@@ -84,8 +312,8 @@
                     </div>
                     <div class="language-selector">
                         <select id="language-select">
-                            <option value="en">🇺🇸 English</option>
                             <option value="pt">🇧🇷 Português</option>
+                            <option value="en">🇺🇸 English</option>
                             <option value="es">🇪🇸 Español</option>
                             <option value="fr">🇫🇷 Français</option>
                             <option value="nl">🇳🇱 Nederlands</option>
@@ -93,54 +321,52 @@
                     </div>
                 </div>
                 <div class="mobile-menu-toggle">
-                    <i class="fas fa-bars"></i>
+                    <i data-lucide="menu"></i>
                 </div>
             </div>
         </div>
     </header>
 
-    <section class="thank-you-section">
-        <div class="container">
-            <div class="thank-you-content">
-                <i data-lucide="check-circle" class="thank-you-icon"></i>
-                <h1 class="thank-you-title" data-i18n="obrigado.title">Thank You for Your Purchase!</h1>
-                <p class="thank-you-subtitle" data-i18n="obrigado.subtitle">
-                    Your order has been confirmed. Our team will contact you within 24 hours via WhatsApp to begin planning your magical trip.
-                </p>
-                
-                <div class="next-steps">
-                    <h3 data-i18n="obrigado.next_steps.title">What Happens Next?</h3>
-                    <ul>
-                        <li><i data-lucide="check" class="benefit-icon"></i> <span data-i18n="obrigado.next_steps.step1">Expect a WhatsApp message from our team.</span></li>
-                        <li><i data-lucide="check" class="benefit-icon"></i> <span data-i18n="obrigado.next_steps.step2">We'll create your personalized park itinerary.</span></li>
-                        <li><i data-lucide="check" class="benefit-icon"></i> <span data-i18n="obrigado.next_steps.step3">Get ready for an unforgettable experience!</span></li>
-                    </ul>
-                </div>
-
-                <a href="/index.html" class="btn btn-primary" data-i18n="obrigado.cta">Back to Homepage</a>
+    <main class="thank-you-section">
+        <div class="thank-you-content">
+            <i data-lucide="check-circle" class="thank-you-icon"></i>
+            <h1 class="thank-you-title" data-i18n="obrigado.title">Compra Confirmada!</h1>
+            <p class="thank-you-subtitle" data-i18n="obrigado.subtitle">
+                Seu pedido foi recebido com sucesso. Nossa equipe entrará em contato via WhatsApp em até 24 horas para começar o planejamento da sua viagem mágica.
+            </p>
+            
+            <div class="next-steps">
+                <h3 data-i18n="obrigado.next_steps.title">Quais são os próximos passos?</h3>
+                <ul>
+                    <li><i data-lucide="check" class="benefit-icon"></i> <span data-i18n="obrigado.next_steps.step1">Aguarde uma mensagem da nossa equipe no WhatsApp.</span></li>
+                    <li><i data-lucide="check" class="benefit-icon"></i> <span data-i18n="obrigado.next_steps.step2">Criaremos seu roteiro personalizado para os parques.</span></li>
+                    <li><i data-lucide="check" class="benefit-icon"></i> <span data-i18n="obrigado.next_steps.step3">Prepare-se para uma experiência inesquecível!</span></li>
+                </ul>
             </div>
+
+            <a href="/index.html" class="btn btn-primary" data-i18n="obrigado.cta">Voltar para a Página Inicial</a>
         </div>
-    </section>
+    </main>
 
     <footer class="footer">
         <div class="container">
             <div class="footer-bottom">
-                <p>© 2025 VPO Experience. Powered by Airland.</p>
+                <p>&copy; 2025 VPO Experience. Powered by Airland.</p>
             </div>
         </div>
     </footer>
-
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // NOTE: In a real application, the transaction details (value, currency, transaction_id)
-            // would be passed from the server or retrieved from localStorage/sessionStorage
-            // after a successful payment. Here, we use placeholder values.
+            // NOTE: Em uma aplicação real, os detalhes da transação (valor, moeda, transaction_id)
+            // seriam passados pelo servidor ou recuperados do localStorage/sessionStorage
+            // após um pagamento bem-sucedido. Aqui, usamos valores de exemplo.
             const purchaseDetails = {
                 transaction_id: `VPO-${Date.now()}`,
-                value: 50.00, // Example value
+                value: 50.00, // Valor de exemplo
                 currency: 'USD',
                 items: [{
-                    item_id: 'VPO-ORL-1DAY', // Example item
+                    item_id: 'VPO-ORL-1DAY', // Item de exemplo
                     item_name: '1-Day Orlando Guidance',
                     price: 50.00,
                     quantity: 1
@@ -148,31 +374,38 @@
             };
 
             // Facebook Pixel Purchase Event
-            fbq('track', 'Purchase', {
-                value: purchaseDetails.value,
-                currency: purchaseDetails.currency
-            });
+            if (typeof fbq === 'function') {
+                fbq('track', 'Purchase', {
+                    value: purchaseDetails.value,
+                    currency: purchaseDetails.currency
+                });
+            }
 
-            // Google Ads Purchase Conversion
-            gtag('event', 'purchase', {
-                'send_to': 'AW-17439659867',
-                'conversion_id': '17439659867',
-                'conversion_label': 'KuihCL-roIAbENuu8PtA',
-                'value': purchaseDetails.value,
-                'currency': purchaseDetails.currency,
-                'transaction_id': purchaseDetails.transaction_id
-            });
-            
-            // Google Analytics 4 Purchase Event
-            gtag('event', 'purchase', {
-                'transaction_id': purchaseDetails.transaction_id,
-                'value': purchaseDetails.value,
-                'currency': purchaseDetails.currency,
-                'items': purchaseDetails.items
-            });
+            // Google Ads & Analytics Purchase Conversion
+            if (typeof gtag === 'function') {
+                // Google Ads
+                gtag('event', 'purchase', {
+                    'send_to': 'AW-17439659867',
+                    'value': purchaseDetails.value,
+                    'currency': purchaseDetails.currency,
+                    'transaction_id': purchaseDetails.transaction_id
+                });
+                
+                // Google Analytics 4
+                gtag('event', 'purchase', {
+                    'transaction_id': purchaseDetails.transaction_id,
+                    'value': purchaseDetails.value,
+                    'currency': purchaseDetails.currency,
+                    'items': purchaseDetails.items
+                });
+            }
         });
     </script>
     
+    <script>
+        lucide.createIcons();
+    </script>
+
     <script src="/js/translations.js"></script>
     <script src="/js/app.js"></script>
 
