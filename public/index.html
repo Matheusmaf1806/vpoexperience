@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="title">Remote Guidance Service at Orlando Parks</title>
-
     <link rel="icon" type="image/png" href="https://image-xi-inky.vercel.app/public/favicon.png">
     <link rel="shortcut icon" type="image/png" href="https://image-xi-inky.vercel.app/public/favicon.png">
     <link rel="apple-touch-icon" href="https://image-xi-inky.vercel.app/public/favicon.png">
@@ -16,7 +15,6 @@
       gtag('js', new Date());
       gtag('config', 'G-3D6H40TF99');
     </script>
-
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17439659867"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -25,7 +23,6 @@
       gtag('config', 'AW-17439659867');
       gtag('config', 'GT-5NTJHP9K');
     </script>
-
     <script>
       !function(f,b,e,v,n,t,s)
       {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -42,7 +39,6 @@
       <img height="1" width="1" style="display:none"
            src="https://www.facebook.com/tr?id=1735200767111643&ev=PageView&noscript=1"/>
     </noscript>
-
     <script>
         (function(h,o,t,j,a,r){
             h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
@@ -53,7 +49,6 @@
             a.appendChild(r);
         })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
     </script>
-
     <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/sf-pro-display">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -99,7 +94,6 @@
             </div>
         </div>
     </header>
-
     <section class="hero-section">
         <div class="hero-background-pattern"></div>
         <div class="container">
@@ -148,7 +142,6 @@
             </div>
         </div>
     </section>
-
     <section id="services" class="services-section">
         <div class="container">
             <div class="section-header">
@@ -213,7 +206,6 @@
             </div>
         </div>
     </section>
-
     <section id="benefits" class="benefits-section">
         <div class="container">
             <div class="benefits-container">
@@ -270,7 +262,6 @@
             </div>
         </div>
     </section>
-
     <section id="plans" class="destination-section">
         <div class="container">
             <div class="section-header">
@@ -308,7 +299,7 @@
                     <div class="destination-cta" data-i18n="destinations.cta">Tap to see plans</div>
                 </div>
             </div>
-            <div id="plans-display-container" class="plans-display-container" style="display: none;">
+            <div id="plans-display-container" class="plans-display-container">
                 <div class="plans-display-header">
                     <h2><span data-i18n="plans.header1">Guidance Plans for</span> <span id="destination-name"></span></h2>
                 </div>
@@ -366,7 +357,6 @@
             </div>
         </div>
     </section>
-
     <section id="testimonials" class="testimonials-section">
         <div class="container">
             <div class="section-header">
@@ -472,7 +462,6 @@
             </div>
         </div>
     </section>
-
     <section id="faq" class="faq-section">
         <div class="container">
             <div class="section-header">
@@ -561,7 +550,6 @@
             </div>
         </div>
     </section>
-
     <footer class="footer">
         <div class="container">
             <div class="footer-bottom">
@@ -569,7 +557,6 @@
             </div>
         </div>
     </footer>
-
     <div id="checkout-modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -659,7 +646,6 @@
             </div>
         </div>
     </div>
-
     <script>
         // Track PageView event
         gtag('event', 'page_view', {
@@ -667,7 +653,6 @@
             'conversion_id': '17439659867',
             'conversion_label': 'aghiCMuooIAbENuu8PtA'
         });
-
         // Track Initiate Checkout
         function trackInitiateCheckout() {
             // Google Ads
@@ -686,7 +671,6 @@
                 'value': getCurrentTotalPrice()
             });
         }
-
         // Track Purchase
         function trackPurchase() {
             const totalPrice = getCurrentTotalPrice();
@@ -713,7 +697,6 @@
                 'currency': 'USD'
             });
         }
-
         // Helper function to get current total price
         function getCurrentTotalPrice() {
             const totalElement = document.getElementById('total-price-value');
@@ -723,12 +706,10 @@
             }
             return 0;
         }
-
         // Track Lead events for Facebook
         function trackLead() {
             fbq('track', 'Lead');
         }
-
         // Track ViewContent for product views
         function trackViewContent(contentName, contentCategory) {
             fbq('track', 'ViewContent', {
@@ -737,9 +718,15 @@
             });
         }
     </script>
-
     <script src="/js/tracking.js"></script>
     <script src="/js/translations.js"></script>
     <script src="/js/app.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Chama a função para mostrar os planos de Orlando assim que a página carregar
+            showPlans('orlando');
+        });
+    </script>
 </body>
 </html>
