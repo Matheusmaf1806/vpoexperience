@@ -8,8 +8,8 @@
   ],
   "routes": [
     {
-      "src": "/obrigado",
-      "dest": "/public/obrigado.html"
+      "src": "/thanks",
+      "dest": "/public/thanks.html"
     },
     {
       "src": "/(.*)",
