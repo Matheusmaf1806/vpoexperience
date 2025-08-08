@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" id="html-root">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="https://image-xi-inky.vercel.app/public/favicon.png">
     <link rel="shortcut icon" type="image/png" href="https://image-xi-inky.vercel.app/public/favicon.png">
     <link rel="apple-touch-icon" href="https://image-xi-inky.vercel.app/public/favicon.png">
-
+    
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3D6H40TF99"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -50,39 +50,33 @@
             a.appendChild(r);
         })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
     </script>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/sf-pro-display">
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
         :root {
             --primary-color: #9E135C;
-            --whatsapp-color: #25D366;
+            --secondary-color: #25D366; /* WhatsApp Green */
             --background-color: #f4f4f7;
             --card-background: #ffffff;
-            --text-color-dark: #333333;
-            --text-color-light: #555555;
-            --border-color: #e5e7eb;
-            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --text-primary: #1d1d1f;
+            --text-secondary: #555555;
+            --border-color: #e5e5e5;
+            --sf-pro: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
-        /* --- Global Reset & Base Styles --- */
-        *, *::before, *::after {
-            box-sizing: border-box;
+        /* --- Reset e Estilos Globais --- */
+        * {
             margin: 0;
             padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: var(--font-family);
+            font-family: var(--sf-pro);
             background-color: var(--background-color);
-            color: var(--text-color-dark);
+            color: var(--text-primary);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -92,177 +86,206 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 1rem;
         }
-
-        /* --- Header --- */
+        
+        /* --- Header (Estilos mantidos para consistência) --- */
         .header {
             background-color: var(--card-background);
-            padding: 15px 0;
             border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 1000;
         }
-
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
+        .logo-img { max-height: 40px; }
+        .nav-links { list-style: none; display: flex; gap: 1.5rem; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--primary-color); }
+        .header-actions { display: flex; align-items: center; gap: 1rem; }
+        .currency-selector select, .language-selector select { border: 1px solid var(--border-color); border-radius: 6px; padding: 0.5rem; font-family: var(--sf-pro); }
+        .mobile-menu-toggle { display: none; cursor: pointer; }
 
-        .logo-img {
-            max-height: 40px;
-            width: auto;
-        }
-        
-        /* Ocultando a navegação e seletores na página de obrigado para simplificar */
-        .header .nav, .header .header-actions, .header .mobile-menu-toggle {
-            display: none;
-        }
-
-        /* --- Thank You Section --- */
+        /* --- Seção de Agradecimento Redesenhada --- */
         .thank-you-section {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 60px 0;
-            min-height: calc(100vh - 71px - 75px); /* Full height minus header and footer */
+            min-height: calc(100vh - 160px); /* Subtrai altura do header e footer */
+            padding: 4rem 1rem;
         }
 
         .thank-you-card {
             background-color: var(--card-background);
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-            padding: 40px;
-            text-align: center;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
             max-width: 650px;
             width: 100%;
+            padding: 2.5rem;
+            text-align: center;
             border-top: 5px solid var(--primary-color);
         }
 
         .thank-you-icon {
             color: var(--primary-color);
-            width: 60px;
-            height: 60px;
-            margin-bottom: 20px;
+            width: 64px;
+            height: 64px;
+            margin-bottom: 1.5rem;
         }
 
         .thank-you-title {
-            font-size: 2.25rem; /* 36px */
+            font-size: 2.25rem;
             font-weight: 700;
-            margin-bottom: 12px;
-            color: var(--text-color-dark);
+            margin-bottom: 0.5rem;
         }
 
         .thank-you-subtitle {
-            font-size: 1.125rem; /* 18px */
-            color: var(--text-color-light);
-            max-width: 550px;
-            margin: 0 auto 30px auto;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto 2rem;
         }
 
-        /* --- Action Box (WhatsApp) --- */
-        .action-box {
-            background-color: #f9fafb;
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 25px;
-            margin: 30px 0;
+        /* --- Bloco de Ação Necessária --- */
+        .action-required-box {
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2.5rem;
+            text-align: left;
         }
 
-        .action-box-title {
-            font-size: 1.25rem; /* 20px */
+        .action-required-box h3 {
+            font-size: 1.5rem;
             font-weight: 600;
-            color: var(--primary-color);
-            margin-bottom: 15px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .btn-whatsapp {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            background-color: var(--whatsapp-color);
-            color: white;
-            font-size: 1.1rem; /* 17.6px */
-            font-weight: 600;
-            padding: 15px 30px;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);
-        }
-
-        .btn-whatsapp:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
-        }
-
-        .btn-whatsapp .lucide {
-            width: 22px;
-            height: 22px;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
         }
         
-        /* --- Next Steps --- */
-        .next-steps {
-            text-align: left;
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 1px solid var(--border-color);
+        .action-required-box h3 .icon {
+            color: var(--primary-color);
         }
 
-        .next-steps-title {
-            font-size: 1.5rem; /* 24px */
-            font-weight: 600;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        
         .steps-list {
             list-style: none;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+            padding-left: 0;
         }
-        
+
         .step-item {
             display: flex;
             align-items: flex-start;
-            gap: 15px;
+            gap: 1rem;
             font-size: 1rem;
-            color: var(--text-color-light);
+            color: var(--text-secondary);
+        }
+        
+        .step-item:not(:last-child) {
+            margin-bottom: 1.5rem;
         }
 
-        .step-item .lucide {
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 700;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             flex-shrink: 0;
+        }
+
+        .step-content strong {
+            display: block;
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .whatsapp-number {
+            font-family: monospace;
+            font-size: 1.1rem;
+            background-color: var(--background-color);
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+
+        /* --- Botões e Links --- */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-whatsapp {
+            background-color: var(--secondary-color);
+            color: white;
+            width: 100%;
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+        
+        .back-home-link {
+            display: block;
+            margin-top: 1.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-home-link:hover {
+            text-decoration: underline;
             color: var(--primary-color);
-            width: 22px;
-            height: 22px;
-            margin-top: 2px;
         }
 
         /* --- Footer --- */
         .footer {
-            background-color: #e9ecef;
+            background-color: var(--card-background);
+            border-top: 1px solid var(--border-color);
+            padding: 1.5rem 0;
             text-align: center;
-            padding: 25px 0;
-            font-size: 0.875rem; /* 14px */
-            color: #6c757d;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
         }
-        
-        /* --- Responsive Design --- */
+
+        /* --- Responsividade --- */
         @media (max-width: 768px) {
+            .nav, .header-actions {
+                display: none; /* Simplificando o header, já que o menu mobile não está implementado */
+            }
+            .mobile-menu-toggle {
+                display: block; /* Apenas para manter a estrutura original */
+            }
             .thank-you-section {
-                padding: 40px 0;
+                padding: 2rem 1rem;
+                min-height: calc(100vh - 120px);
             }
             .thank-you-card {
-                padding: 30px 25px;
+                padding: 2rem 1.5rem;
             }
             .thank-you-title {
                 font-size: 1.8rem;
@@ -270,69 +293,99 @@
             .thank-you-subtitle {
                 font-size: 1rem;
             }
-            .btn-whatsapp {
-                padding: 12px 20px;
-                font-size: 1rem;
-                width: 100%;
+            .action-required-box h3 {
+                font-size: 1.25rem;
             }
         }
     </style>
 </head>
-<body>
 
+<body>
     <header class="header">
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <a href="index.html" aria-label="Voltar para a página inicial">
+                    <a href="/index.html">
                         <img class="logo-img" src="https://qiblwjpijwhtlmylrlxl.supabase.co/storage/v1/object/public/logos/VPO%20Experience_1751920922845_giv-vpo-mail.gif" alt="Logo VPO Experience">
                     </a>
                 </div>
+                <nav class="nav">
+                    <ul class="nav-links">
+                        <li><a href="index.html#services" data-i18n="nav.services">Serviços</a></li>
+                        <li><a href="index.html#plans" data-i18n="nav.plans">Planos</a></li>
+                        <li><a href="index.html#testimonials" data-i18n="nav.testimonials">Depoimentos</a></li>
+                        <li><a href="index.html#faq" data-i18n="nav.faq">FAQ</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <div class="currency-selector">
+                        <select id="currency-select">
+                            <option value="USD">USD ($)</option>
+                            <option value="BRL">BRL (R$)</option>
+                            <option value="EUR">EUR (€)</option>
+                        </select>
+                    </div>
+                    <div class="language-selector">
+                        <select id="language-select">
+                            <option value="pt">🇧🇷 Português</option>
+                            <option value="en">🇺🇸 English</option>
+                            <option value="es">🇪🇸 Español</option>
+                            <option value="fr">🇫🇷 Français</option>
+                            <option value="nl">🇳🇱 Nederlands</option>
+                        </select>
+                    </div>
                 </div>
+                <div class="mobile-menu-toggle">
+                    <i data-lucide="menu"></i>
+                </div>
+            </div>
         </div>
     </header>
 
     <main class="thank-you-section">
-        <div class="container">
-            <div class="thank-you-card">
-                <i data-lucide="party-popper" class="thank-you-icon"></i>
-                <h1 class="thank-you-title" data-i18n="obrigado.title">Sua reserva está confirmada!</h1>
-                <p class="thank-you-subtitle" data-i18n="obrigado.subtitle">
-                    Estamos muito felizes em fazer parte da sua aventura! Para começar a planejar sua experiência mágica, o próximo passo é com você.
-                </p>
+        <div class="thank-you-card">
+            <i data-lucide="check-circle" class="thank-you-icon"></i>
+            
+            <h1 class="thank-you-title" data-i18n="obrigado.title">Compra Confirmada!</h1>
+            
+            <p class="thank-you-subtitle" data-i18n="obrigado.greeting">
+                Olá! Estamos muito felizes por ter você a bordo. Sua aventura está prestes a começar!
+            </p>
 
-                <div class="action-box">
-                    <h2 class="action-box-title" data-i18n="obrigado.action_title">
-                        <i data-lucide="sparkles"></i>
-                        Ação Necessária: Inicie seu Atendimento
-                    </h2>
-                    <p data-i18n="obrigado.action_text" style="margin-bottom: 20px; color: var(--text-color-light);">
-                        Clique no botão abaixo para nos chamar no WhatsApp e dar início à criação do seu roteiro personalizado.
-                    </p>
-                    <a href="https://wa.me/13213189563?text=Ol%C3%A1%2C%20VPO!%20Meu%20pedido%20%C3%A9%20o%20%23{{payment_intent_id}}.%20Vamos%20come%C3%A7ar%3F" target="_blank" class="btn-whatsapp">
-                        <i data-lucide="send-horizontal"></i>
-                        <span data-i18n="obrigado.cta_whatsapp">Começar no WhatsApp</span>
-                    </a>
-                </div>
+            <div class="action-required-box">
+                <h3 data-i18n="obrigado.next_steps.title">
+                    <i data-lucide="play-circle" class="icon"></i>
+                    Próximos Passos
+                </h3>
+                <ul class="steps-list">
+                    <li class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <strong data-i18n="obrigado.next_steps.step1_title">Salve nosso número</strong>
+                            <span data-i18n="obrigado.next_steps.step1_desc">
+                                Adicione nosso WhatsApp oficial aos seus contatos para começarmos.
+                                <span class="whatsapp-number">+1 (321) 318-9563</span>
+                            </span>
+                        </div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <strong data-i18n="obrigado.next_steps.step2_title">Inicie a configuração</strong>
+                            <span data-i18n="obrigado.next_steps.step2_desc">
+                                Clique no botão abaixo para nos enviar uma mensagem e dar início ao planejamento da sua viagem mágica!
+                            </span>
+                        </div>
+                    </li>
+                </ul>
 
-                <div class="next-steps">
-                    <h3 class="next-steps-title" data-i18n="obrigado.next_steps.title">O que acontece agora?</h3>
-                    <ul class="steps-list">
-                        <li class="step-item">
-                            <i data-lucide="mouse-pointer-click"></i> 
-                            <span data-i18n="obrigado.next_steps.step1"><strong>Passo 1:</strong> Clique no botão acima e envie a mensagem automática para o nosso time de especialistas.</span>
-                        </li>
-                        <li class="step-item">
-                            <i data-lucide="message-circle-reply"></i>
-                            <span data-i18n="obrigado.next_steps.step2"><strong>Passo 2:</strong> Nossa equipe irá confirmar seus dados e iniciar o planejamento do seu roteiro dos sonhos.</span>
-                        </li>
-                        <li class="step-item">
-                            <i data-lucide="rocket"></i>
-                            <span data-i18n="obrigado.next_steps.step3"><strong>Passo 3:</strong> Prepare-se para uma experiência inesquecível nos parques, com todo o suporte da VPO!</span>
-                        </li>
-                    </ul>
-                </div>
+                <a href="https://wa.me/13213189563?text=Oi%2C%20VPO!%20Meu%20pedido%20é%20%23{{payment_intent_id}}.%20Vamos%20começar%20a%20configuração%3F" target="_blank" class="btn btn-whatsapp">
+                    <i data-lucide="send"></i>
+                    <span data-i18n="obrigado.cta_whatsapp">Iniciar Configuração no WhatsApp</span>
+                </a>
             </div>
+            
+            <a href="/index.html" class="back-home-link" data-i18n="obrigado.cta_back">Voltar para a Página Inicial</a>
         </div>
     </main>
 
@@ -344,11 +397,15 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Placeholder para os detalhes da compra, que viriam do servidor
+            // Renderiza os ícones do Lucide
+            lucide.replace();
+
+            // Lógica de rastreamento de compra original
+            // NOTA: Os detalhes da transação (valor, moeda, ID) devem ser preenchidos dinamicamente
             const purchaseDetails = {
                 transaction_id: `VPO-${Date.now()}`,
-                value: 50.00,
-                currency: 'USD',
+                value: 50.00, // Valor de exemplo
+                currency: 'BRL', // Moeda de exemplo
                 items: [{
                     item_id: 'VPO-ORL-1DAY',
                     item_name: '1-Day Orlando Guidance',
@@ -357,7 +414,7 @@
                 }]
             };
 
-            // Facebook Pixel
+            // Facebook Pixel Purchase Event
             if (typeof fbq === 'function') {
                 fbq('track', 'Purchase', {
                     value: purchaseDetails.value,
@@ -365,8 +422,9 @@
                 });
             }
 
-            // Google Ads & Analytics
+            // Google Ads & Analytics 4 Purchase Events
             if (typeof gtag === 'function') {
+                // Google Ads Purchase Conversion
                 gtag('event', 'purchase', {
                     'send_to': 'AW-17439659867',
                     'conversion_id': '17439659867',
@@ -376,6 +434,7 @@
                     'transaction_id': purchaseDetails.transaction_id
                 });
                 
+                // Google Analytics 4 Purchase Event
                 gtag('event', 'purchase', {
                     'transaction_id': purchaseDetails.transaction_id,
                     'value': purchaseDetails.value,
@@ -386,10 +445,6 @@
         });
     </script>
     
-    <script>
-      lucide.createIcons();
-    </script>
-
     <script src="/js/translations.js"></script>
     <script src="/js/app.js"></script>
 
