@@ -8,6 +8,10 @@
   ],
   "routes": [
     {
+      "src": "/obrigado",
+      "dest": "/public/obrigado.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "server.js"
     }
