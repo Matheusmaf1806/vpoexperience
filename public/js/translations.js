@@ -69,7 +69,8 @@ const translations = {
             person: "person",
             activation_date: "Activation Date", 
             total_label: "Total:",
-            checkout: "Proceed to Checkout"
+            checkout: "Proceed to Checkout",
+            group_note: "The price is per group. Each group can have 1 to 10 people. From 11 people onwards, the price of a second group will be charged."
         },
         destinations: {
             orlando: "Orlando",
@@ -104,14 +105,10 @@ const translations = {
             answer3: "We recommend hiring at least 30 days in advance to have enough time to do personalized planning. During high season periods, we suggest contacting 60 days before to guarantee availability of our guides.",
             question4: "Does the service work for all parks?",
             answer4: "Yes! Our plans cover the main parks in each destination: in Orlando (Magic Kingdom, EPCOT, Hollywood Studios, Animal Kingdom, Universal Studios, Islands of Adventure), in California (Disneyland Park, Disney California Adventure) and in Paris (Disneyland Park, Walt Disney Studios Park).",
-            question5: "What are the operating hours of the guides?",
-            answer5: "Operating hours vary according to the chosen plan. In the Basic plan, we serve from 8am to 6pm; in the Premium, from 7am to 10pm; and in the VIP, we offer 24-hour support for any emergency during your stay.",
+            question_ll: "Is the cost of Fast Lane (Lightning Lane/Genie+) included?",
+            answer_ll: "No. The cost of services like Genie+ and Individual Lightning Lanes is an additional fee paid directly to Disney. During planning, we determine the best strategy for your group, and all costs are always pre-approved by you.",
             question6: "Can I change my plans during the day at the park?",
             answer6: "Absolutely! Our guides are ready to adapt their plans to your needs in real time. If an attraction has a long line, the weather changes, or your kids are tired, we adjust our recommendations to ensure the best possible experience.",
-            question7: "What languages do the guides speak?",
-            answer7: "All our guides are fluent in Portuguese and English. Many also speak Spanish and French, ensuring clear communication regardless of your preferred language.",
-            question8: "What happens if I have problems with my phone or internet?",
-            answer8: "We provide emergency contact numbers and have backup communication protocols. Additionally, we send you a detailed printed itinerary as a backup so you can continue enjoying the parks even without immediate contact."
         },
         footer: {
             description: "Your personal concierge for the magic of parks.",
@@ -202,7 +199,8 @@ const translations = {
             person: "pessoa",
             activation_date: "Data de Ativação",
             total_label: "Total:",
-            checkout: "Finalizar Compra"
+            checkout: "Finalizar Compra",
+            group_note: "O valor é por grupo. Cada grupo pode ter de 1 a 10 pessoas. A partir de 11 pessoas, será cobrado o valor de um segundo grupo."
         },
         destinations: {
             orlando: "Orlando",
@@ -237,14 +235,10 @@ const translations = {
             answer3: "Recomendamos a contratação com pelo menos 30 dias de antecedência para termos tempo hábil de fazer o planejamento personalizado. Em períodos de alta temporada, sugerimos contatar com 60 dias antes para garantir disponibilidade dos nossos guias.",
             question4: "O serviço funciona para todos os parques?",
             answer4: "Sim! Nossos planos cobrem os principais parques de cada destino: em Orlando (Magic Kingdom, EPCOT, Hollywood Studios, Animal Kingdom, Universal Studios, Islands of Adventure), na Califórnia (Disneyland Park, Disney California Adventure) e em Paris (Disneyland Park, Walt Disney Studios Park).",
-            question5: "Qual é o horário de atendimento dos guias?",
-            answer5: "O horário de atendimento varia conforme o plano escolhido. No plano Básico, atendemos das 8h às 18h; no Premium, das 7h às 22h; e no VIP, oferecemos suporte 24 horas para qualquer emergência durante sua estadia.",
+            question_ll: "O custo do Fila Rápida (Lightning Lane/Genie+) está incluso?",
+            answer_ll: "Não. O custo de serviços como Genie+ e Lightning Lanes Individuais é um adicional pago diretamente à Disney. Durante o planejamento, definimos a melhor estratégia para seu grupo e os custos são sempre pré-acordados com você.",
             question6: "É possível mudar o planejamento durante o dia no parque?",
             answer6: "Absolutamente! Nossos guias estão preparados para adaptar o planejamento de acordo com suas necessidades em tempo real. Se uma atração estiver com fila muito longa, se o clima mudar ou se as crianças estiverem cansadas, ajustamos as recomendações para garantir a melhor experiência possível.",
-            question7: "Quais idiomas os guias falam?",
-            answer7: "Todos os nossos guias são fluentes em português e inglês. Muitos também falam espanhol e francês, garantindo comunicação clara independente do seu idioma preferido.",
-            question8: "O que acontece se eu tiver problemas com meu telefone ou internet?",
-            answer8: "Fornecemos números de contato de emergência e temos protocolos de comunicação de backup. Além disso, enviamos um roteiro detalhado impresso como backup para que você possa continuar aproveitando os parques mesmo sem contato imediato."
         },
         footer: {
             description: "Seu concierge particular para a magia dos parques.",
@@ -335,7 +329,8 @@ const translations = {
             person: "persona",
             activation_date: "Fecha de Activación",
             total_label: "Total:",
-            checkout: "Proceder al Pago"
+            checkout: "Proceder al Pago",
+            group_note: "El precio es por grupo. Cada grupo puede tener de 1 a 10 personas. A partir de 11 personas, se cobrará el precio de un segundo grupo."
         },
         destinations: {
             orlando: "Orlando",
@@ -367,17 +362,13 @@ const translations = {
             question2: "¿Necesito internet en los parques para usar el servicio?",
             answer2: "Sí, se requiere acceso a internet durante su visita para mantener contacto con su guía. Los parques de Disney y Universal ofrecen Wi-Fi gratuito, lo que facilita la comunicación. También recomendamos un plan de datos internacional como respaldo.",
             question3: "¿Con cuánta anticipación debo contratar el servicio?",
-            answer3: "Recomendamos la contratación con al menos 30 días de anticipación para tener tiempo suficiente para hacer la planificación personalizada. En períodos de alta temporada, sugerimos contactar con 60 días antes para garantizar la disponibilidad de nuestros guías.",
+            answer3: "Recomendamos la contratación con al least 30 días de anticipación para tener tiempo suficiente para hacer la planificación personalizada. En períodos de alta temporada, sugerimos contactar con 60 días antes para garantizar la disponibilidad de nuestros guías.",
             question4: "¿El servicio funciona para todos los parques?",
             answer4: "¡Sí! Nuestros planes cubren los principales parques en cada destino: en Orlando (Magic Kingdom, EPCOT, Hollywood Studios, Animal Kingdom, Universal Studios, Islands of Adventure), en California (Disneyland Park, Disney California Adventure) y en París (Disneyland Park, Walt Disney Studios Park).",
-            question5: "¿Cuáles son los horarios de atención de los guías?",
-            answer5: "Los horarios de atención varían según el plan elegido. En el plan Básico, atendemos de 8h a 18h; en el Premium, de 7h a 22h; y en el VIP, ofrecemos soporte 24 horas para cualquier emergencia durante su estadía.",
+            question_ll: "¿El costo de la Fila Rápida (Lightning Lane/Genie+) está incluido?",
+            answer_ll: "No. El costo de servicios como Genie+ y Lightning Lanes Individuales es un adicional que se paga directamente a Disney. Durante la planificación, definimos la mejor estrategia para su grupo y los costos siempre se acuerdan previamente con usted.",
             question6: "¿Es posible cambiar el horario durante el día en el parque?",
             answer6: "¡Absolutamente! Nuestros guías están preparados para adaptar el horario según sus necesidades en tiempo real. Si una atracción tiene una cola muy larga, si cambia el clima o si los niños están cansados, ajustamos las recomendaciones para garantizar la mejor experiencia posible.",
-            question7: "¿Qué idiomas hablan los guías?",
-            answer7: "Todos nuestros guías son fluentes en portugués e inglés. Muchos también hablan español y francés, asegurando comunicación clara independientemente de su idioma preferido.",
-            question8: "¿Qué pasa si tengo problemas con mi teléfono o internet?",
-            answer8: "Proporcionamos números de contacto de emergencia y tenemos protocolos de comunicación de respaldo. Además, enviamos un itinerario detallado impreso como respaldo para que pueda continuar disfrutando de los parques incluso sin contacto inmediato."
         },
         footer: {
             description: "Su conserje personal para la magia de los parques.",
@@ -468,7 +459,8 @@ const translations = {
             person: "personne",
             activation_date: "Date d'Activation",
             total_label: "Total:",
-            checkout: "Procéder au Paiement"
+            checkout: "Procéder au Paiement",
+            group_note: "Le prix est par groupe. Chaque groupe peut contenir de 1 à 10 personnes. À partir de 11 personnes, le prix d'un deuxième groupe sera facturé."
         },
         destinations: {
             orlando: "Orlando",
@@ -503,14 +495,10 @@ const translations = {
             answer3: "Nous recommandons l'engagement au moins 30 jours à l'avance pour avoir suffisamment de temps pour faire la planification personnalisée. Pendant les périodes de haute saison, nous suggérons de contacter 60 jours avant pour garantir la disponibilité de nos guides.",
             question4: "Le service fonctionne-t-il pour tous les parcs ?",
             answer4: "Oui ! Nos plans couvrent les principaux parcs de chaque destination : à Orlando (Magic Kingdom, EPCOT, Hollywood Studios, Animal Kingdom, Universal Studios, Islands of Adventure), en Californie (Disneyland Park, Disney California Adventure) et à Paris (Disneyland Park, Walt Disney Studios Park).",
-            question5: "Quels sont les horaires d'assistance des guides ?",
-            answer5: "Les horaires d'assistance varient selon le plan choisi. Dans le plan Basique, nous assistons de 8h à 18h ; dans le Premium, de 7h à 22h ; et dans le VIP, nous offrons un support 24 heures pour toute urgence pendant votre séjour.",
+            question_ll: "Le coût de la file d'attente rapide (Lightning Lane/Genie+) est-il inclus ?",
+            answer_ll: "Non. Le coût des services comme Genie+ et les Lightning Lanes individuelles est un supplément payé directement à Disney. Lors de la planification, nous déterminons la meilleure stratégie pour votre groupe, et tous les coûts sont toujours approuvés au préalable par vous.",
             question6: "Est-il possible de modifier l'horaire en cours de journée au parc ?",
             answer6: "Absolument ! Nos guides sont préparés à adapter l'horaire selon vos besoins en temps réel. Si une attraction a une très longue file d'attente, si le temps change ou si les enfants sont fatigués, nous ajustons les recommandations pour garantir la meilleure expérience possible.",
-            question7: "Quelles langues parlent les guides ?",
-            answer7: "Tous nos guides parlent couramment le portugais et l'anglais. Beaucoup parlent aussi espagnol et français, assurant une communication claire quel que soit votre langue préférée.",
-            question8: "Que se passe-t-il si j'ai des problèmes avec mon téléphone ou internet ?",
-            answer8: "Nous fournissons des numéros de contact d'urgence et avons des protocoles de communication de sauvegarde. De plus, nous envoyons un itinéraire détaillé imprimé comme sauvegarde pour que vous puissiez continuer à profiter des parcs même sans contact immédiat."
         },
         footer: {
             description: "Votre concierge personnel pour la magie des parcs.",
@@ -601,7 +589,8 @@ const translations = {
             person: "persoon",
             activation_date: "Activeringsdatum",
             total_label: "Totaal:",
-            checkout: "Doorgaan naar Betaling"
+            checkout: "Doorgaan naar Betaling",
+            group_note: "De prijs is per groep. Elke groep kan 1 tot 10 personen hebben. Vanaf 11 personen wordt de prijs van een tweede groep in rekening gebracht."
         },
         destinations: {
             orlando: "Orlando",
@@ -636,14 +625,10 @@ const translations = {
             answer3: "We raden aan om minstens 30 dagen van tevoren in te huren om voldoende tijd te hebben voor gepersonaliseerde planning. Tijdens drukke seizoenen stellen we voor om 60 dagen van tevoren contact op te nemen om de beschikbaarheid van onze gidsen te garanderen.",
             question4: "Werkt de service voor alle parken?",
             answer4: "Ja! Onze plannen dekken de hoofdparken in elke bestemming: in Orlando (Magic Kingdom, EPCOT, Hollywood Studios, Animal Kingdom, Universal Studios, Islands of Adventure), in Californië (Disneyland Park, Disney California Adventure) en in Parijs (Disneyland Park, Walt Disney Studios Park).",
-            question5: "Wat zijn de werkuren van de gidsen?",
-            answer5: "De werkuren variëren volgens het gekozen plan. In het Basis plan assisteren we van 8u tot 18u; in het Premium, van 7u tot 22u; en in het VIP bieden we 24-uurs ondersteuning voor elke noodsituatie tijdens uw verblijf.",
+            question_ll: "Is de kost van de snelle rij (Lightning Lane/Genie+) inbegrepen?",
+            answer_ll: "Nee. De kosten van diensten zoals Genie+ en individuele Lightning Lanes zijn een extra vergoeding die rechtstreeks aan Disney wordt betaald. Tijdens de planning bepalen we de beste strategie voor uw groep, en alle kosten worden altijd vooraf door u goedgekeurd.",
             question6: "Is het mogelijk om de openingstijden van het park gedurende de dag te wijzigen?",
             answer6: "Absoluut! Onze gidsen staan klaar om hun plannen in realtime aan te passen aan jouw wensen. Als er bij een attractie een lange wachtrij is, het weer omslaat of je kinderen moe zijn, passen we onze aanbevelingen aan om de best mogelijke ervaring te garanderen.",
-            question7: "Welke talen spreken de gidsen?",
-            answer7: "Al onze gidsen zijn vloeiend in het Portugees en Engels. Velen spreken ook Spaans en Frans, wat duidelijke communicatie garandeert ongeacht uw voorkeurstaal.",
-            question8: "Wat gebeurt er als ik problemen heb met mijn telefoon of internet?",
-            answer8: "We bieden noodcontactnummers en hebben back-up communicatieprotocollen. Bovendien sturen we u een gedetailleerde gedrukte route als back-up zodat u kunt blijven genieten van de parken zelfs zonder onmiddellijk contact."
         },
         footer: {
             description: "Uw persoonlijke conciërge voor de magie van parken.",
