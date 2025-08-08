@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="title">Remote Guidance Service at Orlando Parks</title>
 
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://image-xi-inky.vercel.app/public/favicon.png">
     <link rel="shortcut icon" type="image/png" href="https://image-xi-inky.vercel.app/public/favicon.png">
     <link rel="apple-touch-icon" href="https://image-xi-inky.vercel.app/public/favicon.png">
     
-    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3D6H40TF99"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -19,7 +17,6 @@
       gtag('config', 'G-3D6H40TF99');
     </script>
 
-    <!-- Google Ads -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17439659867"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -29,7 +26,6 @@
       gtag('config', 'GT-5NTJHP9K');
     </script>
 
-    <!-- Facebook Pixel -->
     <script>
       !function(f,b,e,v,n,t,s)
       {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -47,7 +43,6 @@
            src="https://www.facebook.com/tr?id=1735200767111643&ev=PageView&noscript=1"/>
     </noscript>
 
-    <!-- Hotjar Tracking Code -->
     <script>
         (function(h,o,t,j,a,r){
             h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
@@ -66,7 +61,6 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="header-content">
@@ -106,7 +100,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-background-pattern"></div>
         <div class="container">
@@ -156,7 +149,6 @@
         </div>
     </section>
 
-    <!-- Services Section -->
     <section id="services" class="services-section">
         <div class="container">
             <div class="section-header">
@@ -222,7 +214,6 @@
         </div>
     </section>
 
-    <!-- Benefits Section -->
     <section id="benefits" class="benefits-section">
         <div class="container">
             <div class="benefits-container">
@@ -280,7 +271,6 @@
         </div>
     </section>
 
-    <!-- Plans Section -->
     <section id="plans" class="destination-section">
         <div class="container">
             <div class="section-header">
@@ -323,6 +313,9 @@
                     <h2><span data-i18n="plans.header1">Guidance Plans for</span> <span id="destination-name"></span></h2>
                 </div>
                 <div id="plans-grid" class="plans-grid"></div>
+                <div class="plan-notes">
+                    <p class="plan-note-item" data-i18n="plans.group_note">The price is per group. Each group can have 1 to 10 people. From 11 people onwards, the price of a second group will be charged.</p>
+                </div>
                 <div class="plans-footer">
                     <div class="passenger-selector-wrapper">
                         <label class="passenger-selector-label" data-i18n="plans.passengers">Passengers</label>
@@ -374,7 +367,6 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials-section">
         <div class="container">
             <div class="section-header">
@@ -481,7 +473,6 @@
         </div>
     </section>
 
-    <!-- FAQ Section -->
     <section id="faq" class="faq-section">
         <div class="container">
             <div class="section-header">
@@ -546,6 +537,17 @@
                     </div>
                     <div class="accordion-item">
                         <button class="accordion-trigger">
+                            <span data-i18n="faq.question_ll">Is the cost of Fast Lane (Lightning Lane/Genie+) included?</span>
+                            <i data-lucide="chevron-down" class="accordion-icon" width="20" height="20"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner" data-i18n="faq.answer_ll">
+                                No. The cost of services like Genie+ and Individual Lightning Lanes is an additional fee paid directly to Disney. During planning, we determine the best strategy for your group, and all costs are always pre-approved by you.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-trigger">
                             <span data-i18n="faq.question6">Can I change the itinerary during the day at the park?</span>
                             <i data-lucide="chevron-down" class="accordion-icon" width="20" height="20"></i>
                         </button>
@@ -560,7 +562,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-bottom">
@@ -569,7 +570,6 @@
         </div>
     </footer>
 
-    <!-- Checkout Modal -->
     <div id="checkout-modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -581,7 +581,6 @@
                     <h3 data-i18n="checkout.summary">Order Summary</h3>
                     <div id="checkout-details"></div>
                 </div>
-                <!-- Customer Information Form -->
                 <div class="customer-form">
                     <div class="form-section">
                         <h4>Customer Information</h4>
@@ -648,8 +647,7 @@
                         <div class="payment-form">
                             <form id="payment-form">
                                 <div id="card-element">
-                                    <!-- Stripe Elements will create form elements here -->
-                                </div>
+                                    </div>
                                 <div id="card-errors" role="alert"></div>
                                 <button id="submit-payment" class="btn btn-primary payment-btn" onclick="trackPurchase()">
                                     <span data-i18n="checkout.pay">Pay Now</span>
@@ -662,7 +660,6 @@
         </div>
     </div>
 
-    <!-- Tracking Functions -->
     <script>
         // Track PageView event
         gtag('event', 'page_view', {
