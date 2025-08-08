@@ -205,6 +205,10 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+app.get('/thanks', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'thanks.html'));
+});
+
 app.use((error, req, res, next) => {
     console.error('Erro não tratado:', error);
     res.status(500).json({
