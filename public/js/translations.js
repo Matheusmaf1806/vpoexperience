@@ -3,7 +3,7 @@ const translations = {
         title: "Remote Guidance Service at Orlando Parks",
         nav: {
             services: "Services",
-            plans: "Plans", 
+            plans: "Plans",
             testimonials: "Testimonials",
             faq: "FAQ"
         },
@@ -13,13 +13,13 @@ const translations = {
             subtitle: "Have a specialist guiding you in real time through the parks of Orlando, California and Paris, maximizing your experience and creating unforgettable memories.",
             cta_text: "View Options",
             stat1: "Families",
-            stat2: "Universal", 
+            stat2: "Universal",
             stat3: "Reviews"
         },
         services: {
             subtitle: "Our Services",
             title1: "How",
-            title2: "Remote Guidance", 
+            title2: "Remote Guidance",
             title3: "Works",
             description: "Have a specialist assisting you in real time during your visit to the parks.",
             service1: {
@@ -31,7 +31,7 @@ const translations = {
                 description: "WhatsApp assistance throughout your visit, with real-time guidance."
             },
             service3: {
-                title: "Reservation Organization", 
+                title: "Reservation Organization",
                 description: "Help choosing and scheduling restaurants, attractions and special experiences."
             },
             service4: {
@@ -67,7 +67,7 @@ const translations = {
             children: "Children (3-9)",
             total: "Total:",
             person: "person",
-            activation_date: "Activation Date", 
+            activation_date: "Activation Date",
             total_label: "Total:",
             checkout: "Proceed to Checkout",
             group_note: "The price is per group. Each group can have 1 to 10 people. From 11 people onwards, the price of a second group will be charged."
@@ -76,7 +76,7 @@ const translations = {
             orlando: "Orlando",
             orlando_parks: "Disney and Universal Parks",
             california: "California",
-            california_parks: "Disneyland Parks", 
+            california_parks: "Disneyland Parks",
             paris: "Paris",
             paris_parks: "Disneyland Parks",
             cta: "Tap to see plans"
@@ -114,7 +114,7 @@ const translations = {
             description: "Your personal concierge for the magic of parks.",
             services: "Services",
             orlando: "Orlando",
-            california: "California", 
+            california: "California",
             paris: "Paris",
             company: "Company",
             about: "About Us",
@@ -127,6 +127,25 @@ const translations = {
             title: "Complete Your Purchase",
             summary: "Order Summary",
             pay: "Pay Now"
+        },
+        // NOVA SEÇÃO ADICIONADA
+        obrigado: {
+            page_title: "Thank You! | VPO Experience",
+            title: "Thank You for Your Purchase!",
+            subtitle: "Your order has been confirmed. Our team is excited to help you plan your magical trip.",
+            action_required: {
+                title: "Action Required: Start Your Setup!",
+                intro: "To begin the planning, please click the button below to start a conversation with our experts on WhatsApp.",
+                cta: "Start Setup on WhatsApp",
+                number_intro: "Or add our number to your contacts:"
+            },
+            next_steps: {
+                title: "What Happens Next?",
+                step1: "We'll confirm your details via WhatsApp.",
+                step2: "We'll create your personalized park itinerary.",
+                step3: "Get ready for an unforgettable experience!"
+            },
+            cta: "Back to Homepage"
         }
     },
     pt: {
@@ -134,7 +153,7 @@ const translations = {
         nav: {
             services: "Serviços",
             plans: "Planos",
-            testimonials: "Depoimentos", 
+            testimonials: "Depoimentos",
             faq: "Perguntas"
         },
         hero: {
@@ -153,7 +172,7 @@ const translations = {
             title3: "",
             description: "Tenha um especialista brasileiro te auxiliando em tempo real durante sua visita aos parques.",
             service1: {
-                title: "Planejamento Personalizado", 
+                title: "Planejamento Personalizado",
                 description: "Roteiros exclusivos para sua família, considerando idade, interesses e tempo disponível."
             },
             service2: {
@@ -192,7 +211,7 @@ const translations = {
             title3: "para sua família",
             description: "Investimento que vale a pena para maximizar cada momento da sua viagem dos sonhos.",
             header1: "Planos de Guiamento para",
-            passengers: "Passageiros", 
+            passengers: "Passageiros",
             adults: "Adultos (10+)",
             children: "Crianças (3-9)",
             total: "Total:",
@@ -205,7 +224,7 @@ const translations = {
         destinations: {
             orlando: "Orlando",
             orlando_parks: "Parques Disney e Universal",
-            california: "Califórnia", 
+            california: "Califórnia",
             california_parks: "Parques Disneyland",
             paris: "Paris",
             paris_parks: "Parques Disneyland",
@@ -224,12 +243,12 @@ const translations = {
         },
         faq: {
             subtitle: "Perguntas Frequentes",
-            title1: "Tire suas", 
+            title1: "Tire suas",
             title2: "dúvidas",
             description: "Encontre respostas para as perguntas mais comuns sobre nosso serviço de guiamento remoto.",
             question1: "Como funciona o serviço de guiamento remoto?",
             answer1: "Nosso serviço consiste em um guia especialista nos parques que te acompanha remotamente (via WhatsApp) durante toda a sua visita. Antes da viagem, fazemos um planejamento personalizado e, durante o dia no parque, oferecemos orientações em tempo real sobre filas, atrações, shows e restaurantes para maximizar sua experiência.",
-            question2: "Preciso de internet nos parques para utilizar o serviço?", 
+            question2: "Preciso de internet nos parques para utilizar o serviço?",
             answer2: "Sim, é necessário ter acesso à internet durante sua visita para manter contato com seu guia. Os parques da Disney e Universal oferecem Wi-Fi gratuito, o que facilita a comunicação. Recomendamos também um plano de dados internacional como backup.",
             question3: "Quanto tempo antes devo contratar o serviço?",
             answer3: "Recomendamos a contratação com pelo menos 30 dias de antecedência para termos tempo hábil de fazer o planejamento personalizado. Em períodos de alta temporada, sugerimos contatar com 60 dias antes para garantir disponibilidade dos nossos guias.",
@@ -245,7 +264,7 @@ const translations = {
             services: "Serviços",
             orlando: "Orlando",
             california: "Califórnia",
-            paris: "Paris", 
+            paris: "Paris",
             company: "Empresa",
             about: "Sobre Nós",
             contact: "Contato",
@@ -257,6 +276,25 @@ const translations = {
             title: "Finalize sua Compra",
             summary: "Resumo do Pedido",
             pay: "Pagar Agora"
+        },
+        // NOVA SEÇÃO ADICIONADA
+        obrigado: {
+            page_title: "Obrigado! | VPO Experience",
+            title: "Obrigado pela sua Compra!",
+            subtitle: "Seu pedido foi confirmado. Nossa equipe está animada para ajudar a planejar sua viagem mágica.",
+            action_required: {
+                title: "Ação Necessária: Inicie a Configuração!",
+                intro: "Para começar o planejamento, por favor, clique no botão abaixo para iniciar uma conversa com nossos especialistas no WhatsApp.",
+                cta: "Iniciar Configuração no WhatsApp",
+                number_intro: "Ou adicione nosso número aos seus contatos:"
+            },
+            next_steps: {
+                title: "Quais são os Próximos Passos?",
+                step1: "Confirmaremos seus detalhes via WhatsApp.",
+                step2: "Criaremos seu roteiro de parque personalizado.",
+                step3: "Prepare-se para uma experiência inesquecível!"
+            },
+            cta: "Voltar para a Página Inicial"
         }
     },
     es: {
@@ -387,6 +425,25 @@ const translations = {
             title: "Complete su Compra",
             summary: "Resumen del Pedido",
             pay: "Pagar Ahora"
+        },
+        // NOVA SEÇÃO ADICIONADA
+        obrigado: {
+            page_title: "¡Gracias! | VPO Experience",
+            title: "¡Gracias por su Compra!",
+            subtitle: "Su pedido ha sido confirmado. Nuestro equipo está emocionado de ayudarle a planificar su viaje mágico.",
+            action_required: {
+                title: "¡Acción Requerida: Inicie su Configuración!",
+                intro: "Para comenzar la planificación, por favor, haga clic en el botón de abajo para iniciar una conversación con nuestros expertos en WhatsApp.",
+                cta: "Iniciar Configuración en WhatsApp",
+                number_intro: "O agregue nuestro número a sus contactos:"
+            },
+            next_steps: {
+                title: "¿Qué Sigue Ahora?",
+                step1: "Confirmaremos sus detalles por WhatsApp.",
+                step2: "Crearemos su itinerario de parque personalizado.",
+                step3: "¡Prepárese para una experiencia inolvidable!"
+            },
+            cta: "Volver a la Página Principal"
         }
     },
     fr: {
@@ -517,6 +574,25 @@ const translations = {
             title: "Complétez votre Achat",
             summary: "Résumé de la Commande",
             pay: "Payer Maintenant"
+        },
+        // NOVA SEÇÃO ADICIONADA
+        obrigado: {
+            page_title: "Merci ! | VPO Experience",
+            title: "Merci pour votre achat !",
+            subtitle: "Votre commande a été confirmée. Notre équipe est ravie de vous aider à planifier votre voyage magique.",
+            action_required: {
+                title: "Action Requise : Commencez Votre Configuration !",
+                intro: "Pour commencer la planification, veuillez cliquer sur le bouton ci-dessous pour démarrer une conversation avec nos experts sur WhatsApp.",
+                cta: "Démarrer la Configuration sur WhatsApp",
+                number_intro: "Ou ajoutez notre numéro à vos contacts :"
+            },
+            next_steps: {
+                title: "Quelles sont les prochaines étapes ?",
+                step1: "Nous confirmerons vos informations via WhatsApp.",
+                step2: "Nous créerons votre itinéraire de parc personnalisé.",
+                step3: "Préparez-vous pour une expérience inoubliable !"
+            },
+            cta: "Retour à la page d'accueil"
         }
     },
     nl: {
@@ -647,6 +723,25 @@ const translations = {
             title: "Voltooi uw Aankoop",
             summary: "Besteloverzicht",
             pay: "Nu Betalen"
+        },
+        // NOVA SEÇÃO ADICIONADA
+        obrigado: {
+            page_title: "Bedankt! | VPO Experience",
+            title: "Bedankt voor uw aankoop!",
+            subtitle: "Uw bestelling is bevestigd. Ons team is verheugd u te helpen bij het plannen van uw magische reis.",
+            action_required: {
+                title: "Actie Vereist: Start uw Setup!",
+                intro: "Om de planning te starten, klikt u op de onderstaande knop om een gesprek te beginnen met onze experts op WhatsApp.",
+                cta: "Start Setup op WhatsApp",
+                number_intro: "Of voeg ons nummer toe aan uw contacten:"
+            },
+            next_steps: {
+                title: "Wat zijn de volgende stappen?",
+                step1: "We bevestigen uw gegevens via WhatsApp.",
+                step2: "We maken uw gepersonaliseerde parkroute.",
+                step3: "Maak u klaar voor een onvergetelijke ervaring!"
+            },
+            cta: "Terug naar de startpagina"
         }
     }
 };
@@ -663,10 +758,13 @@ function translatePage(language) {
             if (translation && translation[k]) {
                 translation = translation[k];
             } else {
-                translation = translations.en;
+                translation = translations.en; // Fallback to English
                 for (const k2 of keys) {
                     if (translation && translation[k2]) {
                         translation = translation[k2];
+                    } else {
+                        translation = null; // Key not found
+                        break;
                     }
                 }
                 break;
