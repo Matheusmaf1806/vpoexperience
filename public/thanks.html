@@ -55,15 +55,17 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        /* --- Variáveis de Estilo --- */
         :root {
             --primary-color: #9E135C;
+            --primary-gradient: linear-gradient(135deg, #9E135C 0%, #C72A8F 100%);
             --whatsapp-color: #25D366;
-            --background-color: #f4f4f7;
-            --card-background: #ffffff;
+            --whatsapp-gradient: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
             --text-primary: #1c1c1e;
-            --text-secondary: #555;
-            --border-color: #e5e5ea;
+            --text-secondary: #636366;
+            --background-color-start: #fdf8ff;
+            --background-color-end: #f4f4f7;
+            --card-background: #ffffff;
+            --border-color: #ebeaed;
         }
 
         /* --- Reset e Estilos Globais --- */
@@ -74,7 +76,7 @@
         }
         body {
             font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--background-color);
+            background-image: radial-gradient(circle at 50% 0%, var(--background-color-start) 0%, var(--background-color-end) 100%);
             color: var(--text-primary);
             line-height: 1.6;
             display: flex;
@@ -86,12 +88,20 @@
             max-width: 1200px;
             margin: 0 auto;
         }
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 20px;
+        }
 
-        /* --- Header (Estilo simplificado para consistência) --- */
+        /* --- Header (Estilo Sutil) --- */
         .header {
-            background-color: var(--card-background);
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
             padding: 15px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -101,201 +111,166 @@
             justify-content: space-between;
             align-items: center;
         }
-        .logo-img {
-            max-height: 40px;
-        }
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-secondary);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
+        .logo-img { max-height: 40px; }
+        .nav-links { display: flex; list-style: none; gap: 25px; }
+        .nav-links a { text-decoration: none; color: var(--text-secondary); font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--primary-color); }
         .header-actions { display: flex; gap: 15px; }
         .header-actions select {
             border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 5px 8px;
+            border-radius: 8px;
+            padding: 6px 10px;
             background-color: transparent;
         }
         .mobile-menu-toggle { display: none; }
 
-        /* --- Seção Principal de Agradecimento --- */
-        .thank-you-section {
-            flex-grow: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 0;
-        }
-        .thank-you-content {
-            background-color: var(--card-background);
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            padding: 40px;
-            max-width: 650px;
+        /* --- Card de Agradecimento --- */
+        .thank-you-card {
+            background: var(--card-background);
+            border-radius: 24px;
+            box-shadow: 0 20px 60px -10px rgba(108, 1, 93, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 40px 50px;
+            max-width: 680px;
             width: 100%;
             text-align: center;
-            animation: fadeIn 0.5s ease-out;
+            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
         }
 
-        /* Ícone, Títulos e Textos */
-        .thank-you-icon {
-            color: var(--primary-color);
-            width: 64px;
-            height: 64px;
-            stroke-width: 1.5;
-            margin-bottom: 20px;
+        /* Conteúdo do Card */
+        .icon-container {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--primary-gradient);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 25px auto;
+            box-shadow: 0 10px 20px -5px rgba(158, 19, 92, 0.4);
+        }
+        .icon-container .thank-you-icon {
+            color: #fff;
+            width: 44px;
+            height: 44px;
+            stroke-width: 2.5;
         }
         .thank-you-title {
-            font-size: 2.2rem;
+            font-size: 2.8rem;
             font-weight: 700;
-            margin-bottom: 15px;
-            color: var(--text-primary);
+            margin-bottom: 12px;
+            line-height: 1.2;
         }
         .thank-you-subtitle {
             font-size: 1.1rem;
             color: var(--text-secondary);
             max-width: 500px;
-            margin: 0 auto 30px auto;
+            margin: 0 auto 35px auto;
         }
 
-        /* Card de Ação Necessária (NOVO) */
-        .action-required-card {
-            background-color: #f9f9fb;
+        /* Seção de Ação (CTA) */
+        .cta-section {
+            background-color: #fcfbff;
             border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 25px;
+            border-radius: 16px;
+            padding: 30px;
             margin: 30px 0;
-            text-align: center;
         }
-        .action-required-card h3 {
-            font-size: 1.4rem;
+        .cta-title {
+            font-size: 1.6rem;
             font-weight: 600;
             color: var(--primary-color);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
-        .action-required-card p {
+        .cta-description {
+            font-size: 1rem;
             color: var(--text-secondary);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         .btn-whatsapp {
-            background-color: var(--whatsapp-color);
+            background: var(--whatsapp-gradient);
             color: white;
-            padding: 15px 25px;
-            border-radius: 8px;
+            padding: 18px 30px;
+            border-radius: 12px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 1.1rem;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            transition: background-color 0.3s, transform 0.2s;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px -8px #25d366;
             border: none;
             cursor: pointer;
         }
         .btn-whatsapp:hover {
-            background-color: #1ebe58;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px -8px #25d366;
+        }
+        .btn-whatsapp i {
+            width: 22px;
+            height: 22px;
         }
         .whatsapp-number {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: var(--text-secondary);
-            margin-top: 15px;
+            margin-top: 20px;
             margin-bottom: 0 !important;
         }
         
-        /* Próximos Passos */
-        .next-steps {
-            text-align: left;
-            margin: 30px auto;
-            max-width: 450px;
-            border-top: 1px solid var(--border-color);
-            padding-top: 30px;
-        }
-        .next-steps h3 {
-            text-align: center;
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-        .next-steps ul {
-            list-style: none;
-            padding: 0;
-        }
-        .next-steps li {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-size: 1rem;
-            color: var(--text-secondary);
-            margin-bottom: 15px;
-        }
-        .benefit-icon {
-            color: var(--primary-color);
-            width: 22px;
-            height: 22px;
-            flex-shrink: 0;
-        }
-
         /* Botão de Voltar */
         .btn-secondary {
-            color: var(--primary-color);
+            color: var(--text-secondary);
             text-decoration: none;
             font-weight: 500;
             display: inline-block;
-            margin-top: 20px;
-            transition: opacity 0.3s;
+            margin-top: 25px;
+            transition: color 0.3s;
         }
         .btn-secondary:hover {
-            opacity: 0.8;
+            color: var(--primary-color);
         }
 
         /* --- Footer --- */
         .footer {
-            background-color: var(--card-background);
             text-align: center;
-            padding: 20px 0;
+            padding: 25px 0;
             font-size: 0.9rem;
-            color: #888;
-            border-top: 1px solid var(--border-color);
+            color: #aaa;
         }
 
         /* --- Responsividade --- */
         @media (max-width: 768px) {
             .nav, .header-actions {
-                display: none; /* Simplificando o header em mobile */
+                display: none;
             }
             .mobile-menu-toggle {
-                display: block; /* Manter se houver menu mobile */
+                display: block;
             }
-            .thank-you-content {
+            .thank-you-card {
                 padding: 30px 25px;
             }
             .thank-you-title {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             .thank-you-subtitle {
                 font-size: 1rem;
             }
-            .action-required-card h3 {
-                font-size: 1.2rem;
+            .cta-section {
+                padding: 25px;
+            }
+            .cta-title {
+                font-size: 1.3rem;
             }
             .btn-whatsapp {
-                padding: 12px 20px;
                 width: 100%;
-                justify-content: center;
+                padding: 16px;
+                font-size: 1rem;
             }
         }
     </style>
@@ -333,61 +308,48 @@
                         </select>
                     </div>
                 </div>
-                <div class="mobile-menu-toggle">
-                    </div>
+                <div class="mobile-menu-toggle"></div>
             </div>
         </div>
     </header>
 
-    <main class="thank-you-section">
-        <div class="container">
-            <div class="thank-you-content">
-                <i data-lucide="check-circle" class="thank-you-icon"></i>
-                <h1 class="thank-you-title" data-i18n="obrigado.title">Thank You for Your Purchase!</h1>
-                <p class="thank-you-subtitle" data-i18n="obrigado.subtitle">
-                    Your order has been confirmed. Our team is excited to help you plan your magical trip.
-                </p>
-                
-                <div class="action-required-card">
-                    <h3 data-i18n="obrigado.action_required.title">Action Required: Start Your Setup!</h3>
-                    <p data-i18n="obrigado.action_required.intro">To begin the planning, please click the button below to start a conversation with our experts on WhatsApp.</p>
-                    <a href="https://wa.me/13213189563?text=Hi%2C%20VPO.%20I%20just%20completed%20my%20purchase.%20Let's%20start%20the%20setup%3F" target="_blank" class="btn btn-whatsapp">
-                        <i data-lucide="message-circle"></i>
-                        <span data-i18n="obrigado.action_required.cta">Start Setup on WhatsApp</span>
-                    </a>
-                    <p class="whatsapp-number" data-i18n="obrigado.action_required.number_intro">
-                        Or add our number to your contacts: <strong>+1 (321) 318-9563</strong>
-                    </p>
-                </div>
-
-                <div class="next-steps">
-                    <h3 data-i18n="obrigado.next_steps.title">What Happens Next?</h3>
-                    <ul>
-                        <li><i data-lucide="check" class="benefit-icon"></i> <span data-i18n="obrigado.next_steps.step1">We'll confirm your details via WhatsApp.</span></li>
-                        <li><i data-lucide="check" class="benefit-icon"></i> <span data-i18n="obrigado.next_steps.step2">We'll create your personalized park itinerary.</span></li>
-                        <li><i data-lucide="check" class="benefit-icon"></i> <span data-i18n="obrigado.next_steps.step3">Get ready for an unforgettable experience!</span></li>
-                    </ul>
-                </div>
-
-                <a href="/index.html" class="btn-secondary" data-i18n="obrigado.cta">Back to Homepage</a>
+    <main class="main-content">
+        <div class="thank-you-card">
+            <div class="icon-container">
+                <i data-lucide="check" class="thank-you-icon"></i>
             </div>
+
+            <h1 class="thank-you-title" data-i18n="obrigado.title">Thank You for Your Purchase!</h1>
+            <p class="thank-you-subtitle" data-i18n="obrigado.subtitle">
+                Your order has been confirmed. Our team is excited to help you plan your magical trip.
+            </p>
+            
+            <div class="cta-section">
+                <h2 class="cta-title" data-i18n="obrigado.action_required.title">Action Required: Start Your Setup!</h2>
+                <p class="cta-description" data-i18n="obrigado.action_required.intro">To begin the planning, please click the button below to start a conversation with our experts on WhatsApp.</p>
+                <a href="https://wa.me/13213189563?text=Hi%2C%20VPO.%20I%20just%20completed%20my%20purchase.%20Let's%20start%20the%20setup%3F" target="_blank" class="btn-whatsapp">
+                    <i data-lucide="smartphone"></i>
+                    <span data-i18n="obrigado.action_required.cta">Start Setup on WhatsApp</span>
+                </a>
+                <p class="whatsapp-number" data-i18n="obrigado.action_required.number_intro">
+                    Or add our number to your contacts: <strong>+1 (321) 318-9563</strong>
+                </p>
+            </div>
+
+            <a href="/index.html" class="btn-secondary" data-i18n="obrigado.cta">Back to Homepage</a>
         </div>
     </main>
 
     <footer class="footer">
         <div class="container">
-            <div class="footer-bottom">
-                <p>© 2025 VPO Experience. Powered by Airland.</p>
-            </div>
+            <p>© 2025 VPO Experience. Powered by Airland.</p>
         </div>
     </footer>
 
     <script>
-        // Renderiza os ícones do Lucide
         lucide.replace();
 
         document.addEventListener('DOMContentLoaded', function() {
-            // Placeholder para detalhes da compra
             const purchaseDetails = {
                 transaction_id: `VPO-${Date.now()}`,
                 value: 50.00,
@@ -400,7 +362,6 @@
                 }]
             };
 
-            // Eventos de rastreamento (mantidos como estão)
             if (typeof fbq === 'function') {
                 fbq('track', 'Purchase', {
                     value: purchaseDetails.value,
