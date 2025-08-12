@@ -1841,3 +1841,34 @@ body {
 .form-group input:valid {
     border-color: #28a745;
 }
+
+/* Toast Notification Styles */
+.toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1rem;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, top 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.toast.show {
+    top: 80px;
+    opacity: 1;
+    visibility: visible;
+}
+
+.toast.error {
+    background-color: #dc3545; /* Red for errors */
+}
+
+.toast.success {
+    background-color: #28a745; /* Green for success */
+}
