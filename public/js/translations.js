@@ -118,6 +118,7 @@ const translations = {
             title: "Complete Your Purchase",
             summary: "Order Summary",
             pay: "Pay Now",
+            processing: "Processing...",
             adult: "Adult",
             adults: "Adults",
             child: "Child",
@@ -194,7 +195,7 @@ const translations = {
             features: {
                 title: "Guiamento completo",
                 item1: "Planejamento de Parque",
-                item2: "Dicas para evitar filas",
+                item2: "Dicas gerais para evitar filas",
                 item3: "Agendamento de Fila Rápida",
                 item4: "Planejamento detalhado",
                 item5: "Reservas de restaurantes temáticos",
@@ -247,6 +248,7 @@ const translations = {
             title: "Finalize sua Compra",
             summary: "Resumo do Pedido",
             pay: "Pagar Agora",
+            processing: "Processando...",
             adult: "Adulto",
             adults: "Adultos",
             child: "Criança",
@@ -323,7 +325,7 @@ const translations = {
             features: {
                 title: "Guía completa",
                 item1: "Planificación del Parque",
-                item2: "Consejos para evitar colas",
+                item2: "Consejos generales para evitar colas",
                 item3: "Programación de Fila Rápida",
                 item4: "Planificación detallada",
                 item5: "Reservas en restaurantes temáticos",
@@ -376,6 +378,7 @@ const translations = {
             title: "Complete su Compra",
             summary: "Resumen del Pedido",
             pay: "Pagar Ahora",
+            processing: "Procesando...",
             adult: "Adulto",
             adults: "Adultos",
             child: "Niño",
@@ -452,7 +455,7 @@ const translations = {
             features: {
                 title: "Guidage complet",
                 item1: "Planification du Parc",
-                item2: "Conseils pour éviter les files d'attente",
+                item2: "Conseils généraux pour éviter les files d'attente",
                 item3: "Programmation de la file d'attente rapide",
                 item4: "Planification détaillée",
                 item5: "Réservations de restaurants à thème",
@@ -505,6 +508,7 @@ const translations = {
             title: "Complétez votre Achat",
             summary: "Résumé de la Commande",
             pay: "Payer Maintenant",
+            processing: "En traitement...",
             adult: "Adulte",
             adults: "Adultes",
             child: "Enfant",
@@ -581,7 +585,7 @@ const translations = {
             features: {
                 title: "Volledige begeleiding",
                 item1: "Parkplanning",
-                item2: "Tips om wachtrijen te vermijden",
+                item2: "Algemene tips om wachtrijen te vermijden",
                 item3: "Planning voor snelle wachtrijen",
                 item4: "Gedetailleerde planning",
                 item5: "Reserveringen voor themarestaurants",
@@ -634,6 +638,7 @@ const translations = {
             title: "Voltooi uw Aankoop",
             summary: "Besteloverzicht",
             pay: "Nu Betalen",
+            processing: "Verwerken...",
             adult: "Volwassene",
             adults: "Volwassenen",
             child: "Kind",
@@ -668,15 +673,16 @@ function translatePage(language) {
         let translation = translations[language];
 
         for (const k of keys) {
-            if (translation && translation[k] !== undefined) {
+            if (translation && typeof translation === 'object' && translation[k] !== undefined) {
                 translation = translation[k];
             } else {
-                translation = translations.en; // Fallback to English
+                // Fallback to English if key is not found in the current language
+                translation = translations.en;
                 for (const k2 of keys) {
-                    if (translation && translation[k2] !== undefined) {
+                    if (translation && typeof translation === 'object' && translation[k2] !== undefined) {
                         translation = translation[k2];
                     } else {
-                        translation = null; // Key not found
+                        translation = null; // Key not found in English either
                         break;
                     }
                 }
@@ -685,18 +691,15 @@ function translatePage(language) {
         }
 
         if (typeof translation === 'string') {
-            element.textContent = translation;
+            element.innerHTML = translation; // Use innerHTML to render potential HTML tags in translations
         }
     });
 
-    // Update HTML lang attribute
-    document.getElementById('html-root').setAttribute('lang', language);
-
-    // Save language preference
+    document.getElementById('html-root').lang = language;
     localStorage.setItem('vpo-language', language);
 }
 
-// Initialize language on page load
+// Event listener for language changes
 document.addEventListener('DOMContentLoaded', () => {
     const savedLanguage = localStorage.getItem('vpo-language') || 'en';
     const languageSelect = document.getElementById('language-select');
@@ -706,9 +709,10 @@ document.addEventListener('DOMContentLoaded', () => {
         translatePage(savedLanguage);
 
         languageSelect.addEventListener('change', (e) => {
-            translatePage(e.target.value);
-            // Dispatch a custom event to notify other parts of the app, like app.js
-            document.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang: e.target.value } }));
+            const newLang = e.target.value;
+            translatePage(newLang);
+            // Notify other parts of the application that the language has changed
+            document.dispatchEvent(new CustomEvent('languageChange', { detail: { lang: newLang } }));
         });
     }
 });
