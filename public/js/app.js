@@ -6,7 +6,6 @@ let currentDestination = null;
 let currentCurrency = 'USD';
 let stripe = null;
 let currentPaymentIntentId = null;
-let currentLanguage = 'en'; // Keep track of current language
 
 // Fixed pricing (in USD)
 const FIXED_PRICES = {
@@ -16,12 +15,16 @@ const FIXED_PRICES = {
     4: 749
 };
 
+// --- ALTERAÇÃO ---
+// As taxas de câmbio agora são usadas APENAS PARA EXIBIÇÃO no frontend.
+// A cobrança real será sempre processada em USD no backend.
 const EXCHANGE_RATES = {
     USD: 1,
-    BRL: 5.5,
-    EUR: 0.85
+    BRL: 5.5, // Taxa de exemplo para exibição
+    EUR: 0.85  // Taxa de exemplo para exibição
 };
 
+// Currency symbols
 const CURRENCY_SYMBOLS = {
     USD: '$',
     BRL: 'R$',
@@ -50,68 +53,6 @@ const STRIPE_PRODUCTS = {
     }
 };
 
-// --- HELPER FUNCTIONS ---
-
-// NEW: Toast Notification Function
-function showToast(message, type = 'error', duration = 4000) {
-    const toast = document.getElementById('toast-notification');
-    if (!toast) {
-        console.error("Toast notification element not found!");
-        alert(message); // Fallback to alert
-        return;
-    }
-
-    toast.textContent = message;
-    toast.className = 'toast show'; // Reset classes
-    if (type === 'success') {
-        toast.classList.add('success');
-    } else {
-        toast.classList.add('error');
-    }
-
-    setTimeout(() => {
-        toast.classList.remove('show');
-    }, duration);
-}
-
-// UPDATED: Centralized error/success handling
-function showError(message) {
-    showToast(message, 'error');
-}
-
-function showSuccess(message) {
-    showToast(message, 'success');
-}
-
-// NEW: Helper to get translation string
-function getTranslation(key) {
-    const lang = localStorage.getItem('vpo-language') || 'en';
-    // Fallback for missing translations object
-    if (!window.translations) {
-        console.error("Translations object is not loaded.");
-        return key;
-    }
-    const keys = key.split('.');
-    let translation = translations[lang];
-    for (const k of keys) {
-        if (translation && translation[k] !== undefined) {
-            translation = translation[k];
-        } else {
-            // Fallback to English if key not found in current language
-            translation = translations.en;
-            for (const k2 of keys) {
-                if (translation && translation[k2] !== undefined) {
-                    translation = translation[k2];
-                } else {
-                    return key; // Return the key itself if not found anywhere
-                }
-            }
-            break;
-        }
-    }
-    return translation;
-}
-
 // Initialize Stripe
 async function initializeStripe() {
     try {
@@ -121,10 +62,157 @@ async function initializeStripe() {
         }
         const { publishableKey } = await response.json();
         stripe = Stripe(publishableKey);
+        console.log('Stripe initialized successfully');
     } catch (error) {
         console.error('Error initializing Stripe:', error);
-        showError('Payment system failed to load. Please refresh.');
+        showError('Failed to initialize payment system. Please refresh the page.');
     }
+}
+
+// Get current language for translations
+function getCurrentLanguage() {
+    return localStorage.getItem('vpo-language') || 'en';
+}
+
+// Get translated text
+function getTranslation(key) {
+    const lang = getCurrentLanguage();
+    const keys = key.split('.');
+    let translation = translations[lang];
+    
+    for (const k of keys) {
+        if (translation && translation[k]) {
+            translation = translation[k];
+        } else {
+            // Fallback to English
+            translation = translations.en;
+            for (const k2 of keys) {
+                if (translation && translation[k2]) {
+                    translation = translation[k2];
+                } else {
+                    return key; // Return key if translation not found
+                }
+            }
+            break;
+        }
+    }
+    
+    return typeof translation === 'string' ? translation : key;
+}
+
+// Show error with beautiful styling
+function showError(message) {
+    // Remove any existing error notifications
+    const existingError = document.querySelector('.error-notification');
+    if (existingError) {
+        existingError.remove();
+    }
+
+    // Create error notification
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-notification';
+    errorDiv.innerHTML = `
+        <div class="error-content">
+            <i class="fas fa-exclamation-circle"></i>
+            <span>${message}</span>
+            <button class="error-close" onclick="this.parentElement.parentElement.remove()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    `;
+
+    // Add styles if not already present
+    if (!document.getElementById('error-notification-styles')) {
+        const styles = document.createElement('style');
+        styles.id = 'error-notification-styles';
+        styles.textContent = `
+            .error-notification {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+                color: white;
+                padding: 0;
+                border-radius: 12px;
+                box-shadow: 0 8px 32px rgba(255, 107, 107, 0.3);
+                z-index: 10000;
+                min-width: 300px;
+                max-width: 500px;
+                animation: slideInRight 0.3s ease-out;
+                backdrop-filter: blur(10px);
+            }
+            
+            .error-content {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 16px 20px;
+            }
+            
+            .error-content i:first-child {
+                font-size: 20px;
+                flex-shrink: 0;
+            }
+            
+            .error-content span {
+                flex: 1;
+                font-weight: 500;
+                line-height: 1.4;
+            }
+            
+            .error-close {
+                background: rgba(255, 255, 255, 0.2);
+                border: none;
+                border-radius: 6px;
+                color: white;
+                cursor: pointer;
+                padding: 6px;
+                transition: background-color 0.2s;
+                flex-shrink: 0;
+            }
+            
+            .error-close:hover {
+                background: rgba(255, 255, 255, 0.3);
+            }
+            
+            @keyframes slideInRight {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            
+            @media (max-width: 768px) {
+                .error-notification {
+                    top: 10px;
+                    right: 10px;
+                    left: 10px;
+                    min-width: auto;
+                    max-width: none;
+                }
+            }
+        `;
+        document.head.appendChild(styles);
+    }
+
+    // Add to page
+    document.body.appendChild(errorDiv);
+
+    // Auto remove after 7 seconds
+    setTimeout(() => {
+        if (errorDiv.parentNode) {
+            errorDiv.remove();
+        }
+    }, 7000);
+}
+
+// Success handling function
+function showSuccess(message) {
+    alert(message);
 }
 
 // Format price based on currency
@@ -138,8 +226,6 @@ function formatPrice(priceUSD, currency = currentCurrency) {
     })}`;
 }
 
-// --- CORE UI FUNCTIONS ---
-
 // Show plans for destination
 function showPlans(destination) {
     currentDestination = destination;
@@ -148,20 +234,25 @@ function showPlans(destination) {
     const container = document.getElementById('plans-display-container');
     const destinationName = document.getElementById('destination-name');
     
-    destinationName.textContent = getTranslation(`destinations.${destination}`);
+    // Map destination to display name
+    const destinationNames = {
+        orlando: 'Orlando',
+        california: 'California', 
+        paris: 'Paris'
+    };
+    
+    destinationName.textContent = destinationNames[destination];
     container.style.display = 'block';
-    // Optional: Only scroll on desktop to prevent annoying jumps on mobile
-    if (window.innerWidth > 768) {
-      container.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
+    container.scrollIntoView({ behavior: 'smooth', block: 'center' });
     
     renderPlans();
     updateTotalPrice();
 }
 
-// UPDATED: Render plans with translated text
+// Render plans
 function renderPlans() {
     const grid = document.getElementById('plans-grid');
+    
     const plans = [
         { days: 1, popular: false },
         { days: 2, popular: false },
@@ -171,25 +262,27 @@ function renderPlans() {
     
     grid.innerHTML = plans.map((plan, index) => {
         const priceUSD = FIXED_PRICES[plan.days];
+        const priceConverted = formatPrice(priceUSD);
+        const pricePerDay = formatPrice(priceUSD / plan.days);
         
         return `
             <div class="plan-card ${plan.popular ? 'popular' : ''}" data-plan-index="${index}" onclick="selectPlan(${index})">
-                ${plan.popular ? `<div class="popular-badge">${getTranslation('plans.popular')}</div>` : ''}
+                ${plan.popular ? `<div class="popular-badge">${getTranslation('plans.most_popular')}</div>` : ''}
                 <div class="plan-checkmark"><i class="fas fa-check-circle"></i></div>
                 <div class="plan-header">
-                    <h3 class="plan-title">${plan.days} ${getTranslation(plan.days === 1 ? 'plans.day' : 'plans.days')}</h3>
-                    <div class="plan-price">${formatPrice(priceUSD)}</div>
-                    <div class="plan-price-usd">${formatPrice(priceUSD / plan.days)} ${getTranslation('plans.per_day')}</div>
-                    <div class="plan-period">${getTranslation('plans.features.title')}</div>
+                    <h3 class="plan-title">${plan.days} ${plan.days === 1 ? 'Day' : 'Days'}</h3>
+                    <div class="plan-price">${priceConverted}</div>
+                    <div class="plan-price-usd">${pricePerDay} ${getTranslation('plans.per_day')}</div>
+                    <div class="plan-period">${getTranslation('plans.complete_guidance')}</div>
                 </div>
                 <div class="plan-features">
                     <ul>
-                        <li><i class="fas fa-check"></i> ${getTranslation('plans.features.item1')}</li>
-                        <li><i class="fas fa-check"></i> ${getTranslation('plans.features.item2')}</li>
-                        <li><i class="fas fa-check"></i> ${getTranslation('plans.features.item3')}</li>
-                        <li><i class="fas fa-check"></i> ${getTranslation('plans.features.item4')}</li>
-                        <li><i class="fas fa-check"></i> ${getTranslation('plans.features.item5')}</li>
-                        <li><i class="fas fa-check"></i> ${getTranslation('plans.features.item6')}</li>
+                        <li><i class="fas fa-check"></i> ${getTranslation('plans.features.park_planning')}</li>
+                        <li><i class="fas fa-check"></i> ${getTranslation('plans.features.queue_tips')}</li>
+                        <li><i class="fas fa-check"></i> ${getTranslation('plans.features.skip_line')}</li>
+                        <li><i class="fas fa-check"></i> ${getTranslation('plans.features.detailed_planning')}</li>
+                        <li><i class="fas fa-check"></i> ${getTranslation('plans.features.restaurant_reservations')}</li>
+                        <li><i class="fas fa-check"></i> ${getTranslation('plans.features.whatsapp_support')}</li>
                     </ul>
                 </div>
             </div>
@@ -208,8 +301,12 @@ function selectPlan(index) {
     
     if (selectedCard) {
         selectedCard.classList.add('selected');
-        // A simple object is enough here as we only need the days
-        const plans = [ { days: 1 }, { days: 2 }, { days: 3 }, { days: 4 } ];
+        const plans = [
+            { days: 1, popular: false },
+            { days: 2, popular: false }, 
+            { days: 3, popular: true },
+            { days: 4, popular: false }
+        ];
         selectedPlan = plans[index];
         updateTotalPrice();
     }
@@ -218,19 +315,25 @@ function selectPlan(index) {
 // Update total price
 function updateTotalPrice() {
     const totalElement = document.getElementById('total-price-value');
-    if (!selectedPlan) {
-        totalElement.textContent = formatPrice(0);
-        return;
-    }
     
-    const totalPax = adults + children;
-    const groupCount = Math.ceil(totalPax / 10) || 1;
-    const basePriceUSD = FIXED_PRICES[selectedPlan.days];
-    const totalPriceUSD = basePriceUSD * groupCount;
-    totalElement.textContent = formatPrice(totalPriceUSD);
+    if (selectedPlan) {
+        const totalPax = adults + children;
+        if (totalPax === 0) {
+            totalElement.textContent = formatPrice(0);
+            return;
+        }
+        
+        const groupCount = Math.ceil(totalPax / 10) || 1;
+        const basePriceUSD = FIXED_PRICES[selectedPlan.days];
+        const totalPriceUSD = basePriceUSD * groupCount;
+        
+        totalElement.textContent = formatPrice(totalPriceUSD);
+    } else {
+        totalElement.textContent = formatPrice(0);
+    }
 }
 
-// UPDATED: Update passenger UI with translated text
+// Update passenger UI
 function updatePassengerUI() {
     document.getElementById('adults-count').textContent = adults;
     document.getElementById('children-count').textContent = children;
@@ -242,11 +345,13 @@ function updatePassengerUI() {
     const groupCount = Math.ceil(totalPax / 10) || 1;
     
     document.getElementById('total-pax-count').textContent = totalPax;
-    document.getElementById('group-size').textContent = `${groupCount} ${getTranslation(groupCount > 1 ? 'plans.groups' : 'plans.group')}`;
+    document.getElementById('group-size').textContent = `${groupCount} ${groupCount > 1 ? 'groups' : 'group'}`;
     
-    let adultText = `${adults} ${getTranslation(adults !== 1 ? 'checkout.adults' : 'checkout.adult')}`;
-    let childText = children > 0 ? `, ${children} ${getTranslation(children !== 1 ? 'checkout.children' : 'checkout.child')}` : '';
-    document.querySelector('.passenger-text').textContent = adultText + childText;
+    let displayText = `${adults} adult${adults !== 1 ? 's' : ''}`;
+    if (children > 0) {
+        displayText += `, ${children} child${children !== 1 ? 'ren' : ''}`;
+    }
+    document.querySelector('.passenger-text').textContent = displayText;
     
     updateTotalPrice();
 }
@@ -261,6 +366,7 @@ function toggleAccordion(item) {
         content.style.height = '0';
         if (icon) icon.style.transform = 'rotate(0deg)';
     } else {
+        // Close all others first
         document.querySelectorAll('.accordion-item.active').forEach(activeItem => {
             activeItem.classList.remove('active');
             activeItem.querySelector('.accordion-content').style.height = '0';
@@ -274,113 +380,125 @@ function toggleAccordion(item) {
     }
 }
 
-// --- VALIDATION AND CHECKOUT ---
-
-// UPDATED: Validation with translated error messages
+// Validation functions
 function validateCheckoutData() {
-    // NOTE: Ensure these error keys exist in your translations.js file!
     if (!selectedPlan) {
-        throw new Error(getTranslation('error.selectPlan') || 'Please select a plan first.');
+        throw new Error(getTranslation('validation.select_plan'));
     }
     
     const travelDate = document.getElementById('travel-date-input').value;
     if (!travelDate) {
-        throw new Error(getTranslation('error.selectDate') || 'Please select an activation date.');
+        throw new Error(getTranslation('validation.select_date'));
     }
     
-    if (adults + children === 0) {
-        throw new Error(getTranslation('error.selectPassengers') || 'Please add at least one passenger.');
+    const totalPax = adults + children;
+    if (totalPax === 0) {
+        throw new Error(getTranslation('validation.select_passengers'));
     }
     
-    // To prevent timezone issues, compare dates as strings or UTC
-    const selectedDate = new Date(travelDate + 'T00:00:00');
-    const today = new Date();
-    today.setUTCHours(0, 0, 0, 0);
-
-    if (selectedDate <= today) {
-        throw new Error(getTranslation('error.dateInFuture') || 'Please select a date in the future.');
+    const selectedDate = new Date(travelDate);
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    
+    if (selectedDate < tomorrow) {
+        throw new Error(getTranslation('validation.future_date'));
     }
     
-    return { travelDate };
+    return { travelDate, totalPax };
 }
-
 
 // Validate customer form
 function validateCustomerForm() {
     const errors = {};
     
-    const fieldsToValidate = {
-        name: document.getElementById('customer-name').value.trim(),
-        email: document.getElementById('customer-email').value.trim(),
-        phone: document.getElementById('customer-phone').value.trim(),
-        address: document.getElementById('customer-address').value.trim(),
-        city: document.getElementById('customer-city').value.trim(),
-        country: document.getElementById('customer-country').value
-    };
-
-    if (!fieldsToValidate.name) errors.name = 'Full name is required';
-    if (!fieldsToValidate.email) {
-        errors.email = 'Email is required';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fieldsToValidate.email)) {
-        errors.email = 'Please enter a valid email';
-    }
-    if (!fieldsToValidate.phone) errors.phone = 'Phone number is required';
-    if (!fieldsToValidate.address) errors.address = 'Address is required';
-    if (!fieldsToValidate.city) errors.city = 'City is required';
-    if (!fieldsToValidate.country) errors.country = 'Country is required';
-
-    // Clear all previous errors
-    document.querySelectorAll('.form-group .error-message').forEach(el => el.remove());
-    document.querySelectorAll('.form-group input, .form-group select').forEach(el => el.classList.remove('error'));
-
+    // Get form values
+    const fullName = document.getElementById('customer-name').value.trim();
+    const email = document.getElementById('customer-email').value.trim();
+    const phone = document.getElementById('customer-phone').value.trim();
+    const address = document.getElementById('customer-address').value.trim();
+    const city = document.getElementById('customer-city').value.trim();
+    const country = document.getElementById('customer-country').value;
+    const currency = document.getElementById('checkout-currency').value;
+    
+    // Validate required fields
+    if (!fullName) errors.name = 'Full name is required';
+    if (!email) errors.email = 'Email is required';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.email = 'Please enter a valid email';
+    if (!phone) errors.phone = 'Phone number is required';
+    if (!address) errors.address = 'Address is required';
+    if (!city) errors.city = 'City is required';
+    if (!country) errors.country = 'Country is required';
+    
+    // Display errors
+    Object.keys(errors).forEach(field => {
+        const fieldElement = document.getElementById(`customer-${field === 'name' ? 'name' : field}`);
+        const errorElement = fieldElement.parentNode.querySelector('.error-message');
+        
+        if (errorElement) {
+            errorElement.textContent = errors[field];
+        } else {
+            const newError = document.createElement('div');
+            newError.className = 'error-message';
+            newError.textContent = errors[field];
+            fieldElement.parentNode.appendChild(newError);
+        }
+        fieldElement.classList.add('error');
+    });
+    
+    // Clear previous errors for valid fields
+    const allFields = ['customer-name', 'customer-email', 'customer-phone', 'customer-address', 'customer-city', 'customer-country'];
+    allFields.forEach(fieldId => {
+        if (!Object.keys(errors).some(key => fieldId.includes(key))) {
+            const fieldElement = document.getElementById(fieldId);
+            const errorElement = fieldElement.parentNode.querySelector('.error-message');
+            if (errorElement) errorElement.remove();
+            fieldElement.classList.remove('error');
+        }
+    });
+    
     if (Object.keys(errors).length > 0) {
-        Object.keys(errors).forEach(field => {
-            const fieldElement = document.getElementById(`customer-${field}`);
-            if(fieldElement) {
-                fieldElement.classList.add('error');
-                const errorDiv = document.createElement('div');
-                errorDiv.className = 'error-message';
-                errorDiv.textContent = errors[field];
-                fieldElement.parentNode.appendChild(errorDiv);
-            }
-        });
-        throw new Error('Please fill in all required fields correctly.');
+        throw new Error(getTranslation('validation.fill_required'));
     }
     
     return {
-        fullName: fieldsToValidate.name,
-        email: fieldsToValidate.email,
-        phone: fieldsToValidate.phone,
-        address: fieldsToValidate.address,
-        city: fieldsToValidate.city,
-        country: fieldsToValidate.country
+        fullName,
+        email,
+        phone,
+        address,
+        city,
+        country,
+        currency
     };
 }
 
-
-// UPDATED: Show checkout modal with translated content
+// Show checkout modal
 function showCheckoutModal() {
     try {
-        const { travelDate } = validateCheckoutData();
+        const { travelDate, totalPax } = validateCheckoutData();
+        
         const modal = document.getElementById('checkout-modal');
         const checkoutDetails = document.getElementById('checkout-details');
         
-        const totalPax = adults + children;
         const groupCount = Math.ceil(totalPax / 10) || 1;
         const basePriceUSD = FIXED_PRICES[selectedPlan.days];
         const totalPriceUSD = basePriceUSD * groupCount;
-
-        const adultText = `${adults} ${getTranslation(adults > 1 ? 'checkout.adults' : 'checkout.adult')}`;
-        const childText = children > 0 ? `, ${children} ${getTranslation(children > 1 ? 'checkout.children' : 'checkout.child')}` : '';
-        const passengerSummary = adultText + childText;
         
-        const localeForDate = (localStorage.getItem('vpo-language') || 'en').split('-')[0];
-
+        // Create properly translated summary
+        const adultsText = adults > 0 ? `${adults} ${getTranslation('checkout.adults')}${adults > 1 ? 's' : ''}` : '';
+        const childrenText = children > 0 ? `${children} ${getTranslation('checkout.children')}` : '';
+        let passengersText = adultsText;
+        if (adultsText && childrenText) {
+            passengersText += `, ${childrenText}`;
+        } else if (childrenText) {
+            passengersText = childrenText;
+        }
+        
+        // Update checkout details with translations
         checkoutDetails.innerHTML = `
             <div style="border-bottom: 1px solid var(--gray-200); padding-bottom: 1rem; margin-bottom: 1rem;">
-                <h4>${getTranslation(`destinations.${currentDestination}`)} - ${selectedPlan.days} ${getTranslation(selectedPlan.days > 1 ? 'plans.days' : 'plans.day')}</h4>
-                <p>${passengerSummary}</p>
-                <p>${getTranslation('checkout.date')}: ${new Date(travelDate + 'T00:00:00').toLocaleDateString(localeForDate)}</p>
+                <h4>${currentDestination.charAt(0).toUpperCase() + currentDestination.slice(1)} - ${selectedPlan.days} Day${selectedPlan.days > 1 ? 's' : ''}</h4>
+                <p>${passengersText}</p>
+                <p>${getTranslation('checkout.date')}: ${new Date(travelDate).toLocaleDateString()}</p>
                 <p>${getTranslation('checkout.groups')}: ${groupCount}</p>
             </div>
             <div style="display: flex; justify-content: space-between; align-items: center; font-size: 1.25rem; font-weight: bold;">
@@ -389,43 +507,77 @@ function showCheckoutModal() {
             </div>
         `;
         
+        // Set default currency in form
         document.getElementById('checkout-currency').value = currentCurrency;
+        
         modal.style.display = 'block';
         
+        // Clear any previous errors
         const errorDiv = document.getElementById('card-errors');
         if (errorDiv) errorDiv.textContent = '';
         
+        // Initialize Stripe Elements
         initializePayment(totalPriceUSD, travelDate);
         
     } catch (error) {
-        showError(error.message); // This now calls the toast notification
+        showError(error.message);
     }
 }
-
 
 // Initialize payment
 async function initializePayment(totalPriceUSD, travelDate) {
     try {
-        if (!stripe) await initializeStripe();
-        if (!stripe) throw new Error('Payment system not available');
+        if (!stripe) {
+            await initializeStripe();
+        }
         
-        const elements = stripe.elements({ appearance: { theme: 'stripe' } });
+        if (!stripe) {
+            throw new Error('Payment system not available');
+        }
+        
+        const elements = stripe.elements({
+            appearance: {
+                theme: 'stripe',
+            },
+        });
+        
         const cardElement = elements.create('card', {
             style: {
-                base: { fontSize: '16px', color: '#32325d', '::placeholder': { color: '#aab7c4' } },
-                invalid: { color: '#fa755a', iconColor: '#fa755a' }
-            }
+                base: {
+                    fontSize: '16px',
+                    color: '#424770',
+                    '::placeholder': {
+                        color: '#aab7c4',
+                    },
+                },
+                invalid: {
+                    color: '#9e2146',
+                },
+            },
         });
         
         const cardElementContainer = document.getElementById('card-element');
-        cardElementContainer.innerHTML = ''; // Clear previous instances
+        cardElementContainer.innerHTML = '';
         cardElement.mount('#card-element');
         
+        // Handle real-time validation errors from the card Element
         cardElement.on('change', (event) => {
             const displayError = document.getElementById('card-errors');
-            displayError.textContent = event.error ? event.error.message : '';
+            if (event.error) {
+                displayError.textContent = event.error.message;
+            } else {
+                displayError.textContent = '';
+            }
         });
         
+        // Handle currency change
+        document.getElementById('checkout-currency').addEventListener('change', (e) => {
+            const newCurrency = e.target.value;
+            const newTotal = formatPrice(totalPriceUSD, newCurrency);
+            document.getElementById('modal-total-price').textContent = newTotal;
+        });
+        
+        // Handle form submission
         const form = document.getElementById('payment-form');
         form.onsubmit = async (event) => {
             event.preventDefault();
@@ -438,30 +590,43 @@ async function initializePayment(totalPriceUSD, travelDate) {
     }
 }
 
-
 // Process payment
 async function processPayment(cardElement, totalPriceUSD, travelDate) {
     const submitButton = document.getElementById('submit-payment');
     const originalButtonText = submitButton.innerHTML;
-    submitButton.disabled = true;
-    submitButton.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${getTranslation('checkout.processing') || 'Processing...'}`;
-
+    
     try {
+        // Validate customer form first
         const customerData = validateCustomerForm();
+        
+        // Disable submit button and show loading
+        submitButton.disabled = true;
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+        
+        // Clear any previous errors
         const errorDiv = document.getElementById('card-errors');
         errorDiv.textContent = '';
         
+        // Get selected currency from form for metadata purposes
         const selectedCurrency = document.getElementById('checkout-currency').value;
+        
+        // Get Stripe product ID
         const productId = STRIPE_PRODUCTS[currentDestination][selectedPlan.days];
-
+        
+        // Create payment intent
+        // --- ALTERAÇÃO INÍCIO ---
+        // Enviamos o valor em USD (totalPriceUSD) para o backend.
+        // O backend irá ignorar a moeda selecionada e forçar a cobrança em USD.
         const response = await fetch('/api/create-payment-intent', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+            },
             body: JSON.stringify({
-                amount: totalPriceUSD,
-                currency: selectedCurrency,
+                amount: totalPriceUSD, // Sempre envie o valor base em USD
+                currency: selectedCurrency, // Envie a moeda selecionada para metadados/exibição
                 plan: {
-                    name: `Remote Guide ${currentDestination} - ${selectedPlan.days} Days`,
+                    name: `Remote Guide ${currentDestination.charAt(0).toUpperCase() + currentDestination.slice(1)} - ${selectedPlan.days} Day${selectedPlan.days > 1 ? 's' : ''}`,
                     days: selectedPlan.days,
                     productId: productId
                 },
@@ -470,13 +635,17 @@ async function processPayment(cardElement, totalPriceUSD, travelDate) {
                 customer: customerData
             }),
         });
-
+        // --- ALTERAÇÃO FIM ---
+        
         if (!response.ok) {
             const errorData = await response.json();
             throw new Error(errorData.error || 'Payment setup failed');
         }
-
-        const { clientSecret } = await response.json();
+        
+        const { clientSecret, paymentIntentId } = await response.json();
+        currentPaymentIntentId = paymentIntentId;
+        
+        // Confirm payment
         const result = await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: cardElement,
@@ -492,130 +661,145 @@ async function processPayment(cardElement, totalPriceUSD, travelDate) {
                 },
             }
         });
-
+        
         if (result.error) {
             throw new Error(result.error.message);
         } else {
+            // Payment succeeded
             handlePaymentSuccess(result.paymentIntent);
         }
-
+        
     } catch (error) {
+        console.error('Payment error:', error);
         showError(error.message || 'Payment failed. Please try again.');
     } finally {
+        // Re-enable submit button
         submitButton.disabled = false;
         submitButton.innerHTML = originalButtonText;
     }
 }
 
-
 // Handle successful payment
 function handlePaymentSuccess(paymentIntent) {
-    showSuccess('Payment successful! Thank you for your purchase.');
+    console.log('Payment succeeded on client:', paymentIntent);
+    
+    // A confirmação final (e-mail, etc.) é feita pelo webhook do servidor.
+    // Aqui, apenas notificamos o usuário.
+    showSuccess('Payment successful! Thank you for your purchase. You will receive a confirmation email shortly.');
+    
+    // Close modal
     document.getElementById('checkout-modal').style.display = 'none';
     
-    // Optional: Redirect to a success page
-    // window.location.href = `/success.html?payment_intent=${paymentIntent.id}`;
+    // You could redirect to a success page
+    // window.location.href = '/success?payment_intent=' + paymentIntent.id;
 }
 
-// --- EVENT LISTENERS ---
-
+// Initialize on DOM load
 document.addEventListener('DOMContentLoaded', async () => {
-    // Set minimum date for date picker
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    document.getElementById('travel-date-input').min = tomorrow.toISOString().split('T')[0];
-    
-    // Language Selector
-    const languageSelect = document.getElementById('language-select');
-    languageSelect.addEventListener('change', (e) => {
-        currentLanguage = e.target.value;
-        translatePage(currentLanguage); // Assumes translatePage is in another file
-        // Re-render dynamic parts
-        if (currentDestination) {
-            showPlans(currentDestination); 
-        }
-        updatePassengerUI();
-    });
-
-    // Currency Selector
-    const currencySelect = document.getElementById('currency-select');
-    currencySelect.addEventListener('change', (e) => {
-        currentCurrency = e.target.value;
-        if (selectedPlan) {
-            renderPlans(); // Re-render to show new currency
-        }
-        updateTotalPrice();
-    });
-
-    // Passenger Selector
-    const passengerSelector = document.querySelector('.passenger-selector');
-    const passengerDisplay = document.querySelector('.passenger-display');
-    const passengerDropdown = document.querySelector('.passenger-dropdown');
-    
-    passengerDisplay.addEventListener('click', (event) => {
-        event.stopPropagation();
-        passengerDropdown.classList.toggle('show');
-    });
-
-    document.addEventListener('click', (event) => {
-        if (!passengerSelector.contains(event.target)) {
-            passengerDropdown.classList.remove('show');
-        }
-    });
-
-    passengerDropdown.addEventListener('click', (event) => {
-        const button = event.target.closest('.passenger-btn');
-        if (!button) return;
+    try {
+        // Initialize Lucide icons
+        if (window.lucide) lucide.createIcons();
         
-        const type = button.dataset.type;
-        const action = button.dataset.action;
+        // Set minimum date to tomorrow
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const minDate = tomorrow.toISOString().split('T')[0];
+        const dateInput = document.getElementById('travel-date-input');
+        if (dateInput) {
+            dateInput.min = minDate;
+        }
         
-        if (action === 'increase') {
-            if (type === 'adults') adults++;
-            else children++;
-        } else if (action === 'decrease') {
-            if (type === 'adults' && (adults > 1 || (adults === 1 && children > 0))) {
-                adults--;
-            } else if (type === 'children' && children > 0) {
-                children--;
+        // Currency selector
+        const currencySelect = document.getElementById('currency-select');
+        if (currencySelect) {
+            currencySelect.addEventListener('change', (e) => {
+                currentCurrency = e.target.value;
+                if (selectedPlan) {
+                    renderPlans();
+                }
+                updateTotalPrice();
+            });
+        }
+        
+        // Passenger selector logic
+        const passengerSelector = document.querySelector('.passenger-selector');
+        const passengerDisplay = document.querySelector('.passenger-display');
+        const passengerDropdown = document.querySelector('.passenger-dropdown');
+        
+        if (passengerDisplay && passengerDropdown) {
+            passengerDisplay.addEventListener('click', (event) => {
+                event.stopPropagation();
+                passengerDropdown.classList.toggle('show');
+            });
+            
+            document.addEventListener('click', (event) => {
+                if (passengerSelector && !passengerSelector.contains(event.target)) {
+                    passengerDropdown.classList.remove('show');
+                }
+            });
+            
+            passengerDropdown.addEventListener('click', (event) => {
+                const button = event.target.closest('.passenger-btn');
+                if (!button) return;
+                
+                const type = button.dataset.type;
+                const action = button.dataset.action;
+                
+                if (action === 'increase') {
+                    if (type === 'adults') adults++;
+                    else if (type === 'children') children++;
+                } else if (action === 'decrease') {
+                    if (type === 'adults' && (adults > 1 || (adults === 1 && children > 0))) {
+                        adults--;
+                    } else if (type === 'children' && children > 0) {
+                        children--;
+                    }
+                }
+                
+                if (adults + children === 0) adults = 1;
+                updatePassengerUI();
+            });
+        }
+        
+        // Accordion functionality
+        document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                toggleAccordion(trigger.parentElement);
+            });
+        });
+        
+        // Checkout button
+        const checkoutBtn = document.getElementById('checkout-btn');
+        if (checkoutBtn) {
+            checkoutBtn.addEventListener('click', showCheckoutModal);
+        }
+        
+        // Modal close functionality
+        const closeModal = document.getElementById('close-modal');
+        if (closeModal) {
+            closeModal.addEventListener('click', () => {
+                document.getElementById('checkout-modal').style.display = 'none';
+            });
+        }
+        
+        window.addEventListener('click', (event) => {
+            const modal = document.getElementById('checkout-modal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
             }
-        }
+        });
+        
+        // Initial UI setup
         updatePassengerUI();
-    });
-
-    // Accordion
-    document.querySelectorAll('.accordion-trigger').forEach(trigger => {
-        trigger.addEventListener('click', () => toggleAccordion(trigger.parentElement));
-    });
-
-    // Checkout button
-    const checkoutBtn = document.getElementById('checkout-btn');
-    checkoutBtn.addEventListener('click', () => {
-        showCheckoutModal();
-        // Tracking can be called inside showCheckoutModal on success, or here.
-        // Let's assume trackInitiateCheckout is in another file.
-        if(typeof trackInitiateCheckout === 'function') trackInitiateCheckout();
-    });
-
-    // Modal close
-    const closeModal = document.getElementById('close-modal');
-    closeModal.addEventListener('click', () => {
-        document.getElementById('checkout-modal').style.display = 'none';
-    });
-    window.addEventListener('click', (event) => {
-        if (event.target === document.getElementById('checkout-modal')) {
-            event.target.style.display = 'none';
-        }
-    });
-    
-    // Initial Setup
-    currentLanguage = localStorage.getItem('vpo-language') || 'en';
-    languageSelect.value = currentLanguage;
-    updatePassengerUI();
-    await initializeStripe();
-    if (window.lucide) lucide.createIcons();
+        
+        // Initialize Stripe
+        await initializeStripe();
+        
+    } catch (error) {
+        console.error('Error initializing app:', error);
+    }
 });
 
-// Expose functions to global scope for inline HTML onclick handlers
+// Global functions for onclick handlers
 window.showPlans = showPlans;
 window.selectPlan = selectPlan;
