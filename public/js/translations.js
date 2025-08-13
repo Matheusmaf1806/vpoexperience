@@ -1,26 +1,12 @@
-const translations = {
+window.translations = {
     en: {
         title: "Remote Guidance Service at Orlando Parks",
-        nav: {
-            services: "Services",
-            plans: "Plans",
-            testimonials: "Testimonials",
-            faq: "FAQ"
-        },
-        hero: {
-            title: "Your Personal Concierge,",
-            accent: "for the Magic of Parks.",
-            subtitle: "Have a specialist guiding you in real time through the parks of Orlando, California and Paris, maximizing your experience and creating unforgettable memories.",
-            cta_text: "View Options",
-            stat1: "Families",
-            stat2: "Universal",
-            stat3: "Reviews"
-        },
+        nav: { services: "Services", plans: "Plans", testimonials: "Testimonials", faq: "FAQ" },
+        hero: { title: "Your Personal Concierge,", accent: "for the Magic of Parks.", subtitle: "Have a specialist guiding you in real time through the parks of Orlando, California and Paris, maximizing your experience and creating unforgettable memories.", cta_text: "View Options", stat1: "Families", stat2: "Universal", stat3: "Reviews" },
         services: {
             subtitle: "Our Services",
             title1: "How",
             title2: "Remote Guidance",
-            title3: "Works",
             description: "Have a specialist assisting you in real time during your visit to the parks.",
             service1: { title: "Personalized Planning", description: "Exclusive itineraries for your family, considering age, interests and available time." },
             service2: { title: "Real-Time Support", description: "WhatsApp assistance throughout your visit, with real-time guidance." },
@@ -32,7 +18,6 @@ const translations = {
             title_line1: "Maximize your Disney experience",
             title_line2: "with",
             title_accent: "specialized",
-            title_line3: "assistance",
             description: "Our specialists know the smallest details of the parks and will provide you and your family with unforgettable moments without stress or worries.",
             stats_line1: "of clients",
             stats_line2: "recommend our service",
@@ -132,14 +117,6 @@ const translations = {
             selectDate: "Please select an activation date.",
             selectPassengers: "Please add at least one passenger.",
             dateInFuture: "Please select a date in the future."
-        },
-        obrigado: {
-            page_title: "Thank You! | VPO Experience",
-            title: "Thank You for Your Purchase!",
-            subtitle: "Your order has been confirmed. Our team is excited to help you plan your magical trip.",
-            action_required: { title: "Action Required: Start Your Setup!", intro: "To begin the planning, please click the button below to start a conversation with our experts on WhatsApp.", cta: "Start Setup on WhatsApp", number_intro: "Or add our number to your contacts:" },
-            next_steps: { title: "What Happens Next?", step1: "We'll confirm your details via WhatsApp.", step2: "We'll create your personalized park itinerary.", step3: "Get ready for an unforgettable experience!" },
-            cta: "Back to Homepage"
         }
     },
     pt: {
@@ -150,7 +127,6 @@ const translations = {
             subtitle: "Nossos Serviços",
             title1: "Como Funciona o",
             title2: "Guiamento Remoto",
-            title3: "",
             description: "Tenha um especialista brasileiro te auxiliando em tempo real durante sua visita aos parques.",
             service1: { title: "Planejamento Personalizado", description: "Roteiros exclusivos para sua família, considerando idade, interesses e tempo disponível." },
             service2: { title: "Acompanhamento em Tempo Real", description: "Assistência via WhatsApp durante toda sua visita, com orientações em tempo real." },
@@ -162,7 +138,6 @@ const translations = {
             title_line1: "Maximize sua experiência Disney",
             title_line2: "com assistência",
             title_accent: "especializada",
-            title_line3: "",
             description: "Nossos especialistas conhecem os mínimos detalhes dos parques e proporcionarão a você e sua família momentos inesquecíveis sem estresse ou preocupações.",
             stats_line1: "dos clientes",
             stats_line2: "recomendam nosso serviço",
@@ -262,14 +237,6 @@ const translations = {
             selectDate: "Por favor, selecione uma data de ativação.",
             selectPassengers: "Por favor, adicione pelo menos um passageiro.",
             dateInFuture: "Por favor, selecione uma data futura."
-        },
-        obrigado: {
-            page_title: "Obrigado! | VPO Experience",
-            title: "Obrigado pela sua Compra!",
-            subtitle: "Seu pedido foi confirmado. Nossa equipe está animada para ajudar a planejar sua viagem mágica.",
-            action_required: { title: "Ação Necessária: Inicie a Configuração!", intro: "Para começar o planejamento, por favor, clique no botão abaixo para iniciar uma conversa com nossos especialistas no WhatsApp.", cta: "Iniciar Configuração no WhatsApp", number_intro: "Ou adicione nosso número aos seus contatos:" },
-            next_steps: { title: "Quais são os Próximos Passos?", step1: "Confirmaremos seus detalhes via WhatsApp.", step2: "Criaremos seu roteiro de parque personalizado.", step3: "Prepare-se para uma experiência inesquecível!" },
-            cta: "Voltar para a Página Inicial"
         }
     },
     es: {
@@ -280,7 +247,6 @@ const translations = {
             subtitle: "Nuestros Servicios",
             title1: "Cómo Funciona la",
             title2: "Guía Remota",
-            title3: "",
             description: "Tenga un especialista brasileño ayudándolo en tiempo real durante su visita a los parques.",
             service1: { title: "Planificación Personalizada", description: "Itinerarios exclusivos para su familia, considerando edad, intereses y tiempo disponible." },
             service2: { title: "Acompañamiento en Tiempo Real", description: "Asistencia vía WhatsApp durante toda su visita, con orientaciones en tiempo real." },
@@ -292,7 +258,6 @@ const translations = {
             title_line1: "Maximice su experiencia Disney",
             title_line2: "con asistencia",
             title_accent: "especializada",
-            title_line3: "",
             description: "Nuestros especialistas conocen los mínimos detalles de los parques y le proporcionarán a usted y su familia momentos inolvidables sin estrés ni preocupaciones.",
             stats_line1: "de los clientes",
             stats_line2: "recomiendan nuestro servicio",
@@ -345,17 +310,6 @@ const translations = {
             paris_parks: "Parques Disneyland",
             cta: "Toque para ver planes"
         },
-        testimonials: {
-            subtitle: "Testimonios",
-            title1: "Lo que nuestros",
-            title2: "clientes",
-            title3: "dicen",
-            description: "Familias brasileñas que transformaron sus viajes a Disney con nuestro servicio de guía remota.",
-            testimonial1: "¡Nuestra experiencia con VPO fue maravillosa! Cuidaron con todo cariño todos los detalles, desde la reserva del hotel hasta la programación de los parques. También tenemos que destacar el diseñador de experiencias que nos proporcionó mayor comodidad y dinámica dentro de los parques, para que pudiéramos disfrutar con comodidad y tranquilidad este viaje increíble. ¡Simplemente no los dejo más!! ❤️",
-            testimonial2: "¡El viaje fue increíble, VPO siempre ayudándonos a tener días maravillosos en Orlando! ¡Es la segunda vez que contratamos el servicio (carro, hotel, casa, entradas de parques) y vivo recomendándolo a todos! ¡Aquí está mi gratitud por todo el cuidado y cariño conmigo y con mi familia! ¡Un gran beso para ustedes!",
-            testimonial3: "¡Muy buen servicio! Compramos todo en 2019, y solo pude viajar este año 2022. La ayuda con todas las reprogramaciones fue maravillosa, aclarando muchas dudas, incluso sobre servicios que no había cerrado con ellos. Fue una gran asociación. Ya lo recomendé a una amiga, que también lo usó y le gustó. Ya estoy planeando un nuevo viaje con VPO.",
-            testimonial4: "¡Equipo excepcionalmente competente, responsable y súper atento! Crearon un itinerario detallado, dentro de nuestros intereses y nos dieron todo el apoyo, en tiempo real, cuando lo necesitamos. ¡Muchas gracias VPO Experience, nos encanta viajar a Orlando con ustedes!"
-        },
         faq: {
             subtitle: "Preguntas Frecuentes",
             title1: "Aclare sus",
@@ -392,14 +346,6 @@ const translations = {
             selectDate: "Por favor, seleccione una fecha de activación.",
             selectPassengers: "Por favor, agregue al menos un pasajero.",
             dateInFuture: "Por favor, seleccione una fecha en el futuro."
-        },
-        obrigado: {
-            page_title: "¡Gracias! | VPO Experience",
-            title: "¡Gracias por su Compra!",
-            subtitle: "Su pedido ha sido confirmado. Nuestro equipo está emocionado de ayudarle a planificar su viaje mágico.",
-            action_required: { title: "¡Acción Requerida: Inicie su Configuración!", intro: "Para comenzar la planificación, por favor, haga clic en el botón de abajo para iniciar una conversación con nuestros expertos en WhatsApp.", cta: "Iniciar Configuración en WhatsApp", number_intro: "O agregue nuestro número a sus contactos:" },
-            next_steps: { title: "¿Qué Sigue Ahora?", step1: "Confirmaremos sus detalles por WhatsApp.", step2: "Crearemos su itinerario de parque personalizado.", step3: "¡Prepárese para una experiencia inolvidable!" },
-            cta: "Volver a la Página Principal"
         }
     },
     fr: {
@@ -410,7 +356,6 @@ const translations = {
             subtitle: "Nos Services",
             title1: "Comment Fonctionne le",
             title2: "Guidage à Distance",
-            title3: "",
             description: "Ayez un spécialiste brésilien vous assistant en temps réel pendant votre visite dans les parcs.",
             service1: { title: "Planification Personnalisée", description: "Itinéraires exclusifs pour votre famille, en tenant compte de l'âge, des intérêts et du temps disponible." },
             service2: { title: "Accompagnement en Temps Réel", description: "Assistance via WhatsApp pendant toute votre visite, avec des orientations en temps réel." },
@@ -422,7 +367,6 @@ const translations = {
             title_line1: "Maximisez votre expérience Disney",
             title_line2: "avec une assistance",
             title_accent: "spécialisée",
-            title_line3: "",
             description: "Nos spécialistes connaissent les moindres détails des parcs et vous fourniront, à vous et votre famille, des moments inoubliables sans stress ni soucis.",
             stats_line1: "des clients",
             stats_line2: "recommandent notre service",
@@ -475,17 +419,6 @@ const translations = {
             paris_parks: "Parcs Disneyland",
             cta: "Appuyez pour voir les plans"
         },
-        testimonials: {
-            subtitle: "Témoignages",
-            title1: "Ce que nos",
-            title2: "clients",
-            title3: "disent",
-            description: "Familles brésiliennes qui ont transformé leurs voyages Disney avec notre service de guidage à distance.",
-            testimonial1: "Notre expérience avec VPO a été merveilleuse ! Ils ont pris soin de tous les détails avec attention, de la réservation d'hôtel à la programmation des parcs. Nous devons également souligner le concepteur d'expérience qui nous a fourni plus de confort et de dynamisme dans les parcs, pour que nous puissions profiter de ce voyage incroyable avec confort et tranquillité. Je ne les lâche plus !! ❤️",
-            testimonial2: "Le voyage était incroyable, VPO nous aidant toujours à passer des journées merveilleuses à Orlando !! C'est la deuxième fois que nous engageons le service (voiture, hôtel, maison, billets de parcs) et je continue à le recommander à tout le monde ! Voici ma gratitude pour tous les soins et l'affection avec moi et ma famille !!! Un gros bisou pour vous !",
-            testimonial3: "Très bon service ! Nous avons tout acheté en 2019, et je n'ai pu voyager qu'en 2022. L'aide avec toutes les reprogrammations a été merveilleuse, clarifiant de nombreux doutes, même sur des services que je n'avais pas conclus avec eux. C'était un excellent partenariat. J'ai déjà recommandé à une amie, qui l'a aussi utilisé et aimé. Je planifie déjà un nouveau voyage avec VPO.",
-            testimonial4: "Équipe exceptionnellement compétente, responsable et super attentive ! Ils ont créé un itinéraire détaillé, dans nos intérêts et nous ont donné tout le soutien, en temps réel, quand nous en avions besoin. Merci beaucoup VPO Experience, nous adorons voyager à Orlando avec vous !"
-        },
         faq: {
             subtitle: "Questions Fréquemment Posées",
             title1: "Clarifiez vos",
@@ -522,14 +455,6 @@ const translations = {
             selectDate: "Veuillez sélectionner une date d'activation.",
             selectPassengers: "Veuillez ajouter au moins un passager.",
             dateInFuture: "Veuillez sélectionner une date future."
-        },
-        obrigado: {
-            page_title: "Merci ! | VPO Experience",
-            title: "Merci pour votre achat !",
-            subtitle: "Votre commande a été confirmée. Notre équipe est ravie de vous aider à planifier votre voyage magique.",
-            action_required: { title: "Action Requise : Commencez Votre Configuration !", intro: "Pour commencer la planification, veuillez cliquer sur le bouton ci-dessous pour démarrer une conversation avec nos experts sur WhatsApp.", cta: "Démarrer la Configuration sur WhatsApp", number_intro: "Ou ajoutez notre numéro à vos contacts :" },
-            next_steps: { title: "Quelles sont les prochaines étapes ?", step1: "Nous confirmerons vos informations via WhatsApp.", step2: "Nous créerons votre itinéraire de parc personnalisé.", step3: "Préparez-vous pour une expérience inoubliable !" },
-            cta: "Retour à la page d'accueil"
         }
     },
     nl: {
@@ -540,7 +465,6 @@ const translations = {
             subtitle: "Onze Diensten",
             title1: "Hoe",
             title2: "Externe Begeleiding",
-            title3: "Werkt",
             description: "Laat een Braziliaanse specialist u in realtime assisteren tijdens uw bezoek aan de parken.",
             service1: { title: "Gepersonaliseerde Planning", description: "Exclusieve routes voor uw familie, rekening houdend met leeftijd, interesses en beschikbare tijd." },
             service2: { title: "Realtime Ondersteuning", description: "WhatsApp-assistentie gedurende uw hele bezoek, met realtime begeleiding." },
@@ -552,7 +476,6 @@ const translations = {
             title_line1: "Maximaliseer uw Disney-ervaring",
             title_line2: "met",
             title_accent: "gespecialiseerde",
-            title_line3: "assistentie",
             description: "Onze specialisten kennen de kleinste details van de parken en zullen u en uw familie onvergetelijke momenten bezorgen zonder stress of zorgen.",
             stats_line1: "van de klanten",
             stats_line2: "beveelt onze service aan",
@@ -605,17 +528,6 @@ const translations = {
             paris_parks: "Disneyland Parken",
             cta: "Tik om plannen te zien"
         },
-        testimonials: {
-            subtitle: "Getuigenissen",
-            title1: "Wat onze",
-            title2: "klanten",
-            title3: "zeggen",
-            description: "Braziliaanse families die hun Disney-reizen hebben getransformeerd met onze externe begeleidingsservice.",
-            testimonial1: "Onze ervaring met VPO was geweldig! Ze zorgden met alle zorg voor alle details, van hotelreservering tot parkplanning. We moeten ook de ervaringsontwerper benadrukken die ons meer comfort en dynamiek binnen de parken heeft geboden, zodat we van deze ongelooflijke reis konden genieten met comfort en rust. Ik laat ze gewoon niet meer los!! ❤️",
-            testimonial2: "De reis was ongelooflijk, VPO hielp ons altijd geweldige dagen in Orlando te hebben!! Het is de tweede keer dat we de service hebben ingehuurd (auto, hotel, huis, parkkaartjes) en ik blijf het aan iedereen aanbevelen! Hier is mijn dankbaarheid voor alle zorg en affectie met mij en mijn familie!!! Een grote kus voor jullie!",
-            testimonial3: "Zeer goede service! We hebben alles gekocht in 2019, en ik kon pas reizen in 2022. De hulp bij alle herplanningen was geweldig, het verduidelijkte veel twijfels, zelfs over diensten die ik niet met hen had afgesloten. Het was een geweldig partnerschap. Ik heb het al aanbevolen aan een vriendin, die het ook heeft gebruikt en leuk vond. Ik plan al een nieuwe reis met VPO.",
-            testimonial4: "Uitzonderlijk competent, verantwoordelijk en super attent team! Ze creëerden een gedetailleerde route, binnen onze interesses en gaven ons alle ondersteuning, in realtime, wanneer we het nodig hadden. Heel erg bedankt VPO Experience, we houden ervan om naar Orlando te reizen met jullie!"
-        },
         faq: {
             subtitle: "Veelgestelde Vragen",
             title1: "Verduidelijk uw",
@@ -652,67 +564,6 @@ const translations = {
             selectDate: "Selecteer een activeringsdatum.",
             selectPassengers: "Voeg minimaal één passagier toe.",
             dateInFuture: "Selecteer een datum in de toekomst."
-        },
-        obrigado: {
-            page_title: "Bedankt! | VPO Experience",
-            title: "Bedankt voor uw aankoop!",
-            subtitle: "Uw bestelling is bevestigd. Ons team is verheugd u te helpen bij het plannen van uw magische reis.",
-            action_required: { title: "Actie Vereist: Start uw Setup!", intro: "Om de planning te starten, klikt u op de onderstaande knop om een gesprek te beginnen met onze experts op WhatsApp.", cta: "Start Setup op WhatsApp", number_intro: "Of voeg ons nummer toe aan uw contacten:" },
-            next_steps: { title: "Wat zijn de volgende stappen?", step1: "We bevestigen uw gegevens via WhatsApp.", step2: "We maken uw gepersonaliseerde parkroute.", step3: "Maak u klaar voor een onvergetelijke ervaring!" },
-            cta: "Terug naar de startpagina"
         }
     }
 };
-
-function translatePage(language) {
-    const elements = document.querySelectorAll('[data-i18n]');
-
-    elements.forEach(element => {
-        const key = element.getAttribute('data-i18n');
-        const keys = key.split('.');
-        let translation = translations[language];
-
-        for (const k of keys) {
-            if (translation && typeof translation === 'object' && translation[k] !== undefined) {
-                translation = translation[k];
-            } else {
-                // Fallback to English if key is not found in the current language
-                translation = translations.en;
-                for (const k2 of keys) {
-                    if (translation && typeof translation === 'object' && translation[k2] !== undefined) {
-                        translation = translation[k2];
-                    } else {
-                        translation = null; // Key not found in English either
-                        break;
-                    }
-                }
-                break;
-            }
-        }
-
-        if (typeof translation === 'string') {
-            element.innerHTML = translation; // Use innerHTML to render potential HTML tags in translations
-        }
-    });
-
-    document.getElementById('html-root').lang = language;
-    localStorage.setItem('vpo-language', language);
-}
-
-// Event listener for language changes
-document.addEventListener('DOMContentLoaded', () => {
-    const savedLanguage = localStorage.getItem('vpo-language') || 'en';
-    const languageSelect = document.getElementById('language-select');
-
-    if (languageSelect) {
-        languageSelect.value = savedLanguage;
-        translatePage(savedLanguage);
-
-        languageSelect.addEventListener('change', (e) => {
-            const newLang = e.target.value;
-            translatePage(newLang);
-            // Notify other parts of the application that the language has changed
-            document.dispatchEvent(new CustomEvent('languageChange', { detail: { lang: newLang } }));
-        });
-    }
-});
